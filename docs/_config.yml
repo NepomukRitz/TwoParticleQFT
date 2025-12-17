@@ -1,9 +1,0 @@
-
-title: MultipointConventions
-author: Nepomuk Ritz
-
-theme: null
-
-kramdown:
-  math_engine: null
-  toc_levels: 1..3

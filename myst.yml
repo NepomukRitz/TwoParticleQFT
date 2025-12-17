@@ -1,0 +1,18 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: ded6b193-e978-4577-9f31-287b217a391a
+  title: TwoParticleQFT
+  description: Open review of definitions, conventions and equations for two-particle quantum field theory.
+  keywords: [Two-particle vertex, Bethe--Salpeter equations, Parquet formalism]
+  authors: [Nepomuk Ritz]
+  github: https://github.com/NepomukRitz/TwoParticleQFT
+  toc:
+    - file: intro.md
+    - file: starting_point.md
+    - file: definitions.md
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
