@@ -11,8 +11,12 @@ project:
     - file: intro.md
     - file: starting_point.md
     - file: definitions.md
+    - file: two-particle-channels.md
+    - file: connector_identities.md
+    - file: vertex_PT2.md
 site:
   template: book-theme
   # options:
   #   favicon: favicon.ico
   #   logo: site_logo.png
+

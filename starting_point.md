@@ -27,7 +27,7 @@ S = S_0 + S_I &= -\sum_{1,2} \bar{c}_1 (G_0)^{-1}_{12} c_2 - \frac{1}{4} \sum_{1
 :::{warning}
 **About conventions**
 
-- Different communities use different conventions for numbering the multi-indices. Here, we follow the Vienna convention and use the arabic numbers $(1,2)$ for two-point functions and $(1,2,3,4)$ for four-point functions. In the Munich convention, the action is parametrized as 
+Different communities use different conventions for numbering the multi-indices. Here, we follow the Vienna convention and use the arabic numbers $(1,2)$ for two-point functions and $(1,2,3,4)$ for four-point functions. In the Munich convention, the action is parametrized as 
 \begin{align}
 S = - \bar{c}_{1'} (G_0)^{-1}_{1'1} c_{1} - \frac{1}{4} \bar{c}_{1'} \bar{c}_{2'} F_{0;1'2'|12} c_2 c_1 \, .
 \end{align}
@@ -43,3 +43,7 @@ Diagrammatically, the bare four-point vertex $F_0$ is represented as the Hugenho
 :width: 100px
 :::
 where we number the legs clockwise starting from the bottom left.
+
+:::{danger} To Do
+Since we have established a one-to-one correspondence with the Munich convention, we can directly write down all diagrammatic relations and translate the indices accordingly. However, for the sake of a pedagogical and self-contained text, it would be better to explicitly show the derivation of the diagrammatic rules starting from the action above. We can use Jan's handwritten notes as a starting point.
+:::
