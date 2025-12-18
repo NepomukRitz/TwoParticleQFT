@@ -12,8 +12,6 @@ project:
     - file: starting_point.md
     - file: definitions.md
     - file: two-particle-channels.md
-    - file: connector_identities.md
-    - file: vertex_PT2.md
 site:
   template: book-theme
   # options:
