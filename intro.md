@@ -1,6 +1,12 @@
 # TwoParticleQFT
 
+::::{grid} 1 2 2 2
+
 Welcome to the TwoParticleQFT documentation site! This site aims to provide a comprehensive overview of two-particle quantities in quantum field theory, with a focus on their applications in strongly correlated electron systems. We cover the fundamental definitions, diagrammatic representations, and key concepts needed to understand and work with two-particle vertices, correlation functions, and related quantities.
+
+:::{image} images/vertex.png
+:::
+::::
 
 In addition, we include some technical derivations, complementing the main text, which are often omitted in papers for the sake of brevity.
 
@@ -22,13 +28,11 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 
 - [Frequency parametrizations](frequency_parametrizations.md)
 
-- [Spin degrees of freedom](spin-parametrization.md)
+- [Spin degrees of freedom](spin-parametrization.md) - To do!
 
 ## Parquet theory
 
-:::{danger} To do!
-$\phantom{a}$
-:::
+To do!
 
 
 ## Wishlist
@@ -36,7 +40,6 @@ $\phantom{a}$
 This site is still under construction. Below is a wishlist of tasks to be completed and sections to be added, in decreasing order of priority:
 
 - Add nice-looking vector graphics for all diagrams
-- Add a section on frequency parametrizations
 - Add a section on spin parametrizations
 - Add a note on the amiguity in the literature regarding the definition of the two particle-hole channels
 - Add a section on parquet theory, including Bethe-Salpeter equations and Schwinger-Dyson equation. Bonus: Their explicit derivations would be great too.
