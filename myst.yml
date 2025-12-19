@@ -12,6 +12,7 @@ project:
     - file: starting_point.md
     - file: definitions.md
     - file: two-particle-channels.md
+    - file: frequency_parametrizations.md
 site:
   template: book-theme
   # options:
