@@ -126,7 +126,7 @@ With the definitions of the channel-specific connectors $\circ$ and the bare bub
 &= F_{0,1256} [\chi_0^0]_{6587} F_{0,7834} =  F_{0,1256} G_{0,67} G_{0,85} F_{0,7834} \\ \\
 \text{$pp$:}\quad  [F_0 \circ [\chi_0^0]^{pp} \circ F_0]_{1234} &= F_{0,1536} [[\chi_0^0]^{pp} \circ F]_{6254} = F_{0,1536} [\chi_0^0]^{pp}_{6857} F_{0,7284} \\
 &= \frac{1}{2} F_{0,1536} [\chi_0^0]_{6857} F_{0,7284} = \frac{1}{2} F_{0,1536} G_{0,67} G_{0,58} F_{0,7284} \\ \\
-\text{$ph$:}\quad  [F_0 \circ [\chi_0^0]^{ph} \circ F_0]_{1234} &= F_{0,5236} [[\chi_0^0]^{ph} \circ F]_{1564} = F_{0,5236} [\chi_0^0]^{ph}_{8564} F_{0,1874} \\
+\text{$ph$:}\quad  [F_0 \circ [\chi_0^0]^{ph} \circ F_0]_{1234} &= F_{0,5236} [[\chi_0^0]^{ph} \circ F]_{1564} = F_{0,5236} [\chi_0^0]^{ph}_{8567} F_{0,1874} \\
 &= \zeta F_{0,5236} [\chi_0^0]_{6587} F_{0,1874} = \zeta F_{0,5236} G_{0,67} G_{0,85} F_{0,1874} \, .
 \end{align}
 
