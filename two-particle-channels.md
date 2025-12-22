@@ -1,6 +1,8 @@
-## Two-particle channels
+# Two-particle channels
 
 All diagrams contributing to the connected four-point correlator (or, equivalently, the four-point vertex) can be classified with respect to the property of two-particle reducibility. A diagram is called *two-particle reducible* if it can be separated into two parts by cutting a pair of internal propagator lines. Otherwise, it is called *two-particle irreducible*. The set of all two-particle reducible diagrams can furthermore be uniquely decomposed into three topologically distince *two-particle channels*: the particle-particle ($pp$) channel, and the two particle-hole channels ($ph$ and $\overline{ph}$). These channels are defined based on how two pairs of external legs can be separated by cutting two internal propagator lines. 
+
+## Second-order perturbation theory
 
 The three channels are apparent already at the level of the second-order diagrams in perturbation theory. For the connected four-point correlator, we obtain three contributions beyond the first-order diagram:
 
@@ -53,6 +55,8 @@ F_{1234} = F_{0,1234} &+ F_{0,1256} G_{0,67} G_{0,85} F_{0,7834} \quad \text{($\
 &+ \mathcal{O}(F_0^3)\, .
 \end{align}
 
+## Connectors and identity operators
+
 For ease of notation, it is useful to define a *connector* $\circ$ to denote summation over all indices in each two-particle channel as 
 \begin{align}
 [A\circ B]^{\overline{ph}}_{1234} &= A_{1256} B_{6534} \\
@@ -92,6 +96,8 @@ These identity operators can also be used to define the inverse of a four-point 
 \begin{align}
 [A^{-1}]^r_{1234} \quad \text{such that} \quad [A^{-1}]^r \circ A = A \circ [A^{-1}]^r = \mathbb{1}^r \, .
 \end{align}
+
+## Bare and dressed bubbles
 
 We furthermore define the *bare bubble* as 
 \begin{align}
@@ -143,3 +149,27 @@ and
 [\chi_0]^{pp}_{4321} &= \frac{1}{2} [\chi_0]_{4321} \\
 [\chi_0]^{ph}_{4321} &= \zeta [\chi_0]_{2341} \, .
 \end{align}
+
+## Note on possible confusion regarding $ph \leftrightarrow \overline{ph}$
+
+There is some ambiguity in the literature regarding the labeling of the two particle-hole channels. This confusion arises, because, for general models, in which both two fermion lines enter and exit each vertex, *there is no fundamental difference* between the two particle-hole channels, since they are related by crossing symmetry: Swapping the pair of entering or exiting legs, respectively, transforms one channel into the other and generates a minus sign (for fermions).
+
+:::{note}
+In fact, one can also generate a minus sign in the $pp$ channel by choosing a different pair of lines to be connected by the bubble $\chi_0^{pp}$. Additionally, one can always generate a minus sign in the Bethe-Salpeter equations by sending every vertex $F$ to $-F$. Thus, defining a "natural" convention for the two-particle channels is somewhat of an underdetermined problem.
+:::
+
+The distinction between the two channels only becomes unambiguous, when spin indices are specified (for details, see the section on [spin parametrizations](spin_parametrizations.md)). That is because with the label $ph$, one typically wants to refer to the intuitive scattering process where a particle of spin $\sigma$ and frequency $\nu$ scatters off a particle of spin $\sigma'$ and frequency $\nu'$, exchanging a transfer frequency $\omega=0$. One then has to decide, which of the two possible orientations of the diagram corresponds to this process. Different communities have made different choices in this regard, leading to the current confusion. Here, we will follow the convention which attaches the spin $\sigma$ to the two upper legs and the spin $\sigma'$ to the two lower legs of the diagram. The $ph$ scattering process then happens in the vertical direction. This is a natural choice,
+
+:::{dropdown} explanation why
+Attaching $\sigma$ to the upper legs and $\sigma'$ to the lower legs means that the $ph$ scattering process is described by the four-point correlation function $G_{\sigma'\sigma\sigma\sigma'} = \langle c_{\sigma'} c_{\sigma} \overline{c}_{\sigma} \overline{c}_{\sigma'} \rangle = \zeta^4 \langle \overline{c}_{\sigma'} c_{\sigma'} \overline{c}_{\sigma} c_{\sigma}   \rangle = \langle n_{\sigma'} n_\sigma \rangle $ (with the $\sigma$ particle having energy $\nu$ and the $\sigma'$ particle having energy $\nu'$), see the section on [basic quantities](definitions#four-point-correlation-function). This is precisely the density-density (or "charge") correlator, which probes particle-hole excitations!
+:::
+
+and has been also historically used, for example in large parts of the fRG literature (to do: Cite Honerkamp and mfRG papers), but also in multipoint-NRG (to do: cite those papers) and even in the Vienna community (see Fig. 1 in https://doi.org/10.1103/PhysRevB.102.085106).
+
+:::{warning}
+In many papers from the Vienna community, including http://dx.doi.org/10.1103/PhysRevB.86.125114 (see Fig. 24) and https://doi.org/10.1103/RevModPhys.90.025003 (see Fig. 3), the opposite convention is used, i.e., $\sigma$ is attached to the left legs and $\sigma'$ to the right legs. In this case, the same scattering process happens in the horizontal direction, but is also labeled $ph$. As a consequence, the definitions of the $\uparrow \downarrow$ spin components of the vertex are swapped between the two conventions. See also the section on [spin parametrizations](spin_parametrizations.md) for more details.
+
+It should be noted that this choice can be made consistent with the label $ph$ using the different definition of the four-point correlation function employed in that community (see the note in the section on the [four-point correlation function](definitions#four-point-correlation-function)). Then, attaching $\sigma$ to the left legs and $\sigma'$ to the right legs leads to the correlator $\tilde{G}_{\sigma\sigma \sigma'\sigma'} = \langle c_{\sigma} \overline{c}_{\sigma} c_{\sigma'} \overline{c}_{\sigma'} \rangle = \zeta^2 \langle \overline{c}_{\sigma} c_{\sigma} \overline{c}_{\sigma'} c_{\sigma'} \rangle = \langle n_{\sigma} n_{\sigma'} \rangle$, which again probes particle-hole excitations.
+:::
+
+*Thanks to Fabian Kugler for large parts of this explanation!*

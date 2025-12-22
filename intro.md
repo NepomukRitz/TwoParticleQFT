@@ -40,8 +40,6 @@ To do!
 This site is still under construction. Below is a wishlist of tasks to be completed and sections to be added, in decreasing order of priority:
 
 - Add nice-looking vector graphics for all diagrams
-- Add a section on spin parametrizations
-- Add a note on the amiguity in the literature regarding the definition of the two particle-hole channels
 - Add a section on parquet theory, including Bethe-Salpeter equations and Schwinger-Dyson equation. Bonus: Their explicit derivations would be great too.
 - Add a section on the SBE decomposition and approximation
 - Add a section on the Keldysh formalism in the steady state (including thermal equilibrium), highlighting the differences to the Matsubara formalism

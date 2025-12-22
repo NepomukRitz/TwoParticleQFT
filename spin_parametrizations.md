@@ -17,7 +17,7 @@ For four-point functions, in particular vertices, spin conservation implies $F_{
 where $\overline{\sigma}$ denotes the spin opposite to $\sigma$. 
 
 :::{warning}
-In some papers (especially from the Vienna community), the definitions of $F_{\uparrow \downarrow}$ and $F_{\overline{\uparrow\downarrow}}$ are interchanged. This assignment in particular changes the roles of the two particle-hole channels, $ph \leftrightarrow \overline{ph}$. See also the note (to be written!) about the ambiguity in the literature regarding the definition of the two particle-hole channels.
+In some papers (especially from the Vienna community), the definitions of $F_{\uparrow \downarrow}$ and $F_{\overline{\uparrow\downarrow}}$ are interchanged. This assignment in particular changes the roles of the two particle-hole channels, $ph \leftrightarrow \overline{ph}$. See also the [note](two-particle-channels#note-on-possible-confusion-regarding-ph-leftrightarrow-overline-ph) about the ambiguity in the literature regarding the definition of the two particle-hole channels.
 :::
 
 The three spin components above are furthermore related by the additionally identity
