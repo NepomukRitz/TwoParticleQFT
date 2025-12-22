@@ -28,7 +28,7 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 
 - [Frequency parametrizations](frequency_parametrizations.md)
 
-- [Spin degrees of freedom](spin-parametrization.md) - To do!
+- [Spin degrees of freedom in the presence of SU(2) symmetry](spin_parametrizations.md)
 
 ## Parquet theory
 

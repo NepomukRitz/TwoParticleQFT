@@ -13,8 +13,14 @@ project:
     - file: definitions.md
     - file: two-particle-channels.md
     - file: frequency_parametrizations.md
+    - file: spin_parametrizations.md
 site:
   template: book-theme
+  parts:
+    primary_sidebar_footer: ""
+  options:
+    logo_text: "TwoParticleQFT"
+    logo: images/vertex.png
   # options:
   #   favicon: favicon.ico
   #   logo: site_logo.png
