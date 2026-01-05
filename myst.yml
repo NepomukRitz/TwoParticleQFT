@@ -10,10 +10,11 @@ project:
   toc:
     - file: intro.md
     - file: starting_point.md
-    - file: definitions.md
+    - file: basic_definitions.md
     - file: two-particle-channels.md
     - file: frequency_parametrizations.md
     - file: spin_parametrizations.md
+    - file: parquet_theory.md
 site:
   template: book-theme
   parts:

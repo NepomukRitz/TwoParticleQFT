@@ -11,7 +11,7 @@ Welcome to the TwoParticleQFT documentation site! This site aims to provide a co
 In addition, we include some technical derivations, complementing the main text, which are often omitted in papers for the sake of brevity.
 
 :::{note} Note about conventions
-There is a vast body of litature on two-particle quantities in quantum field theory, and different communities often use different conventions and notations, which sometimes even differ from paper to paper. This fact is often a source of major confusion and the main motivation for putting together this site (see also [here](https://xkcd.com/927)). In this documentation, we strive to be as clear and consistent as possible regarding our conventions. Whenever relevant, we point out differences to other common conventions in the literature.
+There is a vast body of litature on two-particle quantities in quantum field theory, and different communities often use different conventions and notations, which sometimes even differ from paper to paper. This fact is often a source of major confusion and [the main motivation for putting together this site](https://xkcd.com/927). In this documentation, we strive to be as clear and consistent as possible regarding our conventions. Whenever relevant, we point out differences to other common conventions in the literature.
 :::
 
 :::{hint} How to contribute
@@ -30,9 +30,10 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 
 - [Spin degrees of freedom in the presence of SU(2) symmetry](spin_parametrizations.md)
 
-## Parquet theory
+## Diagrammatic frameworks
 
-To do!
+- [Parquet theory: parquet decomposition, Bethe-Salpeter equations, Schwinger-Dyson equation, parquet approximation](parquet_theory.md)
+- Single boson exchange (SBE) decomposition and approximation - To do!
 
 
 ## Wishlist
@@ -40,9 +41,9 @@ To do!
 This site is still under construction. Below is a wishlist of tasks to be completed and sections to be added, in decreasing order of priority:
 
 - Add nice-looking vector graphics for all diagrams
-- Add a section on parquet theory, including Bethe-Salpeter equations and Schwinger-Dyson equation. Bonus: Their explicit derivations would be great too.
 - Add a section on the SBE decomposition and approximation
 - Add a section on the Keldysh formalism in the steady state (including thermal equilibrium), highlighting the differences to the Matsubara formalism
+- Add derivations of the BSEs and the SDE
 - Add a section on asymptotic decomposition of the two-particle vertex
 - Add a section on generalized susceptibilities, maybe even as part of the basic definitions
 - Add a section physical susceptibilities and general response functions and how to compute them from two-particle vertices
