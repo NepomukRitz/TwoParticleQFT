@@ -17,6 +17,7 @@ project:
     - file: spin_parametrizations.md
     - file: parquet_theory.md
     - file: single_boson_exchange.md
+    - file: keldysh_formalism.md
 site:
   template: book-theme
   parts:

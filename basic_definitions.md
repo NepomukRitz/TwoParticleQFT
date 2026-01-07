@@ -37,7 +37,7 @@ which is represented diagrammatically as
 
 The four-point correlation function is defined as
 \begin{align}
-G^{(4)}_{4231} = \langle c_4 c_2 \bar{c}_3 \bar{c}_1 \rangle = \frac{1}{Z} \int \mathcal{D}[\bar{c}, c] c_4 c_2 \bar{c}_3 \bar{c}_1 e^{-S} \, ,
+G^{(4)}_{4321} = \langle c_4 c_2 \bar{c}_3 \bar{c}_1 \rangle = \frac{1}{Z} \int \mathcal{D}[\bar{c}, c] c_4 c_2 \bar{c}_3 \bar{c}_1 e^{-S} \, ,
 \end{align}
 and represented diagrammatically by the *flying squirrel diagram* (credit: Marcel Gievers),
 :::{image} diagrams/G4.png

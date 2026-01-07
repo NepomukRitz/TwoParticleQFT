@@ -1,4 +1,4 @@
-# Overview of symbols and notations used throughout this documentation
+# Overview of symbols and notations used throughout these pages
 
 The tables on this page provide an overview of the main symbols and notations used throughout this documentation. We also mention differences to other common conventions in the literature.
 

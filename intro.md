@@ -18,7 +18,7 @@ There is a vast body of litature on two-particle quantities in quantum field the
 This site is editable by anyone! If you find mistakes, have suggestions for improvements, or want to contribute new sections, feel free to open a pull request on the [GitHub repository](https://github.com/NepomukRitz/TwoParticleQFT). A good starting point are the open "to do"s listed throughout these pages or to check the [wishlist](intro.md#wishlist) at the end of this page.
 :::
 
-[Overview of symbols and notations used throughout this documentation](symbols_and_notations.md)
+[Overview of symbols and notations used throughout these pages](symbols_and_notations.md)
 
 ## Definitions
 
@@ -37,12 +37,15 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 - [Parquet theory: parquet decomposition, Bethe-Salpeter equations, Schwinger-Dyson equation, parquet approximation](parquet_theory.md)
 - [Single boson exchange (SBE) decomposition and approximation](single_boson_exchange.md)
 
+## Advanced topics
+
+- [Two-particle QFT in the real-frequency Keldysh formalism](keldysh_formalism.md)
+
 ## Wishlist
 
 This site is still under construction. Below is a wishlist of tasks to be completed and sections to be added, in decreasing order of priority:
 
 - Add nice-looking vector graphics for all diagrams
-- Add a section on the SBE decomposition and approximation
 - Add a section on the Keldysh formalism in the steady state (including thermal equilibrium), highlighting the differences to the Matsubara formalism
 - Add derivations of the BSEs and the SDE
 - Add a section on asymptotic decomposition of the two-particle vertex
