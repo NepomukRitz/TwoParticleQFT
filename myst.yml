@@ -9,6 +9,7 @@ project:
   github: https://github.com/NepomukRitz/TwoParticleQFT
   toc:
     - file: intro.md
+    - file: symbols_and_notations.md
     - file: starting_point.md
     - file: basic_definitions.md
     - file: two-particle-channels.md

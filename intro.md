@@ -18,11 +18,13 @@ There is a vast body of litature on two-particle quantities in quantum field the
 This site is editable by anyone! If you find mistakes, have suggestions for improvements, or want to contribute new sections, feel free to open a pull request on the [GitHub repository](https://github.com/NepomukRitz/TwoParticleQFT). A good starting point are the open "to do"s listed throughout these pages or to check the [wishlist](intro.md#wishlist) at the end of this page.
 :::
 
+[Overview of symbols and notations used throughout this documentation](symbols_and_notations.md)
+
 ## Definitions
 
 - [Starting point: Many-body Hamiltonian and action](starting_point.md)
 
-- [Basic quantities: propagator, self-energy, four-point function, vertex](definitions.md)
+- [Basic quantities: propagator, self-energy, four-point function, vertex](basic_definitions.md)
 
 - [Two-particle channels](two-particle-channels.md)
 
@@ -34,7 +36,6 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 
 - [Parquet theory: parquet decomposition, Bethe-Salpeter equations, Schwinger-Dyson equation, parquet approximation](parquet_theory.md)
 - [Single boson exchange (SBE) decomposition and approximation](single_boson_exchange.md)
-
 
 ## Wishlist
 
