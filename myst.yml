@@ -15,6 +15,7 @@ project:
     - file: frequency_parametrizations.md
     - file: spin_parametrizations.md
     - file: parquet_theory.md
+    - file: single_boson_exchange.md
 site:
   template: book-theme
   parts:
