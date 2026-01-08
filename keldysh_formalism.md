@@ -29,6 +29,7 @@ The two-point and four-point correlation functions are defined as in the Matsuba
     G^{(4)}_{4231} &= i \langle \mathcal{T}_\mathcal{C} c_4 c_2 \overline{c}_3 \overline{c}_1 \rangle \, .
 \end{align}
 
+:::{dropdown} Note on signs and prefactors
 The factors of $i$ are motivated as follows. Correlation functions are most cleanly derived as functional derivatives of a generating functional with respect to source fields. The generating function in the Keldysh formalism reads
 \begin{align}
     Z[\bar{J}, J] = \int \mathcal{D}[\bar{c}, c] \,e^{i S[\bar{c}, c] + i \bar{J} c + i \overline{c} J} \, .
@@ -57,13 +58,27 @@ We hence find that the two-point correlation function is given by
 By analogy, we demand the same normalization for the interacting theory.
 
 For higher-point correlation functions, the situation is not so clear and indeed different conventions exist in the literature. Here, we follow the commonly used convention that an $n$-point correlation function contains a prefactor of $(-i)^{(n-1)}$.
+:::
 
 As a consequence, the tree expansion of the four-point correlation function reads
 \begin{align}
-    \ldots
+    iG^{(4)}_{4231} = G_{41} G_{23} + \zeta G_{43} G_{21} + i G^{(4)}_{c,4321}\, ,
+\end{align}
+with the connected part given by
+\begin{align}
+    G^{(4)}_{c,4321} = - G_{4\tilde{1}} G_{2\tilde{3}} F_{\tilde{1}\tilde{2}\tilde{3}\tilde{4}} G_{\tilde{2}3} G_{\tilde{4}1}\, .
 \end{align}
 
+::::{dropdown} Note on signs and prefactors
 For the disconnected terms, this form of the tree-expansion is motivated by the non-interacting case, where Wick's theorem gives
 \begin{align}
-    G^{(4)}_{0, 4321} = i \langle T_\mathcal{C} c_4 c_2 \overline{c}_3 \overline{c}_1 \rangle_0 = i \left( \langle c_4 \bar{c}_1\rangle \langle c_2 \bar{c}_3\rangle + \zeta \langle c_4 \bar{c}_3\rangle \langle c_2 \bar{c}_1\rangle \right)
+    G^{(4)}_{0, 4321} &= i \langle T_\mathcal{C} c_4 c_2 \overline{c}_3 \overline{c}_1 \rangle_0 = i \left( \langle T_\mathcal{C} c_4 \bar{c}_1\rangle_0 \langle T_\mathcal{C} c_2 \bar{c}_3\rangle_0 + \zeta \langle T_\mathcal{C} c_4 \bar{c}_3\rangle_0 \langle T_\mathcal{C} c_2 \bar{c}_1\rangle_0 \right) \\
+    &= i \left( i G_{0,41} i G_{0,23} + \zeta i G_{0,43} i G_{0,21} \right) = -i \left( G_{0,41} G_{0,23} + \zeta G_{0,43} G_{0,21} \right) \\ & \\
+    \Leftrightarrow \quad i G^{(4)}_{0, 4321} &= G_{0,41} G_{0,23} + \zeta G_{0,43} G_{0,21} \, .
 \end{align}
+
+The sign of the connected part is best motivated by the first-order contribution in perturbation theory in the bare interaction $F_0$,
+:::{image} diagrams/G4_PT.png
+:::
+::::
+
