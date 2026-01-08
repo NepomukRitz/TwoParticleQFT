@@ -61,13 +61,13 @@ Here, the factor $\zeta = -1$ for fermions and $\zeta = +1$ for bosons arises fr
 
 We can write down the tree expansion for the four-point function as 
 \begin{align}
-G^{(4)}_{4231} = G_{41} G_{23} + \zeta G_{43} G_{21} + G_{4\tilde{1}} G_{2\tilde{3}} F_{\tilde{1}\tilde{2}\tilde{3}\tilde{4}} G_{\tilde{2}3} G_{\tilde{4}1}\,.
+G^{(4)}_{4321} = G_{41} G_{23} + \zeta G_{43} G_{21} + G_{4\tilde{1}} G_{2\tilde{3}} F_{\tilde{1}\tilde{2}\tilde{3}\tilde{4}} G_{\tilde{2}3} G_{\tilde{4}1}\,.
 \end{align}
 :::{image} diagrams/G4_tree-exp.png
 :height: 200px
 :::
 
-The third term, $G^{(4)}_{c,4231} =  G_{4\tilde{1}} G_{2\tilde{3}} F_{\tilde{1}\tilde{2}\tilde{3}\tilde{4}} G_{\tilde{2}3} G_{\tilde{4}1}$ is also called the *connected four point correlator*. This expression defines the full *four-point vertex* $F$.
+The third term, $G^{(4)}_{c,4321} =  G_{4\tilde{1}} G_{2\tilde{3}} F_{\tilde{1}\tilde{2}\tilde{3}\tilde{4}} G_{\tilde{2}3} G_{\tilde{4}1}$ is also called the *connected four point correlator*. This expression defines the full *four-point vertex* $F$.
 
 :::{danger} To Do
 Derive this expression. Can motivate it, for example, from the first contributions in perturbation theory, utilizing Wick's theorem. See Jan's handwritten notes for reference.

@@ -10,7 +10,7 @@ The tables on this page provide an overview of the main symbols and notations us
 | Dressed propagator | $G$ | $g$ (local) |
 | Bubble (i.e. propgator pair) | $\chi_0$ | $\chi^{0}$, $\Pi$, $(GG)$ |
 | Self-energy | $\Sigma$ | - |
-| Bare four-point vertex | $F_0$ | $U$, $V$, $\Gamma^{0}$, $\Gamma^{0}$, $f$ (for dual fermions) |
+| Bare four-point vertex | $F_0$ | $U$, $V$, $\Gamma_{0}$, $\Gamma^{0}$, $f$ (for dual fermions) |
 | Full four-point vertex | $F$ | $\Gamma$, $\Gamma^{(4)}$, $\Gamma^*$, $f$ (local), $V$, $L^X$ |
 | Four-point Green's function | $G^{(4)}$ | $g^{(4)}$ (local), $G_2$ |
 
