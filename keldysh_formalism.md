@@ -82,3 +82,161 @@ The sign of the connected part is best motivated by the first-order contribution
 :::
 ::::
 
+## Keldysh index structure of two- and four-point functions
+
+Since a general $n$-point function is given via an expectation value of a product of $n$  fields, which can each be placed on either of the two branches of the Keldysh contour, it will have $2^n$ Keldysh components in total.
+
+### Propagator
+
+Starting, with the two-point Green's function, we can arrange its four Keldysh components in a $2\times 2$ matrix,
+\begin{align}
+    (G^{c_2 c_1}) = 
+    \begin{pmatrix}
+        G^{--} & G^{-+} \\
+        G^{+-} & G^{++}
+    \end{pmatrix} \, ,
+\end{align}
+where the superscripts $c_2, c_1 \in \{-, +\}$ denote whether the corresponding time argument is on the forward or backward branch of the contour, respectively. Explicitly, the components read
+\begin{align}
+    G^{-|+}(t_2, t_1) &= -i \langle \mathcal{T}_\mathcal{C} c^-(t_2) \overline{c}^+(t_1) \rangle = - \zeta i \langle \overline{c}(t_1) c(t_2) \rangle \equiv G^<(t_2, t_1) \\
+    G^{+|-}(t_2, t_1) &= -i \langle \mathcal{T}_\mathcal{C} c^+(t_2) \overline{c}^-(t_1) \rangle = -i \langle c(t_2) \overline{c}(t_1) \rangle \equiv G^>(t_2, t_1) \\
+    G^{--}(t_2, t_1) &= -i \langle \mathcal{T}_{\mathcal{C}} c^-(t_2) \overline{c}^-(t_1) \rangle = G^>(t_2, t_1) \theta(t_2 - t_1) + G^<(t_2, t_1) \theta(t_1 - t_2) \\
+    G^{++}(t_2, t_1) &= -i \langle \mathcal{T}_{\mathcal{C}} c^+(t_2) \overline{c}^+(t_1) \rangle = G^<(t_2, t_1) \theta(t_2 - t_1) + G^>(t_2, t_1) \theta(t_1 - t_2) \, ,
+\end{align}
+where we have suppressed all other dependencies for ease of notation. Here, the contour-time-ordering has been made explicit and the *greater* and *lesser* Green's functions $G^>$ and $G^<$ have been introduced.
+
+As can be confirmed by direct calculation, the four Keldysh components are not independent, but satisfy the relation
+\begin{align}
+    G^{-|+} + G^{+|-} = G^{--} + G^{++} \, .
+\end{align}
+
+:::{danger} To do
+- Show this explicitly.
+- Discuss the caveat that this relation does not hold if $t_1 = t_2$. 
+:::
+
+Making use of this reduncancy motivates the *Keldysh rotation*, defined as
+\begin{align}
+    G^{k_2 k_1} = D^{k_2 c_2} G^{c_2 c_1} (D^{-1})^{c_1 k_1} \, ,
+\end{align}
+with the transformation matrix
+\begin{align}
+    D &= \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1 & -1 \\
+        1 & 1
+    \end{pmatrix}\, ; &
+    D^{-1} &= \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1 & 1 \\
+        -1 & 1
+    \end{pmatrix} \, .
+\end{align}
+The Keldysh-rotated Green's function then takes the form
+\begin{align}
+    (G^{k_2 k_1}) =
+    \begin{pmatrix}
+        0 & G^A \\
+        G^R & G^K
+    \end{pmatrix} \, ,
+\end{align}
+where the component $G^{11}$ vanishes by construction. $G^R(t_2, t_1) = -i \langle [c(t_2), \overline{c}(t_1)]_\zeta \rangle \theta(t_2 - t_1)$ is the physically relevant *retarded Green's function*, $G^A(t_2, t_1) = [G^R(t_1, t_2)]^*$ is the *advanced* component, and $G^K(t_2, t_1) = G^>(t_2, t_1) + G^<(t_2, t_1) = -[G^K(t_1, t_2)]^*$ is the *Keldysh* component.
+
+### Self-energy
+
+The same transformation can be done for the self-energy $\Sigma$, which has the following Keldysh structure,
+\begin{align}
+    (\Sigma^{k_1 k_2}) =
+    \begin{pmatrix}
+        \Sigma^{K} & \Sigma^{R} \\
+        \Sigma^{A} & 0
+    \end{pmatrix} \, .
+\end{align} 
+Compared to $G$, the Keldysh indices $k_1$ and $k_2$ of the self-energy are interchanged, which can be inferred from the Dyson equation.
+
+### Dyson equation
+
+Speaking of the Dyson equation, which reads in its most general form
+\begin{align}
+    G = G_0 + G_0 \circ \Sigma \circ G \, ,
+\end{align}
+where the connector $\circ$ denotes contractions in time and single-particle quantum numbers. Making the Keldysh structure explicit, separate Dyson equations for the individual Keldysh components can be derived. They read
+\begin{align}
+    G^{R} &= G_0^{R} + G_0^{R} \bullet \Sigma^{R} \bullet G^{R} \, , \\
+    G^{A} &= G_0^{A} + G_0^{A} \bullet \Sigma^{A} \bullet G^{A} \, , \\
+    G^{K} &= (1 + G^{R} \bullet \Sigma^{R}) \bullet G_0^{K} \bullet (1 + \Sigma^{A} \bullet G^{A}) + G^{R} \bullet \Sigma^{K} \bullet G^{A} \, ,
+\end{align}
+where the bullet $\bullet$ denotes contractions over all indices and variables except the Keldysh indices.
+
+
+:::{dropdown} Explicit derivation
+To derive these equations, we start from the general Dyson equation written explicitly in Keldysh space,
+\begin{align}
+    \begin{pmatrix}
+        0 & G^{A} \\
+        G^{R} & G^{K}
+    \end{pmatrix} &=
+    \begin{pmatrix}
+        0 & G_0^{A} \\
+        G_0^{R} & G_0^{K}
+    \end{pmatrix} +
+    \begin{pmatrix}
+        0 & G_0^{A} \\
+        G_0^{R} & G_0^{K}
+    \end{pmatrix} \bullet
+    \begin{pmatrix}
+        \Sigma^{K} & \Sigma^{R} \\
+        \Sigma^{A} & 0
+    \end{pmatrix} \bullet
+    \begin{pmatrix}
+        0 & G^{A} \\
+        G^{R} & G^{K}
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        0 & G_0^{A} \\
+        G_0^{R} & G_0^{K}
+    \end{pmatrix} + 
+    \begin{pmatrix}
+        0 & G_0^{A} \bullet \Sigma^{A} \bullet G^{A} \\
+        G_0^{R} \bullet \Sigma^{R} \bullet G^{R} & (G_0^{R} \bullet \Sigma^{K} + G_0^{K} \bullet \Sigma^{A})  \bullet G^{A} + G_0^{R} \bullet \Sigma^{R} \bullet G^{K}
+    \end{pmatrix} \, .
+\end{align}
+We directly obtain the two independent Dyson equations for the retarded and advanced components,
+\begin{align}
+    G^{R} &= G_0^{R} + G_0^{R} \bullet \Sigma^{R} \bullet G^{R} \, , \\
+    G^{A} &= G_0^{A} + G_0^{A} \bullet \Sigma^{A} \bullet G^{A} \, ,
+\end{align}
+as well as the equation for the Keldysh component,
+\begin{align}
+    G^{K} &= G_0^{K} + G_0^{R} \bullet \Sigma^{K} \bullet G^{A} + G_0^{K} \bullet \Sigma^{A} \bullet G^{A} + G_0^{R} \bullet \Sigma^{R} \bullet G^{K} \, .
+\end{align}
+To solve the last equation for $G^K$, we first rewrite it as
+\begin{align}
+    (1 - G_0^{R} \bullet \Sigma^{R}) \bullet G^{K} &= G_0^{K} \bullet (1 + \Sigma^{A} \bullet G^{A}) + G_0^{R} \bullet \Sigma^{K} \bullet G^{A} \, .
+\end{align}
+Next, we observe that we can utilize the Dyson equation for $G^R$ (twice) to write
+\begin{align}
+    (1 - G_0^{R} \bullet \Sigma^{R})^{-1} &= G^R \bullet (G^{R})^{-1} (1 - G_0^{R} \bullet \Sigma^{R})^{-1} \\
+    &= G^R \bullet (G^R - G_0^R \bullet \Sigma^R \bullet G^R)^{-1} \\
+    &= \boxed{G^R \bullet (G_0^R)^{-1}} \\
+    &= G^R \bullet [(G^R)^{-1} + \Sigma^R] = \boxed{1 + G^R \bullet \Sigma^R} \, .
+\end{align}
+Hence, we obtain for the Keldysh component
+\begin{align}
+    G^{K} &= \underbrace{(1 - G_0^{R} \bullet \Sigma^{R})^{-1}}_{= 1 + G^R \bullet \Sigma^R} \bullet G_0^{K} \bullet (1 + \Sigma^{A} \bullet G^{A}) + \underbrace{(1 - G_0^{R} \bullet \Sigma^{R})^{-1}}_{= G^R \bullet (G_0^R)^{-1}} \bullet G_0^{R} \bullet \Sigma^{K} \bullet G^{A} \\
+    &= (1 + G^{R} \bullet \Sigma^{R}) \bullet G_0^{K} \bullet (1 + \Sigma^{A} \bullet G^{A}) + G^{R} \bullet \Sigma^{K} \bullet G^{A} \, . \ \checkmark 
+\end{align}
+:::
+
+In practice, one will calculate all Keldysh components of $\Sigma$, evaluate the Dyson equations for the retarded and advanced components first (usually in the more practical form $(G^{R/A})^{-1} = (G_0^{R/A})^{-1} - \Sigma^{R/A}$, and finally evaluate the third equation to obtain $G^K$.
+
+:::{note}
+Often, the Keldysh component of the bare propagator is zero, $G_0^K = 0$, which is, e.g., the case for the Hubbard model (strictly speaking, it is a purely regularizing term $\sim i0^+$, which can be omitted in the presence of a Keldysh component of the self-energy). In this case, the Dyson equation for the Keldysh component simplifies to
+\begin{align}
+    G^{K} = G^{R} \bullet \Sigma^{K} \bullet G^{A} \, .
+\end{align}
+:::
+
+:::{danger} To do
+- Discuss fluctuation-dissipation theorem in equilibrium.
+:::
