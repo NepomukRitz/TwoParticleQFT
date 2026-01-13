@@ -2,16 +2,16 @@
 
 ::::{grid} 1 2 2 2
 
-Welcome to the TwoParticleQFT documentation site! This site aims to provide a comprehensive overview of two-particle quantities in quantum field theory, with a focus on their applications in strongly correlated electron systems. We cover the fundamental definitions, diagrammatic representations, and key concepts needed to understand and work with two-particle vertices, correlation functions, and related quantities.
+Welcome to the TwoParticleQFT documentation site! This site aims to provide a comprehensive overview of two-particle quantities in quantum field theory, with a focus on their applications in strongly correlated electron systems. We cover the fundamental definitions, diagrammatic representations, and key concepts needed to understand and work with two-particle vertices, correlation functions, and related quantities. In addition, we include some technical derivations, complementing the main text, which are often omitted in papers for the sake of brevity.
 
-:::{image} images/vertex.png
+
+:::{image} images/title_image.png
 :::
 ::::
 
-In addition, we include some technical derivations, complementing the main text, which are often omitted in papers for the sake of brevity.
 
 :::{note} Note about conventions
-There is a vast body of litature on two-particle quantities in quantum field theory, and different communities often use different conventions and notations, which sometimes even differ from paper to paper. This fact is often a source of major confusion and [the main motivation for putting together this site](https://xkcd.com/927). In this documentation, we strive to be as clear and consistent as possible regarding our conventions. Whenever relevant, we point out differences to other common conventions in the literature.
+There is a vast body of literature on two-particle quantities in quantum field theory, and different communities often use different conventions and notations, which sometimes even differ from paper to paper. This fact is often a source of major confusion and [the main motivation for putting together this site](https://xkcd.com/927). In this documentation, we strive to be as clear and consistent as possible regarding our conventions. Whenever relevant, we point out differences to other common conventions in the literature.
 :::
 
 :::{hint} How to contribute
