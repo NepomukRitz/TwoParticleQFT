@@ -4,7 +4,7 @@ The tables on this page provide an overview of the main symbols and notations us
 
 ## Basic objects
 
-| Object | Symbol used here | Other commonly symbols |
+| Object | Symbol used here | Other commonly used symbols |
 |:-------|------------------|----------------------|
 | Bare propagator | $G_0$ | $G^{0}$ |
 | Dressed propagator | $G$ | $g$ (local) |
@@ -16,7 +16,7 @@ The tables on this page provide an overview of the main symbols and notations us
 
 ## Parquet theory
 
-| Object | Symbol used here | Other commonly symbols |
+| Object | Symbol used here | Other commonly used symbols |
 |:-------|------------------|----------------------|
 | two-particle channels | $\overline{ph}$, $pp$, $ph$ | ($a$, $p$, $t$), ($x$, $p$, $d$), (ph,cr; pp; ph,d), ($u$,$s$,$t$) |
 | two-particle reducible vertex in channel $r$ | $\Phi^r$ | $\gamma_r$, $\phi_r$, $\Phi_r$ |
@@ -25,7 +25,7 @@ The tables on this page provide an overview of the main symbols and notations us
 
 ## Single boson exchange (SBE) theory
 
-| Object | Symbol used here | Other commonly symbols |
+| Object | Symbol used here | Other commonly used symbols |
 |:-------|------------------|----------------------|
 | $U$-reducible vertex in channel $r$ | $\Delta^r$ | $\nabla_r$, ($\mathcal{M}$, $\mathcal{C}$, $\mathcal{S}$) |
 | $U$-irreducible vertex in channel $r$ | $T^r$ | $\phi^r$, $\mathcal{I}^r$ |
@@ -36,9 +36,17 @@ The tables on this page provide an overview of the main symbols and notations us
 
 ## Frequency and momentum parametrizations
 
-| Object | Symbol used here | Other commonly symbols |
+| Object | Symbol used here | Other commonly used symbols |
 |:-------|------------------|----------------------|
 | bosonic frequency | $\omega$ | $\Omega$, $\bar{\omega}$, $\bar{\nu}$ |
 | fermionic frequency | $\nu$ | $\omega$ |
 | bosonic momentum | $\mathbf{q}$ | $\mathbf{Q}$ |
 | fermionic momentum | $\mathbf{k}$ | - |
+
+
+## Keldysh formalism
+
+| Object | Symbol used here | Other commonly used symbols |
+|:-------|------------------|----------------------|
+| contour indices | $c_i \in \{-, +\}$ | $j_i$ |
+| Keldysh indices | $k_i \in \{1,2\}$ | $\alpha_i$, $\kappa_i$ |

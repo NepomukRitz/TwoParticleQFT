@@ -6,6 +6,10 @@ Alternatively to the imaginary-time (Matsubara) formalism used on the other page
 Here, we will only discuss the Keldysh formalism in the steady state, which permits a Fourier transform from time to frequency space. In time-dependent situations, the two-particle quantities depend on more complicated time arguments (e.g., two-particle Green's functions depend on four time arguments), which makes the treatment more involved. We do not discuss this case here.
 :::
 
+:::{danger} To do
+Introduce the Keldysh contour before going into specifics on the many-body action and correlation functions.
+:::
+
 ## Many-body action in the Keldysh formalism
 
 We begin again with the many-body Hamiltonian in second quantization. In the Keldysh formalism, the partition function is given by the path integral
@@ -142,9 +146,42 @@ The Keldysh-rotated Green's function then takes the form
 \end{align}
 where the component $G^{11}$ vanishes by construction. $G^R(t_2, t_1) = -i \langle [c(t_2), \overline{c}(t_1)]_\zeta \rangle \theta(t_2 - t_1)$ is the physically relevant *retarded Green's function*, $G^A(t_2, t_1) = [G^R(t_1, t_2)]^*$ is the *advanced* component, and $G^K(t_2, t_1) = G^>(t_2, t_1) + G^<(t_2, t_1) = -[G^K(t_1, t_2)]^*$ is the *Keldysh* component.
 
+### Bubble
+
+This Keldysh structure of the propagator carries over to the [bubble](two-particle-channels#bare-and-dressed-bubbles), following directly from its definition as a product of two propagators. In Keldysh space, the bubble reads
+\begin{align}
+    \chi_0^{k_4, k_3, k_2, k_1} = G^{k_4 k_1} G^{k_2 k_3} \, .
+\end{align}
+
+Formally organizing the $16$ Keldysh components in a $4\times 4$ matrix, we find the explicit structure
+\begin{align}
+    (\chi_0^{k_4 k_3 k_2 k_1}) &=
+    \begin{pmatrix}
+        1111 & 1112 & 1121 & 1122 \\
+        1211 & 1212 & 1221 & 1222 \\
+        2111 & 2112 & 2121 & 2122 \\
+        2211 & 2212 & 2221 & 2222
+    \end{pmatrix} \\
+    &= 
+    \begin{pmatrix}
+        G^{11} G^{11} & G^{12} G^{11} & G^{11} G^{21} & G^{12} G^{21} \\
+        G^{11} G^{12} & G^{12} G^{12} & G^{11} G^{22} & G^{12} G^{22} \\
+        G^{21} G^{11} & G^{22} G^{11} & G^{21} G^{21} & G^{22} G^{21} \\
+        G^{21} G^{12} & G^{22} G^{12} & G^{21} G^{22} & G^{22} G^{22}
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+        0 & 0 & 0 & G^A G^R \\
+        0 & G^A G^A & 0 & G^A G^K \\
+        0 & 0 & G^R G^R & G^K G^R \\
+        G^R G^A & G^K G^A & G^R G^K & G^K G^K
+    \end{pmatrix}\, .
+\end{align}
+
+
 ### Self-energy
 
-The same transformation can be done for the self-energy $\Sigma$, which has the following Keldysh structure,
+The Keldysh rotation can be applied to the self-energy, $\Sigma^{k_1 k_2} = D^{k_1 c_1} \Sigma^{c_1 c_2} (D^{-1})^{c_2 k_1}$, leading to the following Keldysh structure,
 \begin{align}
     (\Sigma^{k_1 k_2}) =
     \begin{pmatrix}
@@ -152,7 +189,27 @@ The same transformation can be done for the self-energy $\Sigma$, which has the 
         \Sigma^{A} & 0
     \end{pmatrix} \, .
 \end{align} 
-Compared to $G$, the Keldysh indices $k_1$ and $k_2$ of the self-energy are interchanged, which can be inferred from the Dyson equation.
+Due to causality, the component $\Sigma^{22}$ vanishes identically. Note that, compared to $G$, the Keldysh indices $k_1$ and $k_2$ of the self-energy are interchanged.
+
+:::{dropdown} Reason why
+This fact can be most easily motivated by looking at the Dyson equation in the form $G^{-1} = G_0^{-1} - \Sigma$. Since in the inverse of the $2\times 2$ Keldysh matrix 
+\begin{align}
+\begin{pmatrix}
+    0 & A \\
+    R & K
+\end{pmatrix}^{-1} = 
+\frac{1}{0\cdot K - A R} 
+\begin{pmatrix}
+    K & -A \\
+    -R & 0
+\end{pmatrix} =
+\begin{pmatrix}
+    -A^{-1} K R^{-1} & R^{-1} \\
+    A^{-1} & 0
+\end{pmatrix} \, ,
+\end{align}
+the positions of the retarded and advanced components are swapped, and the other non-trivial component is the $1\times 1$ component. It follows that the self-energy must have the same structure.
+:::
 
 ### Dyson equation
 
@@ -239,4 +296,53 @@ Often, the Keldysh component of the bare propagator is zero, $G_0^K = 0$, which 
 
 :::{danger} To do
 - Discuss fluctuation-dissipation theorem in equilibrium.
+:::
+
+### Four-point vertex
+
+The Keldysh rotation for the four-point vertex is defined as
+\begin{align}
+    F^{k_1 k_2 k_3 k_4} = D^{k_1 c_1} D^{k_3 c_3} F^{c_1 c_2 c_3 c_4} (D^{-1})^{c_2 k_2} (D^{-1})^{c_4 k_4} \, .
+\end{align}
+This leads to a $2^4=16$-component object in Keldysh space. As for the self-energy, the component that vanishes identically due to causality is the one where all Keldysh indices are $2$,
+\begin{align}
+    F^{2222} = 0 \, .
+\end{align} 
+
+For an *instantaneous* bare interaction (i.e., local in time), such as, e.g.,  the Hubbard interaction, the bare interaction strongly simplifies in Keldysh space, taking the form
+\begin{align}
+    F_0^{k_1 k_2 k_3 k_4} =
+    \begin{cases}
+        F_0 / 2 & \text{if } k_1 + k_2 + k_3 + k_4 \text{ odd} \\
+        0 & \text{otherwise}\, .
+    \end{cases}
+\end{align}
+
+:::{dropdown} Explicit calculation
+
+For an instantaneous interaction, we have in contour space that
+\begin{align}
+    F_0^{c_1 c_2 c_3 c_4} = -c_1 \delta_{c_1=c_2=c_3=c_4} F_0 \, ,
+\end{align}
+where $F_0$ encodes all other dependencies (e.g., time, momentum, spin, ...). Performing the Keldysh rotation and using that $D^{-1} = D^T$, we find
+\begin{align}
+    F_0^{k_1 k_2 k_3 k_4} &= D^{k_1 c_1} D^{k_3 c_3} (-c_1 \delta_{c_1=c_2=c_3=c_4} F_0) (D^{-1})^{c_2 k_2} (D^{-1})^{c_4 k_4} \\
+    &= - F_0 D^{k_1 c_1} D^{k_3 c_3} \ c \ (D^{-1})^{c_2 k_2} (D^{-1})^{c_4 k_4} \\
+    &= - F_0 \left[ D^{k_1 | -} D^{k_3 | -} (-1) (D^{-1})^{- | k_2} (D^{-1})^{- | k_4} + D^{k_1 | +} D^{k_3 | +} (D^{-1})^{+ | k_2} (D^{-1})^{+ | k_4} \right] \\
+    &= F_0 \left[ D^{k_1 | -} D^{k_3 | -} D^{k_2 | -} D^{k_4 | -} -  D^{k_1 | +} D^{k_3 | +} D^{k_2 | +} D^{k_4 | +}\right]\, .
+\end{align}
+Now, inserting the elements of the transformation matrix $D$,
+\begin{align}
+    D^{k | -} &= \frac{1}{\sqrt{2}}\, ; & & &
+    D^{k | +} &= \frac{1}{\sqrt{2}} (-1)^{k} \, ,
+\end{align}
+we find
+\begin{align}
+    F_0^{k_1 k_2 k_3 k_4} &= \frac{F_0}{4} \left[ 1 - (-1)^{k_1 + k_2 + k_3 + k_4} \right] \\
+    &=
+    \begin{cases}
+        F_0 / 2 & \text{if } k_1 + k_2 + k_3 + k_4 \text{ odd} \\
+        0 & \text{otherwise}\, .
+    \end{cases}
+\end{align}
 :::

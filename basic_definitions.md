@@ -71,4 +71,16 @@ The third term, $G^{(4)}_{c,4321} =  G_{4\tilde{1}} G_{2\tilde{3}} F_{\tilde{1}\
 
 :::{danger} To Do
 Derive this expression. Can motivate it, for example, from the first contributions in perturbation theory, utilizing Wick's theorem. See Jan's handwritten notes for reference.
+
+See also the note which basically does exactly that in the Keldysh formalism.
+:::
+
+:::{note} Note on index ordering
+It may look odd at first to write the indices in reverse order for the propagator and the four-point function. Indeed, one could have written
+$G^{(4)}_{1234} = \langle c_1 c_3 \overline{c}_2 \overline{c}_4 \rangle$ and $G_{12} = - \langle c_1 \overline{c}_2 \rangle$,
+which just would have been a relabeling of indices. However, our notation has the advantage that odd indices always correspond to creation operators $\overline{c}$ and even indices to annihilation operators $c$ in the correlation functions and the action. 
+
+This structure is (almost) preserved when connecting vertices via propagator lines in diagrammatic expressions, as can already be seen in [second order perturbation theory](two-particle-channels#second-order-perturbation-theory). The only exception is the $pp$ channel, where there has to be one connection with the swapped labeling.
+
+Note that, as a consequence of this convention, the order of indices in the self-energy $\Sigma$ and vertex $F$ is reversed compared to that in the propagator $G$ and four-point function $G^{(4)}$.
 :::

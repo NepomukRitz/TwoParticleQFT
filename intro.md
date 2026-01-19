@@ -46,7 +46,6 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 This site is still under construction. Below is a wishlist of tasks to be completed and sections to be added, in decreasing order of priority:
 
 - Add nice-looking vector graphics for all diagrams
-- Add a section on the Keldysh formalism in the steady state (including thermal equilibrium), highlighting the differences to the Matsubara formalism
 - Add derivations of the BSEs and the SDE
 - Add a section on asymptotic decomposition of the two-particle vertex
 - Add a section on generalized susceptibilities, maybe even as part of the basic definitions
