@@ -8,23 +8,23 @@ project:
   authors: [Nepomuk Ritz]
   github: https://github.com/NepomukRitz/TwoParticleQFT
   toc:
-    - file: intro.md
-    - file: symbols_and_notations.md
-    - file: starting_point.md
-    - file: basic_definitions.md
-    - file: two-particle-channels.md
-    - file: frequency_parametrizations.md
-    - file: spin_parametrizations.md
-    - file: parquet_theory.md
-    - file: single_boson_exchange.md
-    - file: keldysh_formalism.md
+    - file: src/intro.md
+    - file: src/symbols_and_notations.md
+    - file: src/starting_point.md
+    - file: src/basic_definitions.md
+    - file: src/two-particle-channels.md
+    - file: src/frequency_parametrizations.md
+    - file: src/spin_parametrizations.md
+    - file: src/parquet_theory.md
+    - file: src/single_boson_exchange.md
+    - file: src/keldysh_formalism.md
 site:
   template: book-theme
   parts:
     primary_sidebar_footer: ""
   options:
     logo_text: "TwoParticleQFT"
-    logo: images/vertex.png
+    logo: src/images/vertex.png
   # options:
   #   favicon: favicon.ico
   #   logo: site_logo.png
