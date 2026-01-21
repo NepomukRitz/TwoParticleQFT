@@ -10,14 +10,21 @@ project:
   toc:
     - file: src/intro.md
     - file: src/symbols_and_notations.md
-    - file: src/starting_point.md
-    - file: src/basic_definitions.md
-    - file: src/two-particle-channels.md
-    - file: src/frequency_parametrizations.md
-    - file: src/spin_parametrizations.md
-    - file: src/parquet_theory.md
-    - file: src/single_boson_exchange.md
-    - file: src/keldysh_formalism.md
+      title: Symbols and Notations
+    - title: Definitions
+      children:
+        - file: src/starting_point.md
+        - file: src/basic_definitions.md
+        - file: src/two-particle-channels.md
+        - file: src/frequency_parametrizations.md
+        - file: src/spin_parametrizations.md
+    - title: Diagrammatic frameworks
+      children:
+        - file: src/parquet_theory.md
+        - file: src/single_boson_exchange.md
+    - title: Advanced topics
+      children:
+        - file: src/keldysh_formalism.md
 site:
   template: book-theme
   parts:
