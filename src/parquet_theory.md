@@ -95,7 +95,7 @@ The parquet approximation has several convenient properties. It
 - fully includes inter-channel feedback, so there is no ladder bias (unlike in simpler approximations such as RPA)
 - preserves crossing symmetries
 - fulfills sum rules for the self-energy and susceptibilities
-- satisfies the Mermin-Wagner theorem (which states that ther can be no long-range order in 2D systems at finite temperature)
+- satisfies the Mermin-Wagner theorem (which states that there can be no long-range order in 2D systems at finite temperature)
 
 However, the parquet approximation also has some drawbacks. In particular, it is a perturbative approximation that fails to hold beyond weak to intermediate coupling strengths. Furthermore, it is not a conserving approximation in the sense of Baym and Kadanoff, which leads to violations of conservation laws and Ward identities.
 

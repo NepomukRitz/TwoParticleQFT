@@ -36,7 +36,7 @@ One then defines the *Hedin vertices* $\gamma^r$ as
     \gamma^r &= \mathbf{1}^r + \mathbf{1}^r \circ \chi^r_0 \circ T^r \\
     \overline{\gamma}^r &= \mathbf{1}^r + T^r \circ \chi^r_0 \circ \mathbf{1}^r \, ,
 \end{align}
-where $\chi^r_0$ is the dressed bubble in channel $r$. The Hedin vertices are $U$-reducible in channel $r$ and, crucially, depend only on two frequenies (or momenta), since the dependence on the third frequency is trivially contracted away through the $\circ$ contraction with $\mathbf{1}^r$. 
+where $\chi^r_0$ is the dressed bubble in channel $r$. The Hedin vertices are $U$-reducible in channel $r$ and, crucially, depend only on two frequencies (or momenta), since the dependence on the third frequency is trivially contracted away through the $\circ$ contraction with $\mathbf{1}^r$. 
 
 The Hedin vertices describe the effective coupling between fermionic particles and collective bosonic fluctuations in channel $r$, as can be seen from the main result of SBE theory:
 The $U$-reducible diagrams in channel $r$ can be written as

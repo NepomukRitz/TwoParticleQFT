@@ -1,7 +1,7 @@
 # Spin degrees of freedom in the presence of SU(2) symmetry
 
 :::{note}
-This section concerns eletronic systems with SU(2) spin symmetry. For systems without SU(2) symmetry (e.g., in the presence of spin-orbit coupling or magnetic fields), the spin structure of two-particle quantities is more complicated and not covered here.
+This section concerns electronic systems with SU(2) spin symmetry. For systems without SU(2) symmetry (e.g., in the presence of spin-orbit coupling or magnetic fields), the spin structure of two-particle quantities is more complicated and not covered here.
 :::
 
 SU(2) symmetry entails spin conservation for every correlation function, meaning the total spin of the incoming electrons must equal the total spin of the outgoing electrons. Furthermore, all quantities must be invariant under a global spin flip. 
