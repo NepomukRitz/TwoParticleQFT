@@ -1,6 +1,6 @@
 # Two-particle channels
 
-All diagrams contributing to the connected four-point correlator (or, equivalently, the four-point vertex) can be classified with respect to the property of two-particle reducibility. A diagram is called *two-particle reducible* if it can be separated into two parts by cutting a pair of internal propagator lines. Otherwise, it is called *two-particle irreducible*. The set of all two-particle reducible diagrams can furthermore be uniquely decomposed into three topologically distince *two-particle channels*: the particle-particle ($pp$) channel, and the two particle-hole channels ($ph$ and $\overline{ph}$). These channels are defined based on how two pairs of external legs can be separated by cutting two internal propagator lines. 
+All diagrams contributing to the connected four-point correlator (or, equivalently, the four-point vertex) can be classified with respect to the property of two-particle reducibility. A diagram is called *two-particle reducible* if it can be separated into two parts by cutting a pair of internal propagator lines. Otherwise, it is called *two-particle irreducible*. The set of all two-particle reducible diagrams can furthermore be uniquely decomposed into three topologically distinct *two-particle channels*: the particle-particle ($pp$) channel, and the two particle-hole channels ($ph$ and $\overline{ph}$). These channels are defined based on how two pairs of external legs can be separated by cutting two internal propagator lines. 
 
 ## Second-order perturbation theory
 

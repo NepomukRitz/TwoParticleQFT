@@ -119,7 +119,7 @@ As can be confirmed by direct calculation, the four Keldysh components are not i
 - Discuss the caveat that this relation does not hold if $t_1 = t_2$. 
 :::
 
-Making use of this reduncancy motivates the *Keldysh rotation*, defined as
+Making use of this redundancy motivates the *Keldysh rotation*, defined as
 \begin{align}
     G^{k_2 k_1} = D^{k_2 c_2} G^{c_2 c_1} (D^{-1})^{c_1 k_1} \, ,
 \end{align}
