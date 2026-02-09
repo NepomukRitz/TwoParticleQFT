@@ -6,30 +6,60 @@ The following section also applies to the momentum dependence of one- and two-pa
 
 In thermal equilibrium, energy conservation implies that all $n$-point functions only depend on $n-1$ frequencies independently. For example, the two-particle vertex depends on only three independent frequency arguments. There are (quite literally!) infinitely many ways to choose these three frequencies, and different choices are more or less convenient depending on the context. 
 
-The first decision to make lies already in the definition of the Fourier transform from imaginary time to Matsubara frequency space: One can decide to either assign a positive sign to all four frequencies or to choose different signs for incoming and outgoing particles.
+The first decision to make lies already in the definition of the Fourier transform from imaginary time to Matsubara frequency space: One can decide to either assign the same sign to all four frequencies or to choose different signs for incoming and outgoing particles.
 
 Here, we choose the first option. Starting with the two-point Green's function in imaginary time (and suppressing all further dependencies for the sake of clarity), we have
 \begin{align}
-    G(\nu_2, \nu_1) &= \int_0^\beta d\tau_2 d\tau_1 \, e^{i\nu_2 \tau_2} e^{i\nu_1 \tau_1} G(\tau_2, \tau_1)\, .
+    G(\nu_2, \nu_1) &= \int_0^\beta d\tau_2 d\tau_1 \, e^{-i\nu_2 \tau_2} e^{-i\nu_1 \tau_1} G(\tau_2, \tau_1)\, .
 \end{align}
 (Imaginary) time-translation invariance then implies that $G$ only depends on the difference $\tau_1 - \tau_2$, which in (Matsubara) frequency space translates to a delta function enforcing $\nu_2 + \nu_1 = 0$. Thus, we can write
 \begin{align}
     G(\nu_2, \nu_1) &\equiv G(\nu_2) \delta(\nu_2 + \nu_1)\, .
 \end{align}
 
-:::{note}
-The explicit form of the $\delta$-function in the expression above depends on the formalism used. In the finite-temperature Matsubara formalism, it is a Kronecker delta $\beta \delta_{\nu_2, -\nu_1}$, also carrying one factor of inverse temperature $\beta$ for proper normalization (remember that each Matsubara sum comes with a factor $1/\beta$). In the zero-temperature Matsubara formalism and in the real-frequency Keldysh formalism, it is a Dirac delta $2\pi \delta(\nu_2 + \nu_1)$, including a factor of $2\pi$.
+::::{note}
+- The explicit form of the $\delta$-function in the expression above depends on the formalism used. In the finite-temperature Matsubara formalism, it is a Kronecker delta $\beta \delta_{\nu_2, -\nu_1}$, also carrying one factor of inverse temperature $\beta$ for proper normalization (remember that each Matsubara sum comes with a factor $1/\beta$). In the zero-temperature Matsubara formalism and in the real-frequency Keldysh formalism, it is a Dirac delta $2\pi \delta(\nu_2 + \nu_1)$, including a factor of $2\pi$.
 
-Likewise, when we write down frequency integrations further below, we will denote them as $\int_\nu$ and deliberately leave open whether this represents a Matsubara sum or a real-frequency integral. In the finite temperature Matsubara formalism, this then corresponds to $\frac{1}{\beta} \sum_\nu$ while in the zero-temperature Matsubara formalism it corresponds to $\int \frac{d\nu}{2\pi}$. When the frequency integration is done as part of a loop or bubble contraction in the Keldysh formalism, the normalization factor will furthermore include a factor of $\zeta i$, i.e. for fermions, $\int_\nu = \int \frac{d\nu}{2\pi i}$.
+- Likewise, when we write down frequency integrations further below, we will denote them as $\int_\nu$ and deliberately leave open whether this represents a Matsubara sum or a real-frequency integral. In the finite temperature Matsubara formalism, this then corresponds to $\frac{1}{\beta} \sum_\nu$ while in the zero-temperature Matsubara formalism it corresponds to $\int \frac{d\nu}{2\pi}$. When the frequency integration is done as part of a loop or bubble contraction in the Keldysh formalism, the normalization factor will furthermore include a factor of $\zeta i$, i.e. for fermions, $\int_\nu = \int \frac{d\nu}{2\pi i}$.
+
+- The sign of the exponential in the Fourier transform is chosen such that the dynamical part of the Matsubara propagator has the canonical sign. I.e., for a Hamiltonian without a quadratic term, the bare propagator will read $G_0(\nu_2,\nu_1) = \frac{1}{i\nu_2} \delta(\nu_2 + \nu_1)$.
+
+:::{dropdown} Explicit calculation
+Let's show this explicitly in the finite-temperature Matsubara formalism. In this scenario, the bare action reads
+\begin{align}
+    S_0 &= \int_0^\beta d\tau\, \overline{c}(\tau) \partial_\tau c(\tau) = \int_0^\beta d\tau_1 d\tau_2\, \delta(\tau_1 - \tau_2) \, \overline{c}(\tau_1) \partial_{\tau_2} c(\tau_2) \\
+    &= - \int_0^\beta d\tau_1 d\tau_2\, \overline{c}(\tau_1) G_0^{-1}(\tau_1, \tau_2) c(\tau_2)\, ,
+\end{align}
+and hence $G_0^{-1}(\tau_1, \tau_2) = - \delta(\tau_1 - \tau_2) \partial_{\tau_2}$. Performing the Fourier transform leads to
+\begin{align}
+G_0^{-1}(\nu_1,\nu_2) &= \int_0^\beta d\tau_1 d\tau_2\, e^{-i\nu_1\tau_1} G_0^{-1}(\tau_1, \tau_2) e^{-i\nu_2\tau_2} \\
+&= - \int_0^\beta d\tau_1 d\tau_2\,  \delta(\tau_1 - \tau_2) e^{-i\nu_1\tau_1} (-i\nu_2) e^{-i\nu_2\tau_2} \\
+&= i\nu_2  \int_0^\beta d\tau_1 e^{-i(\nu_1 + \nu_2) \tau_1} = i\nu_2\, \beta \delta_{\nu_1, -\nu_2}\, .
+\end{align}
+The bare propagator must fulfill 
+\begin{align}
+    \frac{1}{\beta} \sum_{\nu_2} G_0^{-1}(\nu_1, \nu_2) G_0(\nu_2, \nu_3) = \beta \delta_{\nu_1, \nu_3}\, ,
+\end{align}
+and will hence read
+\begin{align}
+    \boxed{G(\nu_2, \nu_1) = \frac{1}{i\nu_2} \, \beta \delta_{\nu_2, -\nu_1}}\, ,
+\end{align}
+which is readily confirmed,
+\begin{align}
+    \frac{1}{\beta} \sum_{\nu_2} \left( i\nu_2\, \beta \delta_{\nu_1, -\nu_2} \right) \left(\frac{1}{i\nu_2} \, \beta \delta_{\nu_2, -\nu_3}\right) = \beta \delta_{\nu_1, \nu_3}\, . \ \checkmark
+\end{align}
 :::
+
+- For momenta, the opposite sign is most commonly used in the exponential.
+::::
 
 The Fourier transform of the two-particle vertex reads
 \begin{align}
-    F(\nu_1, \nu_2, \nu_3, \nu_4) = \int_0^\beta d\tau_1 d\tau_2 d\tau_3 d\tau_4 \, &e^{i\nu_1 \tau_1} e^{i\nu_2 \tau_2} e^{i\nu_3 \tau_3} e^{i\nu_4 \tau_4} F(\tau_1, \tau_2, \tau_3, \tau_4) \, ,
+    F(\nu_1, \nu_2, \nu_3, \nu_4) = \int_0^\beta d\tau_1 d\tau_2 d\tau_3 d\tau_4 \, &e^{-i\nu_1 \tau_1} e^{-i\nu_2 \tau_2} e^{-i\nu_3 \tau_3} e^{-i\nu_4 \tau_4} F(\tau_1, \tau_2, \tau_3, \tau_4) \, ,
 \end{align}
 with energy conservation implying $\nu_1 + \nu_2 + \nu_3 + \nu_4 = 0$. Thus, we have $F(\nu_1, \nu_2, \nu_3, \nu_4) \sim \delta(\nu_1 + \nu_2 + \nu_3 + \nu_4)$ and three independent frequency arguments suffice to parametrize the vertex.
 
-:::{note}
+:::{warning}
 This choice for defining the Fourier transform is the common one used in the Vienna convention. In the Munich convention, one would instead define 
 \begin{align}
     G(\nu_2, \nu_1) &= \int_0^\beta d\tau_2 d\tau_1 \, e^{i\nu_2 \tau_2} e^{-i\nu_1 \tau_1} G(\tau_2, \tau_1) \\
