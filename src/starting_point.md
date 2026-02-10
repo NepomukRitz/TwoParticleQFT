@@ -24,44 +24,6 @@ S = S_0 + S_I &= -\sum_{1,2} \bar{c}_1 (G_0)^{-1}_{12} c_2 - \frac{1}{4} \sum_{1
 - $F_0$ is (anti-) symmetric in the arguments: $F_{0;1234} = \zeta F_{0;3214} = \zeta F_{0;1432} = \zeta^2 F_{0;3412}$, where $\zeta = -1$ for fermions and $\zeta = +1$ for bosons. The factor $(1/2)^2=1/4$ above compensates for summing over terms that are identical due to this *crossing symmetry*.
 :::
 
-::::{dropdown} Example: Hubbard model
-
-The Hamiltonian of the Hubbard model reads
-\begin{align}
-    H &= -t \sum_{\langle j, j' \rangle} \sum_{\sigma = \uparrow \downarrow} c^\dagger_{j\sigma} c_{j \sigma} + U \sum_j n_{j\uparrow} n_{j\downarrow} \\
-    &= \sum_{{\bf k},\sigma} \varepsilon_{\bf k} c^\dagger_{{\bf k}\sigma} c_{{\bf k}\sigma} + U \sum_j c^\dagger_{j\uparrow} c_{j\uparrow} c^\dagger_{j\downarrow} c_{j\downarrow}
-\end{align}
-With the Fourier transform (see also the chapter on [frequency parametrizations](frequency_parametrizations.md))
-\begin{align}
-    c_{j\sigma}(\tau) = \frac{1}{\beta}\sum_{i\nu_n} \sum_{\bf k} c_{{\bf k}\sigma} e^{i\mathbf{k} \cdot \mathbf{r}_j} e^{-i\nu_n \tau}\, ,
-\end{align}
-the non-interacting parts of the action then reads
-\begin{align}
-    S_0 &= \frac{1}{\beta}\sum_{i\nu_n, \mathbf{k}, \sigma} \overline{c}_{\mathbf{k}\sigma}(-i\nu_n) (-i\nu_n + \varepsilon_\mathbf{k}) c_{\mathbf{k}\sigma}(i\nu_n)\, .
-\end{align}
-The interacting part is usually rewritten by using that $\zeta^2=1$ and suppressing the infinesimal shifts of the imaginary times,
-\begin{align}
-    S_I &= U \int_0^\beta d\tau \sum_j \overline{c}_{j\uparrow}(\tau) c_{j\uparrow}(\tau) \overline{c}_{j\downarrow}(\tau) c_{j\downarrow}(\tau) = U \int_0^\beta d\tau \sum_j \overline{c}_{j\uparrow}(\tau) \overline{c}_{j\downarrow}(\tau) c_{j\downarrow}(\tau) c_{j\uparrow}(\tau) \\
-    &= -\frac{1}{4}\ U \int_0^\beta d\tau_1 d\tau_2 d\tau_3 d\tau_4 \sum_{\substack{j_1, j_2 \\ j_3, j_4}} \sum_{\substack{\sigma_1, \sigma_2 \\ \sigma_3, \sigma_4}} \overline{c}_{j_1 \sigma_1}(\tau_1) \overline{c}_{j_3 \sigma_3}(\tau_3) F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\tau_1,\tau_2,\tau_3,\tau_4; j_1, j_2, j_3, j_4) c_{j_2 \sigma_2}(\tau_2) c_{j_4 \sigma_4}(\tau_4)\, ,
-\end{align}
-with the antisymmetrized bare interaction term
-\begin{align}
-    &F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\tau_1,\tau_2,\tau_3,\tau_4; j_1, j_2, j_3, j_4) \\
-    &= -U \left(\delta_{\sigma_1, \sigma_4} \delta_{\sigma_3, \sigma_2} - \delta_{\sigma_1, \sigma_2}\delta_{\sigma_3, \sigma_4}\right) \delta_{\sigma_2, \overline{\sigma}_4} \delta(\tau_1=\tau_2=\tau_3=\tau_4) \delta(j_1=j_2=j_3=j_4)\, .
-\end{align}
-:::{danger} To do
-Confirm that this form of the bare interaction indeed reproduces the correct interaction term.
-:::
-Fourier transforming again with the conventions laid out in the chapter on [frequency parametrizations](frequency_parametrizations.md) leads to
-\begin{align}
-    &F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\nu_1,\nu_2,\nu_3,\nu_4; k_1, k_2, k_3, k_4) \\
-    &= \int_0^\beta d\tau_1 d\tau_2 d\tau_3 d\tau_4 e^{-i\nu_1 \tau_1} e^{-i\nu_2 \tau_2} e^{-i\nu_3 \tau_3} e^{-i\nu_4 \tau_4}  \sum_{\substack{j_1, j_2 \\ j_3, j_4}} e^{i k_1 j_1} e^{i k_2 j_2} e^{i k_3 j_3} e^{i k_4 j_4} \\
-    &\phantom{=} \times F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\tau_1,\tau_2,\tau_3,\tau_4; j_1, j_2, j_3, j_4) \\
-    &= -U \left(\delta_{\sigma_1, \sigma_4} \delta_{\sigma_3, \sigma_2} - \delta_{\sigma_1, \sigma_2}\delta_{\sigma_3, \sigma_4}\right) \delta_{\sigma_2, \overline{\sigma}_4} \int_0^\beta d\tau_1 e^{-i (\nu_1 + \nu_2 + \nu_3 + \nu_4) \tau_1} \sum_{\substack{j_1, j_2 \\ j_3, j_4}} e^{i (k_1 + k_2 + k_3 + k_4) j_1} \\
-    &= -U \left(\delta_{\sigma_1, \sigma_4} \delta_{\sigma_3, \sigma_2} - \delta_{\sigma_1, \sigma_2}\delta_{\sigma_3, \sigma_4}\right) \delta_{\sigma_2, \overline{\sigma}_4} \delta(\nu_1 + \nu_2 + \nu_3 + \nu_4) \delta(k_1 + k_2 + k_3 + k_4)\, ,
-\end{align}
-with the proper normalization factors implied.
-::::
 
 :::{warning}
 **About conventions**
@@ -83,6 +45,52 @@ Diagrammatically, the bare four-point vertex $F_0$ is represented as the Hugenho
 :::
 where we number the legs clockwise starting from the bottom left.
 
-:::{danger} To Do
-Since we have established a one-to-one correspondence with the Munich convention, we can directly write down all diagrammatic relations and translate the indices accordingly. However, for the sake of a pedagogical and self-contained text, it would be better to explicitly show the derivation of the diagrammatic rules starting from the action above. We can use Jan's handwritten notes as a starting point.
+::::{dropdown} Example: Hubbard model
+
+The Hamiltonian of the Hubbard model reads
+\begin{align}
+    H &= -t \sum_{\langle j, j' \rangle} \sum_{\sigma = \uparrow \downarrow} c^\dagger_{j\sigma} c_{j \sigma} + U \sum_j n_{j\uparrow} n_{j\downarrow} \\
+    &= \sum_{{\bf k},\sigma} \varepsilon_{\bf k} c^\dagger_{{\bf k}\sigma} c_{{\bf k}\sigma} + U \sum_j c^\dagger_{j\uparrow} c_{j\uparrow} c^\dagger_{j\downarrow} c_{j\downarrow}
+\end{align}
+With the Fourier transform (see also the chapter on [frequency parametrizations](frequency_parametrizations.md))
+\begin{align}
+    c_{j\sigma}(\tau) = \frac{1}{\beta}\sum_{i\nu_n} \sum_{\bf k} c_{{\bf k}\sigma}(i\nu_n) e^{i\mathbf{k} \cdot \mathbf{r}_j} e^{-i\nu_n \tau}\, ,
+\end{align}
+the non-interacting parts of the action then reads
+\begin{align}
+    S_0 &= \frac{1}{\beta}\sum_{i\nu_n, \mathbf{k}, \sigma} \overline{c}_{\mathbf{k}\sigma}(-i\nu_n) (-i\nu_n + \varepsilon_\mathbf{k}) c_{\mathbf{k}\sigma}(i\nu_n)\, .
+\end{align}
+The interacting part is usually rewritten by using that $\zeta^2=1$ and suppressing the infinesimal shifts of the imaginary times,
+\begin{align}
+    S_I &= U \int_0^\beta d\tau \sum_j \overline{c}_{j\uparrow}(\tau) c_{j\uparrow}(\tau) \overline{c}_{j\downarrow}(\tau) c_{j\downarrow}(\tau) = U \int_0^\beta d\tau \sum_j \overline{c}_{j\uparrow}(\tau) \overline{c}_{j\downarrow}(\tau) c_{j\downarrow}(\tau) c_{j\uparrow}(\tau) \\
+    &= -\frac{1}{4}\ U \int_0^\beta d\tau_1 d\tau_2 d\tau_3 d\tau_4 \sum_{\substack{j_1, j_2 \\ j_3, j_4}} \sum_{\substack{\sigma_1, \sigma_2 \\ \sigma_3, \sigma_4}} \overline{c}_{j_1 \sigma_1}(\tau_1) \overline{c}_{j_3 \sigma_3}(\tau_3) F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\tau_1,\tau_2,\tau_3,\tau_4; j_1, j_2, j_3, j_4) c_{j_2 \sigma_2}(\tau_2) c_{j_4 \sigma_4}(\tau_4)\, ,
+\end{align}
+with the antisymmetrized bare interaction term
+\begin{align}
+    &F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\tau_1,\tau_2,\tau_3,\tau_4; j_1, j_2, j_3, j_4) \\
+    &= -U \left(\delta_{\sigma_1, \sigma_4} \delta_{\sigma_3, \sigma_2} - \delta_{\sigma_1, \sigma_2}\delta_{\sigma_3, \sigma_4}\right) \delta_{\sigma_2, \overline{\sigma}_4} \delta(\tau_1=\tau_2=\tau_3=\tau_4) \delta(j_1=j_2=j_3=j_4)\, .
+\end{align}
+
+We note in passing that this antisymmetrized bare (*Hugenholtz*) interaction encompasses both direct and exchange scattering processes.
+This fact is easily seen by looking at the spin structure of the interaction term,
+\begin{align}
+    \overline{c}_{\uparrow} \overline{c}_{\downarrow} c_{\downarrow} c_{\uparrow} &= \frac{1}{2} (\overline{c}_{\uparrow} \overline{c}_{\downarrow} - \overline{c}_{\downarrow} \overline{c}_{\uparrow}) \frac{1}{2} (c_{\downarrow} c_{\uparrow} - c_{\uparrow} c_{\downarrow}) \\
+    &= \frac{1}{4} (\overline{c}_{\uparrow} \overline{c}_{\downarrow} c_{\downarrow} c_{\uparrow} +  \overline{c}_{\downarrow} \overline{c}_{\uparrow} c_{\uparrow} c_{\downarrow} - \overline{c}_{\uparrow} \overline{c}_{\downarrow}c_{\uparrow} c_{\downarrow} - \overline{c}_{\downarrow} \overline{c}_{\uparrow} c_{\downarrow} c_{\uparrow}) \\
+    &= \frac{1}{4} \sum_\sigma (\overline{c}_{\sigma} \overline{c}_{\bar{\sigma}} c_{\bar{\sigma}} c_{\sigma} - \overline{c}_{\sigma} \overline{c}_{\bar{\sigma}} c_{\sigma} c_{\bar{\sigma}}) \\
+    &= \frac{1}{4} \sum_{\substack{\sigma_1, \sigma_2 \\ \sigma_3, \sigma_4}} \left(\delta_{\sigma_1, \sigma_4} \delta_{\sigma_3, \sigma_2} - \delta_{\sigma_1, \sigma_2}\delta_{\sigma_3, \sigma_4}\right) \delta_{\sigma_2, \overline{\sigma}_4} \overline{c}_{\sigma_1} \overline{c}_{\sigma_3} c_{\sigma_2} c_{\sigma_4}\, ,
+\end{align}
+:::{image} diagrams/hugenholtz.png
+:height: 200px
 :::
+This convenient *Hugenholtz* notation ultimately leads to a great simplification of all following diagrammatics.
+
+Fourier transforming again with the conventions laid out in the chapter on [frequency parametrizations](frequency_parametrizations.md) leads to
+\begin{align}
+    &F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\nu_1,\nu_2,\nu_3,\nu_4; k_1, k_2, k_3, k_4) \\
+    &= \int_0^\beta d\tau_1 d\tau_2 d\tau_3 d\tau_4 e^{-i\nu_1 \tau_1} e^{-i\nu_2 \tau_2} e^{-i\nu_3 \tau_3} e^{-i\nu_4 \tau_4}  \sum_{\substack{j_1, j_2 \\ j_3, j_4}} e^{i k_1 j_1} e^{i k_2 j_2} e^{i k_3 j_3} e^{i k_4 j_4} \\
+    &\phantom{=} \times F_{0; \sigma_1\sigma_2\sigma_3\sigma_4}(\tau_1,\tau_2,\tau_3,\tau_4; j_1, j_2, j_3, j_4) \\
+    &= -U \left(\delta_{\sigma_1, \sigma_4} \delta_{\sigma_3, \sigma_2} - \delta_{\sigma_1, \sigma_2}\delta_{\sigma_3, \sigma_4}\right) \delta_{\sigma_2, \overline{\sigma}_4} \int_0^\beta d\tau_1 e^{-i (\nu_1 + \nu_2 + \nu_3 + \nu_4) \tau_1} \sum_{j_1} e^{i (k_1 + k_2 + k_3 + k_4) j_1} \\
+    &= -U \left(\delta_{\sigma_1, \sigma_4} \delta_{\sigma_3, \sigma_2} - \delta_{\sigma_1, \sigma_2}\delta_{\sigma_3, \sigma_4}\right) \delta_{\sigma_2, \overline{\sigma}_4} \delta(\nu_1 + \nu_2 + \nu_3 + \nu_4) \delta(k_1 + k_2 + k_3 + k_4)\, ,
+\end{align}
+with the proper normalization factors implied.
+::::
