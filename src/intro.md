@@ -40,6 +40,7 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 ## Advanced topics
 
 - [Two-particle QFT in the real-frequency Keldysh formalism](keldysh_formalism.md)
+- [w2dynamics: Frequency conventions and definitions](w2dynamics.md)
 
 ## Wishlist
 
