@@ -2,3 +2,4 @@
 _build
 .venv
 _archive
+.DS_Store
