@@ -5,7 +5,7 @@ project:
   title: TwoParticleQFT
   description: Open review of definitions, conventions and equations for two-particle quantum field theory.
   keywords: [Two-particle vertex, Bethe--Salpeter equations, Parquet formalism]
-  authors: [Nepomuk Ritz, Julian Peil]
+  authors: [Nepomuk Ritz]
   github: https://github.com/NepomukRitz/TwoParticleQFT
   toc:
     - file: src/intro.md

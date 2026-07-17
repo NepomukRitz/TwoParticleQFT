@@ -50,10 +50,11 @@ The content is written in [MyST Markdown](https://mystmd.org/) and organized int
 | **Diagrammatic frameworks** | [Parquet theory](https://nepomukritz.github.io/TwoParticleQFT/parquet-theory) | Parquet decomposition, Bethe–Salpeter and Schwinger–Dyson equations, and the parquet approximation. |
 | | [Single boson exchange](https://nepomukritz.github.io/TwoParticleQFT/single-boson-exchange) | The SBE decomposition, Hedin vertices, the screened interaction, and the SBE approximation (with GW as a limit). |
 | **Advanced topics** | [Keldysh formalism](https://nepomukritz.github.io/TwoParticleQFT/keldysh-formalism) | Two-particle QFT on the real-frequency Keldysh contour: index structure, the Keldysh rotation, and component Dyson equations. |
+| | [w2dynamics conventions](https://nepomukritz.github.io/TwoParticleQFT/w2dynamics) | The frequency conventions and definitions of the [w2dynamics](https://github.com/w2dynamics/w2dynamics) impurity solver — one- and two-particle Green's functions, channel parametrizations, and crossing symmetries — and how they relate to the Vienna/Munich conventions. |
 
 ### Highlights
 
-- 🧭 **One consistent convention**, with explicit translation notes to the "Vienna" and "Munich" conventions and to the various channel labelings used across communities.
+- 🧭 **One consistent convention**, with explicit translation notes to the "Vienna" and "Munich" conventions, to the various channel labelings used across communities, and to the conventions of specific codes (e.g. the [w2dynamics](https://nepomukritz.github.io/TwoParticleQFT/w2dynamics) impurity solver).
 - ✏️ **Hugenholtz (antisymmetrized-vertex) diagrammatics** used from the ground up to unify direct and exchange scattering.
 - 🌡️ **Both formalisms**: the imaginary-time Matsubara formalism *and* the real-frequency Keldysh formalism.
 - 🧮 **Worked examples** (e.g. the Hubbard model) and **collapsible step-by-step derivations** of results that are normally quoted without proof.
@@ -106,6 +107,7 @@ TwoParticleQFT/
 │   ├── parquet_theory.md
 │   ├── single_boson_exchange.md
 │   ├── keldysh_formalism.md
+│   ├── w2dynamics.md
 │   ├── diagrams/            # Feynman diagrams (SVG/PNG)
 │   └── images/              # Title image, logo
 ├── Vertex_conventions.pdf   # Supplementary notes on vertex conventions
