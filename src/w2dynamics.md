@@ -2,7 +2,7 @@
 author: "Julian Peil"
 ---
 
-# w2dynamics technicalities
+# w2dynamics: Frequency conventions and definitions
 
 ## Introduction
 
@@ -17,7 +17,7 @@ with the package can be found [here](https://doi.org/10.1016/j.cpc.2018.09.007).
 :::{note} This section does not cover DMFT
 This section on w2dynamics is meant to complement the main text with some technical details on the frequency conventions 
 and definitions used in w2dynamics, which slightly differ from the "Vienna" (Rohringer's) or the "Munich" convention 
-mentioned in the main text. 
+discussed in the section on [frequency parametrizations](frequency_parametrizations.md). 
 :::
 
 The many-body quantities described in the following are **local** $n$-point (correlation) functions. Since DMFT only
@@ -50,6 +50,9 @@ The two-particle Green's function is defined as
 \begin{align}
     G_{\mathfrak{1234}}=\left\langle\mathcal{T}\left [\hat{c}_{\mathfrak{1}}\hat{c}^{\dagger}_{\mathfrak{2}}\hat{c}_{\mathfrak{3}}\hat{c}^{\dagger}_{\mathfrak{4}}\right ]\right\rangle\,.
 \end{align}
+Note that this operator ordering corresponds to the alternative convention for the four-point correlation function 
+discussed in the section on [basic definitions](basic_definitions.md): here the odd (even) indices label annihilation 
+(creation) operators, i.e. the mirror image of the ordering used elsewhere on this site.
 
 The frequency notation in all three channels ($ph$, $\overline{ph}$, $pp$) is slightly different from the "Vienna" 
 and "Munich" conventions as already mentioned at the beginning of the chapter.
@@ -63,6 +66,13 @@ The Fourier transform of the two-particle Green's function in the $\text{ph}$-ch
 \begin{align}
 	G_{\text{ph}}(\nu,\nu',\omega)=\int_0^\beta \mathrm{d}^4\tau\; e^{i\nu(\tau_1-\tau_2)} e^{i\nu'(\tau_3-\tau_4)} e^{i\omega(\tau_2-\tau_3)} G(\tau_1,\tau_2,\tau_3,\tau_4)\,.
 \end{align}
+
+:::{note} On the time integration
+In thermal equilibrium, (imaginary-)time-translation invariance implies that $G$ depends only on differences of the 
+four times $\tau_i$ (see the section on [frequency parametrizations](frequency_parametrizations.md)). One of the times 
+may therefore be fixed, e.g. $\tau_4 = 0$; integrating all four times independently over $[0,\beta]$, as written above, 
+produces an additional overall factor of $\beta$ from the redundant center-of-mass time.
+:::
 
 The two-particle Green's function in the three frequency conventions is diagrammatically shown below. The subscript 
 $\{\text{ph},\overline{\text{ph}},\text{pp}\}$ denotes the frequency notation, not the channel reducibility, as G is
