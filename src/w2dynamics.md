@@ -8,8 +8,8 @@ author: "Julian Peil"
 
 [w2dynamics](https://github.com/w2dynamics/w2dynamics) is a software package for solving the single-impurity 
 Anderson Model (SIAM) using continuous-time quantum Monte Carlo (CT-QMC) methods with the hybridization expansion (CT-HYB). 
-It allows the calculation of localone- and two-particle quantities, such as the local Green's function, self-energy, 
-and vertex functions, such as the two-particle Green's function.
+It allows the calculation of local one- and two-particle quantities, such as the local Green's function, self-energy, 
+the two-particle Green's function, and vertex functions.
 The [documentation](https://github.com/w2dynamics/w2dynamics/wiki) for w2dynamics provides some information on how to 
 use the software, including installation instructions and very basic usage examples. The original publication associated
 with the package can be found [here](https://doi.org/10.1016/j.cpc.2018.09.007).
@@ -25,8 +25,8 @@ operates on a single lattice site, the spatial dependence of these quantities is
 However, these functions still include a subset of the following parameters for each leg: (Matsubara) frequency ($\nu$), 
 spin index ($\sigma$), orbital index ($o$) or imaginary time ($\tau$). This introduces a huge amount of parameters 
 appended to a variable and can be very cumbersome to read through if explicitly written down. Therefore, to increase 
-readability, we follow [Bickers et. al, 1989](https://doi.org/10.1103/PhysRevLett.62.961) and group all indices 
-that are not explicitly written down into a compound index, e.g.\ $\mathfrak{i}=\{o_i, \sigma_i, \nu_i\}$. 
+readability, we follow [Bickers et al., 1989](https://doi.org/10.1103/PhysRevLett.62.961) and group all indices 
+that are not explicitly written down into a compound index, e.g. $\mathfrak{i}=\{o_i, \sigma_i, \nu_i\}$. 
 If an equation containing frequency or time-dependent quantities is written down with a compound index, it applies 
 equally in both real and Fourier space. Furthermore, summing over these compound indices means summing over all 
 individual components they include, with a normalization of $\frac 1\beta$ for frequency sums, where 
@@ -59,9 +59,9 @@ and "Munich" conventions as already mentioned at the beginning of the chapter.
 	\text{pp-notation:}&\;\;\{\nu_1=\nu,&&\nu_2=\omega-\nu',&&\nu_3=\omega-\nu,&&\nu_4=\nu'\}.
 \end{align}
 
-The Fourier transform of the two-particle Green's funcion in the $\text{ph}$-channel is given by
+The Fourier transform of the two-particle Green's function in the $\text{ph}$-channel is given by
 \begin{align}
-	G_{\text{ph}}(\nu,\nu',\omega)=\int_0^\beta \mathrm{d}^4\tau\; e^{i\nu(\tau_1-\tau_2)} e^{i\nu'(\tau_3-\tau_4)} e^{i\omega(\tau_1-\tau_4)} G(\tau_1,\tau_2,\tau_3,\tau_4)\,.
+	G_{\text{ph}}(\nu,\nu',\omega)=\int_0^\beta \mathrm{d}^4\tau\; e^{i\nu(\tau_1-\tau_2)} e^{i\nu'(\tau_3-\tau_4)} e^{i\omega(\tau_2-\tau_3)} G(\tau_1,\tau_2,\tau_3,\tau_4)\,.
 \end{align}
 
 The two-particle Green's function in the three frequency conventions is diagrammatically shown below. The subscript 
@@ -127,7 +127,7 @@ The disconnected part only contains the non-interacting diagrams, where the two 
 ### The full vertex
 
 Lastly, the full vertex function $F$ is defined as the connected two-particle Green's function with the external legs removed, 
-i.e.\ amputated:
+i.e. amputated:
 
 \begin{align}
 	G_{\mathfrak{1234}}^{\text{conn};\omega\nu\nu'} = -\frac1\beta \sum_{\mathfrak{abcd}} G_{\mathfrak{1a}}^{\nu} G_{\mathfrak{b2}}^{\nu-\omega} F_{\mathfrak{abcd}}^{\omega\nu\nu'} G_{\mathfrak{3c}}^{\nu'-\omega} G_{\mathfrak{d4}}^{\nu'}.
