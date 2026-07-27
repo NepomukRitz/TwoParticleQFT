@@ -25,7 +25,7 @@ Derive this expression, including all Wick contractions and sign factors. See Ja
 Also, since there is some ambiguity in the literature regarding the labeling of the two particle-hole channels, we should clarify our conventions here. Write up Fabian's explanation in an accessible way.
 :::
 
-:::{note}
+::::{note}
 Note that the connected four-point correlator is crossing symmetric as well, i.e., it is invariant under the exchange of any two external legs (up to a sign factor $\zeta$ for fermions). While this property holds at every order in perturbation theory, each individual two-particle channel is not crossing symmetric. Instead, crossing symmetry relates the $\overline{ph}$ and $ph$ channels to each other, while the $pp$ channel is crossing symmetric itself. On the level of the second-order contributions shown above, this is demonstrated explicitly below.
 
 :::{dropdown} Explicit calculation
@@ -44,6 +44,7 @@ which is indeed $\zeta$ times the $\overline{ph}$ channel contribution. For the 
 \end{align}
 which is indeed equal to the $\zeta$ times original $pp$ channel contribution, confirming its crossing symmetry.
 :::
+::::
 
 
 From this point on, it is convenient to work directly with the four-point vertex $F$ instead of the connected four-point correlator $G^{(4)}_c$. This change amounts to amputating the external (in this case bare) propagators. In second order perturbation theory, the vertex hence reads
