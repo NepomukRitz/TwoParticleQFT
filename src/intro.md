@@ -36,6 +36,7 @@ This site is editable by anyone! If you find mistakes, have suggestions for impr
 
 - [Parquet theory: parquet decomposition, Bethe-Salpeter equations, Schwinger-Dyson equation, parquet approximation](parquet_theory.md)
 - [Single boson exchange (SBE) decomposition and approximation](single_boson_exchange.md)
+- [Second-order perturbation theory: vertex and self-energy](second_order_perturbation_theory.md)
 
 ## Advanced topics
 

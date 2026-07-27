@@ -56,6 +56,10 @@ F_{1234} = F_{0,1234} &+ F_{0,1256} G_{0,67} G_{0,85} F_{0,7834} \quad \text{($\
 &+ \mathcal{O}(F_0^3)\, .
 \end{align}
 
+:::{note}
+Second-order perturbation theory is used here only to motivate the two-particle channels and to fix the index combinations that define their bubbles. The complete second-order expressions, with the spin sums, the channel-native frequency and momentum arguments and the Keldysh index structure written out explicitly — for the vertex as well as for the self-energy — are collected on the dedicated page on [second-order perturbation theory](second_order_perturbation_theory.md).
+:::
+
 ## Connectors and identity operators
 
 For ease of notation, it is useful to define a *connector* $\circ$ to denote summation over all indices in each two-particle channel as 

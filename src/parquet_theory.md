@@ -77,6 +77,8 @@ Employing this notation, the Schwinger-Dyson equation can be written as
 \end{align}
 where we used $\zeta^2 = 1$ in the last line.
 
+Evaluating the SDE at lowest order, with all spin sums, frequency arguments and Keldysh indices written out explicitly, is done in the section on [second-order perturbation theory](second_order_perturbation_theory.md).
+
 :::{danger} To do
 Add the derivation of the Schwinger-Dyson equation. See Fabian's PhD thesis for reference.
 :::
