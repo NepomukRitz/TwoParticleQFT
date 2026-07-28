@@ -22,6 +22,7 @@ project:
       children:
         - file: src/parquet_theory.md
         - file: src/single_boson_exchange.md
+        - file: src/gw_approximation.md
         - file: src/second_order_perturbation_theory.md
     - title: Advanced topics
       children:
