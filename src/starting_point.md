@@ -46,6 +46,7 @@ Diagrammatically, the bare four-point vertex $F_0$ is represented as the Hugenho
 where we number the legs clockwise starting from the bottom left.
 
 ::::{dropdown} Example: Hubbard model
+:name: example-hubbard-model
 
 The Hamiltonian of the Hubbard model reads
 \begin{align}

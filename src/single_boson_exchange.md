@@ -122,8 +122,14 @@ In the *SBE approximation*, one neglects the $U$-irreducible vertex altogether $
     &= \sum_{r' \neq r} \overline{\gamma}^{r'} \bullet W^{r'} \bullet \gamma^{r'} - 2F_0 \, .
 \end{align}
 
-We note in passing, that the SBE formulation of the SDE is reminiscent of the equation for $\Sigma$ in the $GW$ approximation. Indeed, the $GW$ approximation can be seen as a further simplification of the SBE approximation, where the Hedin vertices are approximated by their lowest-order contribution, $\gamma^r \simeq \mathbf{1}^r$ and $\overline{\gamma}^r \simeq \mathbf{1}^r$. The self-energy is then given by 
+We note in passing, that the SBE formulation of the SDE is reminiscent of the equation for $\Sigma$ in the $GW$ approximation. Indeed, the $GW$ approximation can be seen as a further simplification of the SBE approximation, where the Hedin vertices are approximated by their lowest-order contribution, $\gamma^r \simeq \mathbf{1}^r$ and $\overline{\gamma}^r \simeq \mathbf{1}^r$. Each of the three forms of the SDE above then reduces to a self-energy of the structural form "$G$ times a screened interaction",
 \begin{align}
-    \Sigma \simeq \zeta W^{pp} \cdot G \, ,
+    \Sigma &\simeq \frac{1}{2} \zeta \left(F_0 + W^{\overline{ph}}\right) \cdot G \, , &
+    \Sigma &\simeq \zeta\, W^{pp} \cdot G \, , &
+    \Sigma &\simeq \frac{1}{2} G \cdot \left(F_0 + W^{ph}\right) \, ,
 \end{align}
-which is precisely the $GW$ expression for the self-energy.
+which is the characteristic $GW$ form.
+
+:::{warning}
+These three expressions are *not* equivalent, even though the three forms of the SDE they descend from are: the replacement $\gamma^r \simeq \mathbf{1}^r$ is made in a specific channel and discards different diagrams for different $r$. Which class of fluctuations is resummed therefore depends on the channel chosen, and only the two particle-hole forms yield what is conventionally called the $GW$ self-energy of the Hubbard model; the $pp$ form yields a $T$-matrix approximation instead. This is worked out, including the spin structure and the resulting $\frac{1}{4}$ and $\frac{3}{4}$ weights, in the section on the [$GW$ approximation](gw_approximation.md).
+:::
