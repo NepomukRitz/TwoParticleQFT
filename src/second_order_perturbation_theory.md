@@ -265,3 +265,92 @@ For a self-consistent evaluation of the SDE one replaces $G_0 \rightarrow G$ and
 \end{align}
 must be used, with $\Phi^{ph}_{m/d} = F_{m/d} \bullet \chi_0^{ph} \bullet F_{0,m/d}$ (the spin table above holds for $A \neq B$ as well). The vertex is then no longer independent of the fermionic variables, and both of its fermionic arguments are set to the loop variables $\nu'$ and $\mathbf{k}'$, as derived above.
 :::
+
+## Fourier convolution
+
+Both loops evaluated above are convolutions: the bubble ties the two propagators together at a fixed transfer $(\omega, \mathbf{q})$, and the closing loop of the self-energy probes $\Phi^{ph}_{(2)}$ at $\omega = \nu - \nu'$ and $\mathbf{q} = \mathbf{k} - \mathbf{k}'$. Each therefore becomes a *pointwise product* after transforming to time and space, which is what makes the second-order expressions cheap to evaluate numerically: two nested integrations are replaced by a handful of transforms and one multiplication.
+
+### Transform conventions
+
+We use the Fourier transform of the section on [frequency parametrizations](frequency_parametrizations.md), i.e. $e^{-i\nu t}$ from time to frequency and the opposite sign for the momenta,
+\begin{align}
+    \mathcal{F}\{f\}(\nu, \mathbf{k}) &\equiv \int dt \sum_{\mathbf{x}} e^{-i \nu t}\, e^{i \mathbf{k}\cdot\mathbf{x}}\, f(t, \mathbf{x}) \, , \\
+    \mathcal{F}^{-1}\{f\}(t, \mathbf{x}) &\equiv \int \frac{d\nu}{2\pi} \int_{\mathrm{BZ}} \frac{d^d k}{(2\pi)^d}\, e^{i \nu t}\, e^{-i \mathbf{k}\cdot\mathbf{x}}\, f(\nu, \mathbf{k}) \, ,
+\end{align}
+and we write $f(t, \mathbf{x})$ for $\mathcal{F}^{-1}\{f\}(t, \mathbf{x})$ throughout. The two relations that do all the work below are
+\begin{align}
+    \int d\nu\, e^{-i\nu(t_1 + t_2)} &= 2\pi\, \delta(t_1 + t_2) \, , &
+    \int_{\mathrm{BZ}} d^d k\, e^{i \mathbf{k}\cdot(\mathbf{x}_1 + \mathbf{x}_2)} &= (2\pi)^d\, \delta_{\mathbf{x}_1, -\mathbf{x}_2} \, .
+\end{align}
+
+:::{note}
+The $2\pi$ produced by the frequency delta function cancels the $2\pi$ of the loop measure $\int_\nu = \int \frac{d\nu}{2\pi i}$, leaving only the $1/i$ of the Keldysh loop, and the $(2\pi)^d$ of the momentum delta function cancels $\int_{\mathbf{k}} = \int_{\mathrm{BZ}} \frac{d^d k}{(2\pi)^d}$ completely. This is why no factors of $2\pi$ survive in any of the results below.
+:::
+
+### Bubble
+
+Transforming both propagators of the integrated bare $ph$ bubble gives
+\begin{align}
+    \boxed{\ [\chi_0^{0,ph}]^{k_4 k_3 k_2 k_1}(\omega, \mathbf{q}) = \frac{\zeta}{i}\, \mathcal{F}\Big\{ G_0^{k_2 k_1}(-t, -\mathbf{x})\, G_0^{k_4 k_3}(t, \mathbf{x}) \Big\}\ } \, ,
+\end{align}
+where, as before, $[\chi_0^{0,ph}](\omega,\mathbf{q})$ denotes the bubble already integrated over its fermionic variables. For fermions $\zeta/i = i$.
+
+:::{dropdown} Explicit calculation
+Starting from the integrated bubble and inserting $G_0 = \mathcal{F}\{G_0\}$ for both propagators,
+\begin{align}
+    [\chi_0^{0,ph}]^{k_4 k_3 k_2 k_1}(\omega, \mathbf{q}) &= \zeta \int_{\nu, \mathbf{k}} G_0^{k_2 k_1}(\nu, \mathbf{k})\, G_0^{k_4 k_3}(\nu + \omega, \mathbf{k} + \mathbf{q}) \\
+    &= \frac{\zeta}{2\pi i} \frac{1}{(2\pi)^d} \int d\nu \int_{\mathrm{BZ}} d^d k \int dt_1 dt_2 \sum_{\mathbf{x}_1, \mathbf{x}_2} e^{-i\nu(t_1 + t_2)}\, e^{i\mathbf{k}\cdot(\mathbf{x}_1 + \mathbf{x}_2)} \\
+    &\phantom{=} \times e^{-i\omega t_2}\, e^{i \mathbf{q}\cdot\mathbf{x}_2}\, G_0^{k_2 k_1}(t_1, \mathbf{x}_1)\, G_0^{k_4 k_3}(t_2, \mathbf{x}_2) \, .
+\end{align}
+The $\nu$ and $\mathbf{k}$ integrations produce $2\pi\delta(t_1 + t_2)$ and $(2\pi)^d \delta_{\mathbf{x}_1, -\mathbf{x}_2}$, which cancel the loop measure down to $\zeta/i$ and set $t_1 = -t_2$, $\mathbf{x}_1 = -\mathbf{x}_2$. Renaming $t_2 \rightarrow t$ and $\mathbf{x}_2 \rightarrow \mathbf{x}$,
+\begin{align}
+    [\chi_0^{0,ph}]^{k_4 k_3 k_2 k_1}(\omega, \mathbf{q}) &= \frac{\zeta}{i} \int dt \sum_{\mathbf{x}} e^{-i\omega t}\, e^{i\mathbf{q}\cdot\mathbf{x}}\, G_0^{k_2 k_1}(-t, -\mathbf{x})\, G_0^{k_4 k_3}(t, \mathbf{x}) \, ,
+\end{align}
+and the remaining integral is $\mathcal{F}$ evaluated at the transfer variables. $\checkmark$
+:::
+
+### Self-energy
+
+The closing loop works the same way. Since it pairs $\Phi^{ph}_{(2)}(\nu - \nu', \mathbf{k} - \mathbf{k}')$ with $G_0(\nu', \mathbf{k}')$ rather than shifting a common variable, the two time arguments come out *equal* instead of opposite,
+\begin{align}
+    \boxed{\ \Sigma^{(2), k_1 k_2}(\nu, \mathbf{k}) = \frac{1}{i}\, \mathcal{F}\Big\{ [\Phi^{ph}_{(2)}]^{k_1 k_2 k_3 k_4}(t, \mathbf{x})\, G_0^{k_4 k_3}(t, \mathbf{x}) \Big\}\ } \, .
+\end{align}
+
+:::{dropdown} Explicit calculation
+Inserting $\mathcal{F}$ for both factors,
+\begin{align}
+    \Sigma^{(2), k_1 k_2}(\nu, \mathbf{k}) &= \int_{\nu', \mathbf{k}'} [\Phi^{ph}_{(2)}]^{k_1 k_2 k_3 k_4}(\nu - \nu', \mathbf{k} - \mathbf{k}')\, G_0^{k_4 k_3}(\nu', \mathbf{k}') \\
+    &= \frac{1}{2\pi i} \frac{1}{(2\pi)^d} \int d\nu' \int_{\mathrm{BZ}} d^d k' \int dt_1 dt_2 \sum_{\mathbf{x}_1, \mathbf{x}_2} e^{-i\nu t_1}\, e^{i \mathbf{k}\cdot\mathbf{x}_1}\, e^{i\nu'(t_1 - t_2)}\, e^{-i\mathbf{k}'\cdot(\mathbf{x}_1 - \mathbf{x}_2)} \\
+    &\phantom{=} \times [\Phi^{ph}_{(2)}]^{k_1 k_2 k_3 k_4}(t_1, \mathbf{x}_1)\, G_0^{k_4 k_3}(t_2, \mathbf{x}_2) \, .
+\end{align}
+Now the $\nu'$ and $\mathbf{k}'$ integrations give $2\pi\delta(t_1 - t_2)$ and $(2\pi)^d\delta_{\mathbf{x}_1, \mathbf{x}_2}$, so that $t_1 = t_2 \equiv t$ and $\mathbf{x}_1 = \mathbf{x}_2 \equiv \mathbf{x}$, leaving $1/i$ and
+\begin{align}
+    \Sigma^{(2), k_1 k_2}(\nu, \mathbf{k}) &= \frac{1}{i} \int dt \sum_{\mathbf{x}} e^{-i \nu t}\, e^{i \mathbf{k}\cdot\mathbf{x}}\, [\Phi^{ph}_{(2)}]^{k_1 k_2 k_3 k_4}(t, \mathbf{x})\, G_0^{k_4 k_3}(t, \mathbf{x}) \, . \ \checkmark
+\end{align}
+:::
+
+Evaluated in this order, one first builds $[\chi_0^{0,ph}](\omega, \mathbf{q})$, contracts it with the two bare vertices to obtain $\Phi^{ph}_{(2)}(\omega, \mathbf{q})$, and only then transforms again for the closing loop. That is two transform pairs in total.
+
+### Self-energy in one step
+
+The second transform pair is avoidable. Since $\mathcal{F}$ and $\mathcal{F}^{-1}$ are inverse to each other and the bare vertices are constants in $(\omega, \mathbf{q})$, the time-domain vertex follows from the bubble result without ever returning to the transfer variables,
+\begin{align}
+    [\Phi^{ph}_{(2)}]^{k_1 k_2 k_3 k_4}(t, \mathbf{x}) &= \frac{\zeta}{i}\, F_0^{k_5 k_2 k_3 k_6}\, G_0^{k_6 k_7}(-t, -\mathbf{x})\, G_0^{k_8 k_5}(t, \mathbf{x})\, F_0^{k_1 k_8 k_7 k_4} \, ,
+\end{align}
+where the Keldysh indices are contracted pointwise in $(t, \mathbf{x})$. Inserting this into the self-energy and using $\frac{1}{i}\frac{\zeta}{i} = -\zeta$ gives the second-order self-energy as a single transform of a product of three propagators and two bare vertices,
+\begin{align}
+    \boxed{\ \Sigma^{(2), k_1 k_2}(\nu, \mathbf{k}) = -\zeta\, \mathcal{F}\Big\{ F_0^{k_5 k_2 k_3 k_6}\, G_0^{k_6 k_7}(-t, -\mathbf{x})\, G_0^{k_8 k_5}(t, \mathbf{x})\, F_0^{k_1 k_8 k_7 k_4}\, G_0^{k_4 k_3}(t, \mathbf{x}) \Big\}\ } \, ,
+\end{align}
+with $-\zeta = +1$ for fermions. Only the three nonzero Keldysh components of $G_0(t, \mathbf{x})$ and their reflections $G_0(-t, -\mathbf{x})$ are needed, so one transform of the propagator and one of the result suffice.
+
+:::{note}
+Beware that the two propagators inherited from the bubble carry *opposite* time and space arguments, while the one closing the loop carries the same argument as the second bubble propagator. Which of the two bubble propagators is reflected is fixed by the index assignment of $[\chi_0^{0,ph}]^{k_8 k_5 k_6 k_7}$: it is the $k_6 k_7$ factor that appears at $(-t, -\mathbf{x})$. Interchanging the two is not a relabeling, because the two factors carry different Keldysh index pairs, and it changes the result.
+:::
+
+:::{note}
+This form makes the structure of the second-order self-energy particularly transparent: it is the familiar product of three propagators in the time domain, antisymmetrized by the two Hugenholtz vertices. For the Hubbard interaction, where $\Sigma^{(2)}$ reduces to a single spin component as shown above, it is the real-frequency Keldysh counterpart of the textbook expression $\Sigma^{(2)}(\tau) = U^2 G(\tau)^2 G(-\tau)$.
+:::
+
+:::{danger} To do
+Add a note on the numerical caveats of this route: the convolution theorem holds for the *periodic* continuation of a discretized grid, so the transforms have to be zero-padded to avoid aliasing between the tails, and the $1/\nu$ tails of the propagators have to be resolved well enough that the products in the time domain are accurate near $t = 0$.
+:::
