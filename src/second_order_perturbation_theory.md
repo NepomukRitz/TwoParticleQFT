@@ -1,15 +1,15 @@
 # Second-order perturbation theory
 
-Second-order perturbation theory in the bare interaction is the simplest nontrivial approximation for both the two-particle vertex and the self-energy. It is worth writing out completely, for three reasons: it is the standard starting point for iterating the [parquet equations](parquet_theory.md), it is the natural benchmark against which any implementation of those equations should be validated, and it is the order at which all the prefactors — the crossing factors of the channel bubbles, the spin sums, and the $\frac{1}{2}$ of the [Schwinger-Dyson equation](parquet_theory.md#schwinger-dyson-equation) — can still be tracked by hand.
+Second-order perturbation theory in the bare interaction is the simplest nontrivial approximation for both the two-particle vertex and the self-energy. It is worth writing out completely, for three reasons: it is the standard starting point for iterating the [parquet equations](parquet_theory.md), it is the natural benchmark against which any implementation of those equations should be validated, and it is the order at which all the prefactors can still be tracked by hand, namely the prefactors of the bubbles in the three two-particle channels, the spin sums, and the $\frac{1}{2}$ of the [Schwinger-Dyson equation](parquet_theory.md#schwinger-dyson-equation).
 
-The purpose of this page is to carry the second-order vertex and the second-order self-energy all the way down to explicit formulas, with every prefactor, spin sum, frequency argument and Keldysh index in place. The single most error-prone step is the spin sum of the self-energy loop: it contributes a factor $2$ that cancels the $\frac{1}{2}$ of the SDE exactly, so that **the dynamic second-order self-energy carries no numerical prefactor at all**.
+The purpose of this page is to derive explicit formulas for the second-order vertex and the second-order self-energy, with every prefactor, spin sum, frequency argument and Keldysh index in place.
 
 :::{note}
 The spin structure of the bare interaction and the spin projection of the loop products are derived in the section on the [$GW$ approximation](gw_approximation.md), and we simply quote the results here. That page works in the Matsubara formalism and in the $ph$ channel only; this page treats all three channels and adds the Keldysh index structure.
 :::
 
 :::{note}
-The spin and frequency algebra below is written for frequencies only. As explained in the section on [frequency parametrizations](frequency_parametrizations.md), every statement carries over verbatim to the momentum dependence by replacing $\nu, \nu', \omega \rightarrow \mathbf{k}, \mathbf{k}', \mathbf{q}$. The momenta are reinstated explicitly in the collected results at the end of each part, since that is the form one compares an implementation against.
+The spin and frequency algebra below is written for frequencies only. As explained in the section on [frequency parametrizations](frequency_parametrizations.md), every statement carries over verbatim to the momentum dependence by replacing $\nu, \nu', \omega \rightarrow \mathbf{k}, \mathbf{k}', \mathbf{q}$. The momenta are written out in the collected results, since that is the form one compares an implementation against.
 :::
 
 We specialize throughout to a system with SU(2) spin symmetry and a *local and instantaneous* bare interaction, i.e. the Hubbard interaction of the [Hubbard model example](starting_point.md#example-hubbard-model), whose spin components are
@@ -36,7 +36,7 @@ where $[\chi_0^{0}]^r$ is the [bare bubble](two-particle-channels.md#bare-and-dr
     [\Phi^{pp}_{(2)}]_{1234} &= F_{0,1536}\, [\chi_0^{0}]^{pp}_{6857}\, F_{0,7284} \, , \\
     [\Phi^{ph}_{(2)}]_{1234} &= F_{0,5236}\, [\chi_0^{0}]^{ph}_{8567}\, F_{0,1874} \, ,
 \end{align}
-with summation over the repeated internal indices $5,6,7,8$ implied. Recall that the crossing factors are carried by the channel bubbles themselves, $[\chi_0^{0}]^{\overline{ph}}_{4321} = [\chi_0^{0}]_{4321}$, $[\chi_0^{0}]^{pp}_{4321} = \frac{1}{2}[\chi_0^{0}]_{4321}$ and $[\chi_0^{0}]^{ph}_{4321} = \zeta [\chi_0^{0}]_{2341}$, so that no further prefactors appear.
+with summation over the repeated internal indices $5,6,7,8$ implied. Recall that the channel prefactors are carried by the bubbles themselves, $[\chi_0^{0}]^{\overline{ph}}_{4321} = [\chi_0^{0}]_{4321}$, $[\chi_0^{0}]^{pp}_{4321} = \frac{1}{2}[\chi_0^{0}]_{4321}$ and $[\chi_0^{0}]^{ph}_{4321} = \zeta [\chi_0^{0}]_{2341}$, so that no further prefactors appear.
 
 ### Spin structure
 
@@ -54,7 +54,7 @@ where $\bullet$ denotes the contraction over all variables *except* the spin ind
 | $pp$ | $A_{\uparrow\uparrow} B_{\uparrow\uparrow}$ | $A_{\uparrow\downarrow} B_{\uparrow\downarrow} + A_{\overline{\uparrow\downarrow}} B_{\overline{\uparrow\downarrow}}$ | $A_{\uparrow\downarrow} B_{\overline{\uparrow\downarrow}} + A_{\overline{\uparrow\downarrow}} B_{\uparrow\downarrow}$ |
 | $ph$ | $A_{\uparrow\uparrow} B_{\uparrow\uparrow} + A_{\uparrow\downarrow} B_{\uparrow\downarrow}$ | $A_{\uparrow\downarrow} B_{\uparrow\uparrow} + A_{\uparrow\uparrow} B_{\uparrow\downarrow}$ | $A_{\overline{\uparrow\downarrow}} B_{\overline{\uparrow\downarrow}}$ |
 
-Here and below the $\bullet \chi_0^r \bullet$ between the two factors is suppressed for readability.
+In this table the $\bullet \chi_0^r \bullet$ between the two factors is suppressed for readability.
 
 :::{dropdown} Explicit calculation
 The $\uparrow\uparrow$ and $\uparrow\downarrow$ entries of the $ph$ row and the whole $pp$ row are derived in the section on [spin parametrizations](spin_parametrizations.md). The remaining entries follow from the same two ingredients: spin conservation, $A_{\sigma_1\sigma_2\sigma_3\sigma_4} \sim \delta_{\sigma_1 + \sigma_3, \sigma_2 + \sigma_4}$, and the definitions $A_{\sigma\sigma\sigma\sigma} = A_{\uparrow\uparrow}$, $A_{\sigma\overline{\sigma}\overline{\sigma}\sigma} = A_{\uparrow\downarrow}$, $A_{\sigma\sigma\overline{\sigma}\overline{\sigma}} = A_{\overline{\uparrow\downarrow}}$.
@@ -89,16 +89,32 @@ The $\overline{ph}$ and $ph$ rows are related by interchanging $\uparrow\downarr
 
 Inserting $A = B = F_0$, and using $F_{0,\uparrow\uparrow} = 0$, the three channel contributions to the second-order vertex have the spin components
 
-| channel | $\uparrow\uparrow$ | $\uparrow\downarrow$ | $\overline{\uparrow\downarrow}$ | $d$ | $m$ | $s$ | $t$ |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| $\overline{ph}$ | $U^2$ | $U^2$ | $0$ | $2U^2$ | $0$ | $U^2$ | $U^2$ |
-| $pp$ | $0$ | $2U^2$ | $-2U^2$ | $2U^2$ | $-2U^2$ | $4U^2$ | $0$ |
-| $ph$ | $U^2$ | $0$ | $U^2$ | $U^2$ | $U^2$ | $-U^2$ | $U^2$ |
+| channel | $\uparrow\uparrow$ | $\uparrow\downarrow$ | $\overline{\uparrow\downarrow}$ |
+| --- | --- | --- | --- |
+| $\overline{ph}$ | $U^2$ | $U^2$ | $0$ |
+| $pp$ | $0$ | $2U^2$ | $-2U^2$ |
+| $ph$ | $U^2$ | $0$ | $U^2$ |
 
-in units of the corresponding $\bullet \chi_0^r \bullet$ contraction, i.e. the entry $X$ stands for $X \bullet [\chi_0^{0}]^r \bullet {} $ with the bare vertices stripped off. The $d/m$ and $s/t$ combinations follow from $X_{d/m} = X_{\uparrow\uparrow} \pm X_{\uparrow\downarrow}$ (upper sign for $d$), $X_s = X_{\uparrow\downarrow} - X_{\overline{\uparrow\downarrow}}$ and $X_t = X_{\uparrow\uparrow}$.
+where the entries are the coefficients $c^r_x$ in
+\begin{align}
+    [\Phi^r_{(2)}]_x &= c^r_x\, [\chi_0^{0}]^r(\omega, \mathbf{q}) \, , &
+    [\chi_0^{0}]^r(\omega, \mathbf{q}) &\equiv \int_{\nu, \mathbf{k}} [\chi_0^{0}]^r(\nu, \omega; \mathbf{k}, \mathbf{q}) \, .
+\end{align}
+Here and below, a bubble written with bosonic arguments only is understood to be integrated over its fermionic ones. The result takes this form of a number times a bubble because the bare vertex of a local, instantaneous interaction is independent of frequency and momentum and can be pulled out of the contraction, as spelled out in the next subsection.
+
+The $ph$ and $pp$ channels are naturally read in the spin bases in which their Bethe-Salpeter equations [decouple](spin_parametrizations.md), the density/magnetic basis and the singlet/triplet basis respectively, with $X_{d/m} = X_{\uparrow\uparrow} \pm X_{\uparrow\downarrow}$ (upper sign for $d$), $X_s = X_{\uparrow\downarrow} - X_{\overline{\uparrow\downarrow}}$ and $X_t = X_{\uparrow\uparrow}$. In those bases the table reads
+\begin{align}
+    \Phi^{ph}_{(2),d} &= \Phi^{ph}_{(2),m} = U^2\, [\chi_0^{0}]^{ph}(\omega, \mathbf{q}) \, , &
+    \Phi^{pp}_{(2),s} &= 4U^2\, [\chi_0^{0}]^{pp}(\omega, \mathbf{q}) \, , &
+    \Phi^{pp}_{(2),t} &= 0 \, .
+\end{align}
 
 :::{note}
-The $ph$ row has $\Phi^{ph}_{(2),d} = \Phi^{ph}_{(2),m} = U^2 \bullet [\chi_0^{0}]^{ph} \bullet {}$: at second order the density and magnetic channels coincide, because $F_{0,m} = -F_{0,d}$ and the two bare vertices enter quadratically. They part ways only at third order, as discussed in the section on the [$GW$ approximation](gw_approximation.md#polarization-and-screened-interaction-in-the-ph-channel). Likewise, $\Phi^{pp}_{(2),t} = 0$, since a local interaction does not act in the triplet particle-particle channel.
+That the density and magnetic components of the $ph$ channel coincide is special to second order: it follows from $F_{0,m} = -F_{0,d}$ together with the two bare vertices entering quadratically. They part ways at third order, as discussed in the section on the [$GW$ approximation](gw_approximation.md#polarization-and-screened-interaction-in-the-ph-channel). The vanishing of $\Phi^{pp}_{(2),t}$ reflects that a local interaction does not act in the triplet particle-particle channel.
+:::
+
+:::{note}
+The $\overline{ph}$ channel decouples in neither of these two bases. Applying the crossing interchange $\uparrow\downarrow \leftrightarrow \overline{\uparrow\downarrow}$ to $d$ and $m$ identifies its decoupling combinations as $X_{\uparrow\uparrow} \mp X_{\overline{\uparrow\downarrow}}$, i.e. $X_{\uparrow\downarrow}$ and $X_{\uparrow\downarrow} + 2 X_{\overline{\uparrow\downarrow}}$, both of which equal $U^2 [\chi_0^{0}]^{\overline{ph}}(\omega, \mathbf{q})$ here. This is why the table lists the three spin components rather than a fixed set of linear combinations.
 :::
 
 ### Frequency and momentum parametrization
@@ -115,11 +131,12 @@ and the channel contractions couple only the fermionic variables,
 \end{align}
 Because the bare vertex of a local, instantaneous interaction is independent of frequency and momentum, it drops out of the loop, and every $\Phi^r_{(2)}$ depends on the transfer variables of its own channel only,
 \begin{align}
-    \Phi^r_{(2)}(\omega, \mathbf{q}) &= F_0 \bullet \left( \int_{\nu'', \mathbf{k}''} [\chi_0^{0}]^{r}(\nu'', \omega; \mathbf{k}'', \mathbf{q}) \right) \bullet F_0 \, .
+    \Phi^r_{(2)}(\omega, \mathbf{q}) &= F_0 \bullet [\chi_0^{0}]^{r}(\omega, \mathbf{q}) \bullet F_0 \, ,
 \end{align}
+with the integrated bubble defined above.
 
 :::{note}
-This is the statement that at second order the vertex consists of three purely bosonic *$K_1$* objects, one per channel — the lowest tier of the asymptotic decomposition of the vertex. Each of them, however, is bosonic with respect to a *different* channel's transfer variable, so the three cannot be added without first transforming them into a common parametrization.
+This is the statement that at second order the vertex consists of three purely bosonic *$K_1$* objects, one per channel, which form the lowest tier of the asymptotic decomposition of the vertex (see [Wentzell et al., Phys. Rev. B 102, 085106 (2020)](https://doi.org/10.1103/PhysRevB.102.085106)). Each of them, however, is bosonic with respect to a *different* channel's transfer variable, so the three cannot be added without first transforming them into a common parametrization.
 :::
 
 ### Result in the Keldysh formalism
@@ -138,11 +155,11 @@ with $F_0$ the spin component under consideration, and the bubble inherits the K
     [\chi_0^{0,pp}]^{k_4 k_3 k_2 k_1}(\nu, \omega; \mathbf{k}, \mathbf{q}) &= \tfrac{1}{2}\, G_0^{k_4 k_1}(\nu, \mathbf{k})\, G_0^{k_2 k_3}(-\nu - \omega, -\mathbf{k} - \mathbf{q}) \, , \\
     [\chi_0^{0,ph}]^{k_4 k_3 k_2 k_1}(\nu, \omega; \mathbf{k}, \mathbf{q}) &= \zeta\, G_0^{k_2 k_1}(\nu, \mathbf{k})\, G_0^{k_4 k_3}(\nu + \omega, \mathbf{k} + \mathbf{q}) \, ,
 \end{align}
-and, with $\hat{\chi}^{r}(\omega, \mathbf{q}) \equiv \int_{\nu, \mathbf{k}} [\chi_0^{0,r}](\nu, \omega; \mathbf{k}, \mathbf{q})$ denoting the bubble integrated over its fermionic variables,
+and, with the integrated bubbles $[\chi_0^{0,r}](\omega, \mathbf{q})$ defined as above,
 \begin{align}
-    [\Phi^{\overline{ph}}_{(2)}]^{k_1 k_2 k_3 k_4}(\omega, \mathbf{q}) &= F_0^{k_1 k_2 k_5 k_6}\ \hat{\chi}^{\overline{ph},\, k_6 k_5 k_8 k_7}(\omega, \mathbf{q})\ F_0^{k_7 k_8 k_3 k_4} \, , \\
-    [\Phi^{pp}_{(2)}]^{k_1 k_2 k_3 k_4}(\omega, \mathbf{q}) &= F_0^{k_1 k_5 k_3 k_6}\ \hat{\chi}^{pp,\, k_6 k_8 k_5 k_7}(\omega, \mathbf{q})\ F_0^{k_7 k_2 k_8 k_4} \, , \\
-    [\Phi^{ph}_{(2)}]^{k_1 k_2 k_3 k_4}(\omega, \mathbf{q}) &= F_0^{k_5 k_2 k_3 k_6}\ \hat{\chi}^{ph,\, k_8 k_5 k_6 k_7}(\omega, \mathbf{q})\ F_0^{k_1 k_8 k_7 k_4} \, ,
+    [\Phi^{\overline{ph}}_{(2)}]^{k_1 k_2 k_3 k_4}(\omega, \mathbf{q}) &= F_0^{k_1 k_2 k_5 k_6}\ [\chi_0^{0,\overline{ph}}]^{k_6 k_5 k_8 k_7}(\omega, \mathbf{q})\ F_0^{k_7 k_8 k_3 k_4} \, , \\
+    [\Phi^{pp}_{(2)}]^{k_1 k_2 k_3 k_4}(\omega, \mathbf{q}) &= F_0^{k_1 k_5 k_3 k_6}\ [\chi_0^{0,pp}]^{k_6 k_8 k_5 k_7}(\omega, \mathbf{q})\ F_0^{k_7 k_2 k_8 k_4} \, , \\
+    [\Phi^{ph}_{(2)}]^{k_1 k_2 k_3 k_4}(\omega, \mathbf{q}) &= F_0^{k_5 k_2 k_3 k_6}\ [\chi_0^{0,ph}]^{k_8 k_5 k_6 k_7}(\omega, \mathbf{q})\ F_0^{k_1 k_8 k_7 k_4} \, ,
 \end{align}
 with the loop measures
 \begin{align}
@@ -184,7 +201,7 @@ the familiar $\frac{1}{4}(d + 3m)$ weighting. Reading the $ph$ row of the table 
 \begin{align}
     \boxed{\ \Sigma^{(2)}_{\sigma\sigma} = F_{0,\uparrow\downarrow} \bullet [\chi_0^{0}]^{ph} \bullet F_{0,\uparrow\downarrow} \bullet G_0 \ } \, .
 \end{align}
-The $\frac{1}{2}$ of the SDE has been used up by the spin sum: **the dynamic second-order self-energy carries net prefactor $1$, and it is obtained by inserting the single spin component $F_{0,\uparrow\downarrow} = -U$ at both ends of the bubble.**
+Each $\bullet$ here stands for the contraction over the Keldysh indices together with the integration over the internal frequency and momentum, one integration inside the bubble and one for the closing loop; the spin sums have already been carried out. The $\frac{1}{2}$ of the SDE is compensated by the spin sum, so the dynamic second-order self-energy carries net prefactor $1$, and it is obtained by inserting the single spin component $F_{0,\uparrow\downarrow} = -U$ at both ends of the bubble.
 
 :::{important}
 This is the point at which a factor $2$ is easily lost. The two surviving spin components of $\Phi^{ph}_{(2)}$,
@@ -193,7 +210,7 @@ This is the point at which a factor $2$ is easily lost. The two surviving spin c
     &= F_{0,\uparrow\downarrow} \bullet [\chi_0^{0}]^{ph} \bullet F_{0,\uparrow\downarrow}
      + F_{0,\overline{\uparrow\downarrow}} \bullet [\chi_0^{0}]^{ph} \bullet F_{0,\overline{\uparrow\downarrow}} \, ,
 \end{align}
-are *equal*, so contracting the single scalar $F_0 = F_{0,\uparrow\downarrow} = -U$ accounts for exactly one half of the spin sum. An implementation that carries no spin index and inserts the scalar $F_0 = -U$ must therefore use net prefactor $\frac{1}{2} \times 2 = 1$, not $\frac{1}{2}$.
+are *equal*, so contracting the single scalar $F_0 = F_{0,\uparrow\downarrow} = -U$ accounts for exactly one half of the spin sum.
 :::
 
 :::{dropdown} Consistency check with the $\overline{ph}$ form of the SDE
@@ -220,22 +237,22 @@ To lowest order the RPA susceptibilities reduce to the bare polarization, $\chi_
 which is exactly the boxed result above, since $F_{0,\uparrow\downarrow}^2 = U^2$ and $\int_\nu [\chi_0^{0}]^{ph} = P^{ph}$ for unit vertices. $\checkmark$
 :::
 
-### Frequency and momentum parametrization
+### Frequency parametrization of the closing loop
 
-It remains to parametrize the closing loop. As for the [Keldysh indices](keldysh_formalism.md#self-energy), it is the *second* index of $\Sigma$ that carries the arguments, opposite to $G_{21} = G(\nu_2)\delta(\nu_2 + \nu_1)$, i.e.
+It remains to parametrize the closing loop. It is the *second* index of $\Sigma$ that carries its arguments, opposite to $G_{21} = G(\nu_2)\delta(\nu_2 + \nu_1)$, i.e.
 \begin{align}
-    \Sigma_{12} &= \Sigma(\nu_2, \mathbf{k}_2)\, \delta(\nu_1 + \nu_2)\, \delta(\mathbf{k}_1 + \mathbf{k}_2) \, .
+    \Sigma_{12} &= \Sigma(\nu_2)\, \delta(\nu_1 + \nu_2) \, .
 \end{align}
 With this convention one finds for a general four-point object $A$ parametrized in the $ph$ channel
 \begin{align}
-    [G \cdot A](\nu, \mathbf{k}) &= \int_{\nu', \mathbf{k}'} A^{ph}(\nu', \nu', \nu - \nu'; \mathbf{k}', \mathbf{k}', \mathbf{k} - \mathbf{k}')\, G(\nu', \mathbf{k}') \, .
+    [G \cdot A](\nu) &= \int_{\nu'} A^{ph}(\nu', \nu', \nu - \nu')\, G(\nu') \, .
 \end{align}
-The vertex thus enters with *both* of its fermionic arguments set to the loop variables, and with transfer variables $\omega = \nu - \nu'$ and $\mathbf{q} = \mathbf{k} - \mathbf{k}'$. This is the same result as the frequency parametrization of the loop in the section on the [$GW$ approximation](gw_approximation.md#frequency-parametrization); we repeat the derivation here with the momenta reinstated and with the index convention for $\Sigma$ made explicit.
+The vertex thus enters with *both* of its fermionic arguments set to the loop variable, and with transfer variable $\omega = \nu - \nu'$; the momenta follow the same structure, with $\mathbf{q} = \mathbf{k} - \mathbf{k}'$. This is the same result as the frequency parametrization of the loop in the section on the [$GW$ approximation](gw_approximation.md#frequency-parametrization); we repeat the derivation here with the index convention for $\Sigma$ made explicit.
 
 :::{dropdown} Explicit calculation
-That the arguments of $\Sigma$ sit on its second index follows from the [Dyson equation](keldysh_formalism.md#dyson-equation), which in multi-index notation reads $G_{21} = G_{0,21} + G_{0,2\tilde{1}} \Sigma_{\tilde{1}\tilde{2}} G_{\tilde{2}1}$, matching the Keldysh chain $G_0^{k_2 k_{\tilde{1}}} \Sigma^{k_{\tilde{1}} k_{\tilde{2}}} G^{k_{\tilde{2}} k_1}$. The two propagators fix $\nu_{\tilde{1}} = -\nu_2$ and $\nu_{\tilde{2}} = -\nu_1 = \nu_2$, so that $G(\nu_2) = G_0(\nu_2) + G_0(\nu_2) \Sigma(\nu_2) G(\nu_2)$ requires $\Sigma_{\tilde{1}\tilde{2}} = \Sigma(\nu_{\tilde{2}}) \delta(\nu_{\tilde{1}} + \nu_{\tilde{2}})$.
+That the arguments of $\Sigma$ sit on its second index follows from the [Dyson equation](keldysh_formalism.md#dyson-equation), which in multi-index notation reads $G_{21} = G_{0,21} + G_{0,2\tilde{1}} \Sigma_{\tilde{1}\tilde{2}} G_{\tilde{2}1}$. The two propagators fix $\nu_{\tilde{1}} = -\nu_2$ and $\nu_{\tilde{2}} = -\nu_1 = \nu_2$, so that $G(\nu_2) = G_0(\nu_2) + G_0(\nu_2) \Sigma(\nu_2) G(\nu_2)$ requires $\Sigma_{\tilde{1}\tilde{2}} = \Sigma(\nu_{\tilde{2}}) \delta(\nu_{\tilde{1}} + \nu_{\tilde{2}})$.
 
-Suppressing the momenta (they follow identically) and using $G_{\tilde{2}\tilde{1}} = G(\nu_{\tilde{2}}) \delta(\nu_{\tilde{2}} + \nu_{\tilde{1}})$ together with $A_{1 2 \tilde{1} \tilde{2}} = A^{ph}(-\nu_{\tilde{1}}, \nu_{\tilde{2}}, \nu_{\tilde{1}} + \nu_2)\, \delta(\nu_1 + \nu_2 + \nu_{\tilde{1}} + \nu_{\tilde{2}})$, we have
+Using $G_{\tilde{2}\tilde{1}} = G(\nu_{\tilde{2}}) \delta(\nu_{\tilde{2}} + \nu_{\tilde{1}})$ together with $A_{1 2 \tilde{1} \tilde{2}} = A^{ph}(-\nu_{\tilde{1}}, \nu_{\tilde{2}}, \nu_{\tilde{1}} + \nu_2)\, \delta(\nu_1 + \nu_2 + \nu_{\tilde{1}} + \nu_{\tilde{2}})$, we have
 \begin{align}
     [G \cdot A]_{12} &= A_{1 2 \tilde{1} \tilde{2}}\, G_{\tilde{2}\tilde{1}} \\
     &= \int_{\nu_{\tilde{1}}, \nu_{\tilde{2}}} A^{ph}(-\nu_{\tilde{1}}, \nu_{\tilde{2}}, \nu_{\tilde{1}} + \nu_2)\, \delta(\nu_1 + \nu_2 + \nu_{\tilde{1}} + \nu_{\tilde{2}})\, G(\nu_{\tilde{2}})\, \delta(\nu_{\tilde{2}} + \nu_{\tilde{1}}) \\
@@ -259,16 +276,22 @@ Two practical simplifications follow from causality. Since $G^{11} = 0$, the bub
 :::
 
 :::{note}
-For a self-consistent evaluation of the SDE one replaces $G_0 \rightarrow G$ and one of the two bare vertices by the full vertex $F$. The density and magnetic channels are then no longer equal and the spin-resolved form
+Self-consistency at second order means iterating the propagator alone: one replaces $G_0 \rightarrow G$ in the bubble and in the closing loop, and determines $G$ from the Dyson equation, while the vertex stays at second order in $F_0$. The boxed result above survives this unchanged, because $\Phi^{ph}_{(2),d} = \Phi^{ph}_{(2),m}$ rests only on $F_{0,m} = -F_{0,d}$ and on the two vertices entering quadratically, neither of which involves the propagators.
+
+The SDE becomes exact only when one of the two bare vertices is promoted to the full vertex $F$, as in the parquet or $GW$ schemes. Then the density and magnetic components no longer coincide and the spin-resolved form
 \begin{align}
     \Sigma^{k_1 k_2}(\nu, \mathbf{k}) &= \frac{1}{4} \int_{\nu', \mathbf{k}'} \left( [\Phi^{ph}_{d}]^{k_1 k_2 k_3 k_4} + 3\, [\Phi^{ph}_{m}]^{k_1 k_2 k_3 k_4} \right)\!(\nu - \nu', \mathbf{k} - \mathbf{k}')\, G^{k_4 k_3}(\nu', \mathbf{k}')
 \end{align}
-must be used, with $\Phi^{ph}_{m/d} = F_{m/d} \bullet \chi_0^{ph} \bullet F_{0,m/d}$ (the spin table above holds for $A \neq B$ as well). The vertex is then no longer independent of the fermionic variables, and both of its fermionic arguments are set to the loop variables $\nu'$ and $\mathbf{k}'$, as derived above.
+must be used, with $\Phi^{ph}_{d/m} = F_{d/m} \bullet \chi_0^{ph} \bullet F_{0,d/m}$ (the spin table above holds for $A \neq B$ as well). The vertex is then no longer independent of the fermionic variables, and both of its fermionic arguments are set to the loop variables $\nu'$ and $\mathbf{k}'$, as derived above.
 :::
 
 ## Fourier convolution
 
 Both loops evaluated above are convolutions: the bubble ties the two propagators together at a fixed transfer $(\omega, \mathbf{q})$, and the closing loop of the self-energy probes $\Phi^{ph}_{(2)}$ at $\omega = \nu - \nu'$ and $\mathbf{q} = \mathbf{k} - \mathbf{k}'$. Each therefore becomes a *pointwise product* after transforming to time and space, which is what makes the second-order expressions cheap to evaluate numerically: two nested integrations are replaced by a handful of transforms and one multiplication.
+
+:::{note}
+This section is written directly in the Keldysh formalism, unlike most of these pages. The reason is that the Fourier route is used in real-frequency implementations, where the whole content of the calculation is which Keldysh component of the propagator multiplies which in the time domain, so the indices cannot be suppressed. The structure carries over to the Matsubara formalism by dropping the Keldysh indices and replacing the transform pair by its imaginary-time counterpart, $\int dt \rightarrow \int_0^\beta d\tau$ and $\int \frac{d\nu}{2\pi} \rightarrow \frac{1}{\beta} \sum_\nu$. The momentum transforms are unaffected.
+:::
 
 ### Transform conventions
 
@@ -296,7 +319,7 @@ Transforming both propagators of the integrated bare $ph$ bubble gives
 where, as before, $[\chi_0^{0,ph}](\omega,\mathbf{q})$ denotes the bubble already integrated over its fermionic variables. For fermions $\zeta/i = i$.
 
 :::{dropdown} Explicit calculation
-Starting from the integrated bubble and inserting $G_0 = \mathcal{F}\{G_0\}$ for both propagators,
+Starting from the integrated bubble and inserting $G_0(\nu, \mathbf{k}) = \mathcal{F}\{G_0\}(\nu, \mathbf{k})$ for both propagators,
 \begin{align}
     [\chi_0^{0,ph}]^{k_4 k_3 k_2 k_1}(\omega, \mathbf{q}) &= \zeta \int_{\nu, \mathbf{k}} G_0^{k_2 k_1}(\nu, \mathbf{k})\, G_0^{k_4 k_3}(\nu + \omega, \mathbf{k} + \mathbf{q}) \\
     &= \frac{\zeta}{2\pi i} \frac{1}{(2\pi)^d} \int d\nu \int_{\mathrm{BZ}} d^d k \int dt_1 dt_2 \sum_{\mathbf{x}_1, \mathbf{x}_2} e^{-i\nu(t_1 + t_2)}\, e^{i\mathbf{k}\cdot(\mathbf{x}_1 + \mathbf{x}_2)} \\
@@ -344,7 +367,7 @@ where the Keldysh indices are contracted pointwise in $(t, \mathbf{x})$. Inserti
 with $-\zeta = +1$ for fermions. Only the three nonzero Keldysh components of $G_0(t, \mathbf{x})$ and their reflections $G_0(-t, -\mathbf{x})$ are needed, so one transform of the propagator and one of the result suffice.
 
 :::{note}
-Beware that the two propagators inherited from the bubble carry *opposite* time and space arguments, while the one closing the loop carries the same argument as the second bubble propagator. Which of the two bubble propagators is reflected is fixed by the index assignment of $[\chi_0^{0,ph}]^{k_8 k_5 k_6 k_7}$: it is the $k_6 k_7$ factor that appears at $(-t, -\mathbf{x})$. Interchanging the two is not a relabeling, because the two factors carry different Keldysh index pairs, and it changes the result.
+Beware that the two propagators inherited from the bubble carry *opposite* time and space arguments, while the one closing the loop carries the same argument as the second bubble propagator. Which of the two bubble propagators is reflected is fixed by the index assignment of $[\chi_0^{0,ph}]^{k_8 k_5 k_6 k_7}$: it is the $k_6 k_7$ factor that appears at $(-t, -\mathbf{x})$.
 :::
 
 :::{note}
