@@ -321,7 +321,7 @@ so a single map suffices, and we abbreviate $M \equiv M_d$ from here on. The lad
     \Phi_c^{(\ell+1)} = M_c\, \Phi_c^{(\ell)} \, , \qquad\qquad \Phi_c^{(\ell)} = M_c^{\ell-1}\, \Phi_c^{(1)} \, ,
 \end{align}
 
-with $\Phi_c^{(1)} = F_{0,c} \bullet P^{ph} \bullet F_{0,c}$ the second-order vertex. Only the *square* of the bare vertex enters at first order, so $\Phi_m^{(1)} = \Phi_d^{(1)}$, and we write $\Phi^{(1)}$ for their common value.
+with $\Phi_c^{(1)} = F_{0,c} \bullet P^{ph} \bullet F_{0,c}$ the second-order vertex. Only the *square* of the bare vertex enters at first order, so $\Phi_m^{(1)} = \Phi_d^{(1)}$, and we write $\Phi^{(1)}$ for their common value. Note that applying $M_c$ is itself one more $\bullet$ contraction, $M_c X = F_{0,c} \bullet P^{ph} \bullet X$, and that this contraction is associative: chains of it need no bracketing, and the resolvents below may be manipulated exactly like matrix inverses.
 
 :::{note}
 The indices $k_1$ and $k_4$ are **spectators**: they appear on $X$ and on the result, but are not summed over. $M$ is therefore block diagonal in $(k_1, k_4)$, with identical blocks acting on the pair $(k_2, k_3)$. For two-valued Keldysh indices, $M$ acting on the full $16$-dimensional space is four copies of one $4 \times 4$ block. Either form may be used; an implementation that wants to compare against a dense reference is usually better off with the redundant $16 \times 16$ form, since it matches the index layout of the recursion literally.
@@ -396,7 +396,15 @@ Each further order prepends one more factor $P^{ph} \bullet F_{0,c}$, so the ter
 
 with the density and magnetic cases differing only through $F_{0,m} = -F_{0,d}$. Setting all additional indices to a single value gives $\chi_d \rightarrow P^{ph}/(1 + U P^{ph})$ and $\chi_m \rightarrow P^{ph}/(1 - U P^{ph})$, the two susceptibilities of the [scalar case](#polarization-and-screened-interaction-in-the-ph-channel). $\checkmark$
 
-The rung of this series carries the same two factors as $M_c$ but in the opposite order, a bubble followed by a vertex rather than a vertex followed by a bubble, simply because the ladder now starts at a bubble. For scalars the order is immaterial, which is why one map sufficed there.
+The rung of this series carries the same two factors as $M_c$ but in the opposite order, a bubble followed by a vertex rather than a vertex followed by a bubble, simply because the ladder now starts at a bubble. Written out in the additional indices it is the formula for $M_c$ with the two factors exchanged,
+
+\begin{align}
+    \Big(\big(P^{ph} \bullet F_{0,c}\big) \bullet X\Big)_{k_1 k_2 k_3 k_4}
+      = \sum_{k_5 k_6 k_7 k_8} P^{ph}_{k_5 k_2 k_3 k_6}\,
+        F_{0,c; k_8 k_5 k_6 k_7}\, X_{k_1 k_8 k_7 k_4} \, ,
+\end{align}
+
+again at fixed $(\omega, \mathbf{q})$. The indices $k_1$ and $k_4$ are spectators here too, so the block structure noted for $M_c$ carries over unchanged. Dropping the indices collapses both orders to the same product $F_{0,c} P^{ph}$, which is why a single map sufficed in the scalar case.
 
 :::{warning} $\chi_c$ is not $\widetilde{W}_c / U^2$ once the indices are present
 The two objects are built from the same ladder, and differ only in what sits at its two ends:
@@ -409,10 +417,6 @@ While $F_{0,c} = \mp U$ is a number, those two end vertices are nothing but the 
 :::
 
 These are RPA susceptibilities in the strict sense only if $P^{ph}$ is built from bare propagators. The same caveat as in the scalar case applies here verbatim.
-
-:::{danger} To do
-Write the rung $P^{ph} \bullet F_{0,c}$ out in the additional indices, in the same explicit form as $M_c$ above.
-:::
 
 (which-form-of-the-schwinger-dyson-equation)=
 ## Which form of the Schwinger-Dyson equation?
