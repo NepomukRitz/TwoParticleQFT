@@ -12,7 +12,7 @@ We work in the Matsubara formalism throughout, and we specialize to a system wit
 :::{important} Scope of the simplifications below
 Several steps on this page rely on the objects involved being *scalars* in every degree of freedom other than spin and the bosonic transfer variable. Concretely, we assume a single band with no orbital index, and we work in the Matsubara formalism, so that there are no Keldysh indices either. Under these assumptions the bosonic Dyson equation for the screened interaction decouples into two *scalar* equations that can be solved by ordinary division, and the density and magnetic ladders reduce to geometric series in a single scalar.
 
-None of the structural results change in the presence of orbital or Keldysh indices — the SBE equations, the spin projections of the loop products and the $\tfrac{1}{4}/\tfrac{3}{4}$ weights all carry over unchanged — but the closed-form expressions do not. With additional indices the bosonic Dyson equation becomes a genuine matrix equation in those indices at every $(\omega, \mathbf{q})$, and the "division" below has to be replaced by a matrix inversion. The same caveat applies to the RPA susceptibilities and to the Stoner criterion, which then involves the leading eigenvalue of a matrix rather than a scalar.
+None of the structural results change in the presence of orbital or Keldysh indices — the SBE equations, the spin projections of the loop products and the $\tfrac{1}{4}/\tfrac{3}{4}$ weights all carry over unchanged — but the closed-form expressions do not. With additional indices the bosonic Dyson equation becomes a genuine matrix equation in those indices at every $(\omega, \mathbf{q})$, and the "division" below has to be replaced by a matrix inversion. The same caveat applies to the RPA susceptibilities and to the Stoner criterion, which then involves the leading eigenvalue of a matrix rather than a scalar. That generalization is carried out in the section on [closed-form ladder resummation with additional indices](#closed-form-ladder-resummation-with-additional-indices), which replaces the division by a pointwise matrix inversion and the scalar Stoner criterion by a condition on the leading eigenvalue.
 :::
 
 :::{note}
@@ -280,6 +280,105 @@ With $\tfrac{1}{4}F_{0,d} + \tfrac{3}{4}F_{0,m} = U/2$ accounting for their expl
 :::{note}
 The relative sign between $W$ and $\eta$ is not a discrepancy, but reflects the different sign convention for the bare interaction: in our antisymmetrized Hugenholtz convention $F_{0,d} = -U$, whereas the density component of the bare interaction is defined as $+U$ there.
 :::
+
+## Closed-form ladder resummation with additional indices
+
+Everything above was derived for objects that are *scalars* in every degree of freedom other than spin and the bosonic transfer variable, as announced in the [scope admonition](#the-gw-approximation) at the top of this page. Under that assumption the bosonic Dyson equation decoupled into two scalar equations and could be solved by ordinary division. This section removes the restriction. It keeps a finite set of additional indices on the two-particle objects — Keldysh indices in the application we have in mind, but the algebra only uses that they are finite in number, so orbital indices are covered by the same argument — and shows that the density and magnetic ladders still sum in closed form, with the scalar division replaced by a matrix inversion at every $(\omega, \mathbf{q})$.
+
+Two properties of the local Hubbard interaction survive the addition of these indices, and they are what makes the closed form possible:
+
+1. The bare vertex $F_0$ is independent of frequency and momentum.
+2. Every rung of the $ph$ ladder carries the *same* bosonic transfer variable $(\omega, \mathbf{q})$. Inserting one more bubble is therefore an *elementwise product* in $(\omega, \mathbf{q})$, not a new integration.
+
+Together these mean that at each fixed $(\omega, \mathbf{q})$ the ladder recursion is a linear map on a finite-dimensional space, and the ladder itself is a geometric series in that map.
+
+### The rung as a linear map
+
+Let $k_1 k_2 k_3 k_4$ collect the additional indices, each running over a finite range, and let $\Pi_{k_1 k_2 k_3 k_4}(\omega,\mathbf{q})$ denote the integrated $ph$ bubble carrying them, whose reduction in the scalar case is the polarization $P^{ph}(\omega)$ of the [section above](#polarization-and-screened-interaction-in-the-ph-channel). Write the $ph$-reducible vertex with $\ell$ bubble insertions as $\Phi^{(\ell)}_{k_1 k_2 k_3 k_4}(\omega, \mathbf{q})$.
+
+Inserting one further bubble between a bare vertex on the left and $\Phi^{(\ell)}$ on the right defines the linear map $M$,
+
+\begin{align}
+    \big(M X\big)_{k_1 k_2 k_3 k_4}
+      = \sum_{k_5 k_6 k_7 k_8} F_{0; k_5 k_2 k_3 k_6}\,
+        \Pi_{k_8 k_5 k_6 k_7}\, X_{k_1 k_8 k_7 k_4} \, ,
+\end{align}
+
+where every factor is evaluated at the same $(\omega, \mathbf{q})$, which is therefore suppressed. The ladder recursion is then simply
+
+\begin{align}
+    \Phi^{(\ell+1)} = M\, \Phi^{(\ell)} \, , \qquad\qquad \Phi^{(\ell)} = M^{\ell-1}\, \Phi^{(1)} \, ,
+\end{align}
+
+with $\Phi^{(1)} = F_0 \bullet \Pi \bullet F_0$ the second-order vertex.
+
+:::{note}
+The indices $k_1$ and $k_4$ are **spectators**: they appear on $X$ and on the result, but are not summed over. $M$ is therefore block diagonal in $(k_1, k_4)$, with identical blocks acting on the pair $(k_2, k_3)$. For two-valued Keldysh indices, $M$ acting on the full $16$-dimensional space is four copies of one $4 \times 4$ block. Either form may be used; an implementation that wants to compare against a dense reference is usually better off with the redundant $16 \times 16$ form, since it matches the index layout of the recursion literally.
+:::
+
+### The geometric series
+
+Because $\Phi^{(\ell)} = M^{\ell-1}\Phi^{(1)}$, the two channel sums defined [above](#polarization-and-screened-interaction-in-the-ph-channel) become geometric series in $M$. Using $\Phi_m^{(\ell)} = (-1)^{\ell+1}\Phi_d^{(\ell)}$, which holds exactly for a local interaction because $F_{0,m} = -F_{0,d}$,
+
+\begin{align}
+    \widetilde{W}_d &= \sum_{\ell \ge 1} \Phi^{(\ell)} = \sum_{j \ge 0} M^{j}\, \Phi^{(1)} = \big(\mathbb{1} - M\big)^{-1} \Phi^{(1)} \, , \\
+    \widetilde{W}_m &= \sum_{\ell \ge 1} (-1)^{\ell+1} \Phi^{(\ell)} = \sum_{j \ge 0} (-M)^{j}\, \Phi^{(1)} = \big(\mathbb{1} + M\big)^{-1} \Phi^{(1)} \, ,
+\end{align}
+
+and the $GW$ vertex is the weighted combination
+
+\begin{align}
+    \boxed{\ \Phi_{GW} = w_d\, \big(\mathbb{1} - M\big)^{-1} \Phi^{(1)} \ + \ w_m\, \big(\mathbb{1} + M\big)^{-1} \Phi^{(1)} \, , \qquad (w_d, w_m) = \left(\tfrac{1}{4}, \tfrac{3}{4}\right) \ } \, .
+\end{align}
+
+This is the announced replacement of the scalar division by a matrix inversion. It is a *pointwise* statement: at each $(\omega, \mathbf{q})$ one inverts a single finite matrix, and no integration couples different transfer variables. The cost is therefore independent of how many ladder orders would have been needed to reach the same accuracy by direct summation.
+
+:::{note} Reduction to the scalar case
+Setting all additional indices to a single value, $M \rightarrow F_{0,d} P^{ph} = -U P^{ph}$ and $\Phi^{(1)} \rightarrow F_{0,d}^2 P^{ph} = U^2 P^{ph}$, so that
+
+\begin{align}
+    \widetilde{W}_d \rightarrow \frac{U^2 P^{ph}}{1 + U P^{ph}} \, , \qquad\qquad \widetilde{W}_m \rightarrow \frac{U^2 P^{ph}}{1 - U P^{ph}} \, ,
+\end{align}
+
+which are exactly the scalar expressions $\widetilde{W}^{ph}_{d/m} = F_{0,d/m}^2 P^{ph} / (1 - F_{0,d/m} P^{ph})$ obtained [above](#polarization-and-screened-interaction-in-the-ph-channel). $\checkmark$
+:::
+
+### The static offsets
+
+The objects above are the *dynamic* parts, marked by the tilde exactly as in the scalar case: the static contributions $F_{0,d} = -U$ and $F_{0,m} = +U$ are deliberately not included. They combine into the Hartree term, which is conventionally absorbed into the propagator, and leaving them out keeps the resummed objects decaying at large transfer frequency. Restoring them, if wanted, is the substitution $W_{d/m} = \widetilde{W}_{d/m} + F_{0,d/m}$.
+
+### Convergence and the Stoner criterion
+
+The geometric series converges if and only if the spectral radius of the rung satisfies
+
+\begin{align}
+    \rho\big(M(\omega, \mathbf{q})\big) = \max_i \big| \lambda_i\big(M(\omega,\mathbf{q})\big)\big| < 1
+\end{align}
+
+at every $(\omega, \mathbf{q})$. The closed forms, by contrast, are defined wherever $\mathbb{1} \mp M$ is invertible, which is a strictly weaker condition — the same relationship as between the scalar geometric series in $U P^{ph}$ and the closed-form $W_{d/m}$ noted in the section on $G_0 W_0$ and self-consistent $GW$ at the end of this page. This is precisely the matrix generalization of the Stoner criterion that the scope admonition at the top deferred: the instability condition is a statement about the *leading eigenvalue* of $M$, not about a scalar exceeding one.
+
+:::{important} Which eigenvalue, and with which sign
+The magnetic channel carries $(\mathbb{1} + M)^{-1}$, so **the magnetic instability appears as an eigenvalue of $M$ approaching $-1$**, not $+1$. This is the matrix form of the statement made in the [Stoner criterion](#stoner-criterion) section, that the instability lives in the magnetic and not the density channel, and it follows from the same relative sign $F_{0,m} = -F_{0,d}$: in the scalar limit $\lambda(M) = -U P^{ph}$, so $\lambda \rightarrow -1$ is exactly $U P^{ph} \rightarrow 1$.
+
+Two practical consequences. A numerical diagnostic must report the *argument* of the leading eigenvalue alongside its modulus; tracking $|\lambda|$ alone cannot say which channel is going critical. And an implementation that pairs the wrong resolvent with the wrong channel will still produce a finite, smooth, entirely plausible answer — with the instability in the wrong channel and at the wrong temperature. Neither error is visible at $\mathcal{O}(U^2)$, where the two channels coincide.
+:::
+
+:::{note} The spectral radius is a discretization artifact until the grid resolves the bubble
+On a numerical grid, $\rho(M)$ is not a physical quantity until the bosonic grid is fine enough to resolve the structure of $\Pi$. Until then it is proportional to the grid spacing and can exceed one at couplings where the physical ladder converges comfortably, so that a perfectly convergent calculation appears to diverge for purely discretization reasons.
+
+Measured in `ReFrequenTT` for the Anderson impurity model at $U = 2$, $T = 0.1$ (see `test/test_gw_weights.jl` there): with a frequency window of $\pm 1000$, $\rho$ at $\omega = 0$ comes out as $5.97 / 1.49 / 0.376$ for $R = 4/6/8$ quantics bits and is still moving; with a window of $\pm 20$ it converges to $0.933 / 0.691 / 0.694$ over the same range. Any statement about an instability temperature extracted from a grid in the first regime is meaningless.
+:::
+
+### Susceptibilities
+
+The identification $\widetilde{W}_{d/m} = U^2 \chi_{d/m}$ made in the scalar case carries over unchanged, since it is a statement about the bare-vertex prefactors and not about the index structure:
+
+\begin{align}
+    \chi_d = \frac{1}{U^2}\big(\mathbb{1} - M\big)^{-1} \Phi^{(1)} \, , \qquad\qquad
+    \chi_m = \frac{1}{U^2}\big(\mathbb{1} + M\big)^{-1} \Phi^{(1)} \, .
+\end{align}
+
+These are the dynamic parts, consistent with $\widetilde{W}$, and they are RPA susceptibilities in the strict sense only if $\Pi$ is built from bare propagators — the same caveat as in the scalar case applies here verbatim.
 
 ## Which form of the Schwinger-Dyson equation?
 
