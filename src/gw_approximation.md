@@ -382,27 +382,37 @@ This has a practical consequence: the modulus of the leading eigenvalue does not
 
 ### Susceptibilities
 
-The identification $\widetilde{W}_{d/m} = U^2 \chi_{d/m}$ of the scalar case does *not* carry over unchanged, and it is worth seeing why. The relation behind it is
+The susceptibility in channel $c$ is the same $ph$ ladder that produced $\widetilde{W}_c$, except that it begins and ends with a bubble instead of with a bare vertex,
 
 \begin{align}
-    \widetilde{W}_c = F_{0,c} \bullet \chi_c \bullet F_{0,c} \, ,
+    \chi_c = P^{ph} \; + \; P^{ph} \bullet F_{0,c} \bullet P^{ph} \; + \; P^{ph} \bullet F_{0,c} \bullet P^{ph} \bullet F_{0,c} \bullet P^{ph} \; + \; \dots
 \end{align}
 
-that is, the susceptibility carries one bare vertex at each end. As long as $F_{0,c} = \mp U$ is a number, the two vertices are a factor $U^2$ that can simply be divided out, which is where $\widetilde{W}_{d/m} = U^2 \chi_{d/m}$ comes from. With additional indices they are tensors, and dividing $\widetilde{W}_c$ by $U^2$ does not remove them: the result still has vertices attached at both ends and is therefore not a susceptibility.
-
-Amputating them properly moves the resolvent onto the bubble. Applying $(\mathbb{1} - AB)^{-1}A = A(\mathbb{1} - BA)^{-1}$ to $\widetilde{W}_c = (\mathbb{1} - M_c)^{-1}\, F_{0,c} \bullet P^{ph} \bullet F_{0,c}$ gives
+Each further order prepends one more factor $P^{ph} \bullet F_{0,c}$, so the term with $j$ interaction lines is $\big(P^{ph} \bullet F_{0,c}\big)^{j} P^{ph}$. This is a geometric series of exactly the kind summed above, and it closes the same way,
 
 \begin{align}
-    \chi_c = \big(\mathbb{1} - N_c\big)^{-1} P^{ph} \, , \qquad\qquad N_c = P^{ph} \bullet F_{0,c} \, ,
+    \chi_c = \big(\mathbb{1} - P^{ph} \bullet F_{0,c} \big)^{-1} P^{ph} \, ,
 \end{align}
 
-which is the same geometric series, but seeded by the bubble instead of by $\Phi^{(1)}$ and built from the rung in the opposite order, with the vertex to the right of the bubble rather than to its left. In the scalar limit $N_c = M_c$, the two orders coincide, and the distinction is invisible. That is why the factor $U^2$ appears to be the whole story there.
+with the density and magnetic cases differing only through $F_{0,m} = -F_{0,d}$. Setting all additional indices to a single value gives $\chi_d \rightarrow P^{ph}/(1 + U P^{ph})$ and $\chi_m \rightarrow P^{ph}/(1 - U P^{ph})$, the two susceptibilities of the [scalar case](#polarization-and-screened-interaction-in-the-ph-channel). $\checkmark$
 
-:::{danger} To do
-Write $N_c$ out in the additional indices, in the same explicit form as $M_c$ above, and check it against the scalar limit.
+The rung of this series carries the same two factors as $M_c$ but in the opposite order, a bubble followed by a vertex rather than a vertex followed by a bubble, simply because the ladder now starts at a bubble. For scalars the order is immaterial, which is why one map sufficed there.
+
+:::{warning} $\chi_c$ is not $\widetilde{W}_c / U^2$ once the indices are present
+The two objects are built from the same ladder, and differ only in what sits at its two ends:
+
+\begin{align}
+    \widetilde{W}_c = F_{0,c} \bullet \chi_c \bullet F_{0,c} \, .
+\end{align}
+
+While $F_{0,c} = \mp U$ is a number, those two end vertices are nothing but the factor $U^2$, and dividing it out turns one object into the other. This is the origin of the scalar identification $\widetilde{W}_{d/m} = U^2 \chi_{d/m}$. Once the vertices carry indices they are tensors, and dividing $\widetilde{W}_c$ by $U^2$ does not remove them: what remains still has a vertex attached at each end, and is not a susceptibility.
 :::
 
 These are RPA susceptibilities in the strict sense only if $P^{ph}$ is built from bare propagators. The same caveat as in the scalar case applies here verbatim.
+
+:::{danger} To do
+Write the rung $P^{ph} \bullet F_{0,c}$ out in the additional indices, in the same explicit form as $M_c$ above.
+:::
 
 (which-form-of-the-schwinger-dyson-equation)=
 ## Which form of the Schwinger-Dyson equation?
