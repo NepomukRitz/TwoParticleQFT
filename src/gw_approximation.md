@@ -299,23 +299,29 @@ Together these mean that at each fixed $(\omega, \mathbf{q})$ the ladder recursi
 
 ### The rung as a linear map
 
-Let $k_1 k_2 k_3 k_4$ collect the additional indices, each running over a finite range, and let $\Pi_{k_1 k_2 k_3 k_4}(\omega,\mathbf{q})$ denote the integrated $ph$ bubble carrying them, whose reduction in the scalar case is the polarization $P^{ph}(\omega)$ of the [section above](#polarization-and-screened-interaction-in-the-ph-channel). Write the $ph$-reducible vertex with $\ell$ bubble insertions as $\Phi^{(\ell)}_{k_1 k_2 k_3 k_4}(\omega, \mathbf{q})$.
+Let $k_1 k_2 k_3 k_4$ collect the additional indices, each running over a finite range, and let $P^{ph}_{k_1 k_2 k_3 k_4}(\omega,\mathbf{q})$ denote the integrated $ph$ bubble carrying them — the index-resolved generalization of the polarization $P^{ph}(\omega)$ of the [section above](#polarization-and-screened-interaction-in-the-ph-channel), to which it reduces when the indices are dropped. Write the $ph$-reducible vertex with $\ell$ bubble insertions in spin channel $c \in \{d, m\}$ as $\Phi^{(\ell)}_{c; k_1 k_2 k_3 k_4}(\omega, \mathbf{q})$; the parenthesized superscript counts bubble insertions and is not the channel label of the $\Phi^r$ used elsewhere in this documentation.
 
-Inserting one further bubble between a bare vertex on the left and $\Phi^{(\ell)}$ on the right defines the linear map $M$,
-
-\begin{align}
-    \big(M X\big)_{k_1 k_2 k_3 k_4}
-      = \sum_{k_5 k_6 k_7 k_8} F_{0; k_5 k_2 k_3 k_6}\,
-        \Pi_{k_8 k_5 k_6 k_7}\, X_{k_1 k_8 k_7 k_4} \, ,
-\end{align}
-
-where every factor is evaluated at the same $(\omega, \mathbf{q})$, which is therefore suppressed. The ladder recursion is then simply
+The additional indices carry no spin label, because the spin projection has already been carried out: the bare vertex entering here is one of the two components $F_{0,d} = -U$ and $F_{0,m} = +U$. Inserting one further bubble between a bare vertex on the left and $\Phi_c^{(\ell)}$ on the right therefore defines one linear map per spin channel,
 
 \begin{align}
-    \Phi^{(\ell+1)} = M\, \Phi^{(\ell)} \, , \qquad\qquad \Phi^{(\ell)} = M^{\ell-1}\, \Phi^{(1)} \, ,
+    \big(M_c X\big)_{k_1 k_2 k_3 k_4}
+      = \sum_{k_5 k_6 k_7 k_8} F_{0,c; k_5 k_2 k_3 k_6}\,
+        P^{ph}_{k_8 k_5 k_6 k_7}\, X_{k_1 k_8 k_7 k_4} \, ,
 \end{align}
 
-with $\Phi^{(1)} = F_0 \bullet \Pi \bullet F_0$ the second-order vertex.
+where every factor is evaluated at the same $(\omega, \mathbf{q})$, which is therefore suppressed. Since $F_{0,m} = -F_{0,d}$ for a local interaction, the two maps differ only by an overall sign,
+
+\begin{align}
+    M_m = -M_d \, ,
+\end{align}
+
+so a single map suffices, and we abbreviate $M \equiv M_d$ from here on. The ladder recursion is then simply
+
+\begin{align}
+    \Phi_c^{(\ell+1)} = M_c\, \Phi_c^{(\ell)} \, , \qquad\qquad \Phi_c^{(\ell)} = M_c^{\ell-1}\, \Phi_c^{(1)} \, ,
+\end{align}
+
+with $\Phi_c^{(1)} = F_{0,c} \bullet P^{ph} \bullet F_{0,c}$ the second-order vertex. Only the *square* of the bare vertex enters at first order, so $\Phi_m^{(1)} = \Phi_d^{(1)}$, and we write $\Phi^{(1)}$ for their common value.
 
 :::{note}
 The indices $k_1$ and $k_4$ are **spectators**: they appear on $X$ and on the result, but are not summed over. $M$ is therefore block diagonal in $(k_1, k_4)$, with identical blocks acting on the pair $(k_2, k_3)$. For two-valued Keldysh indices, $M$ acting on the full $16$-dimensional space is four copies of one $4 \times 4$ block. Either form may be used; an implementation that wants to compare against a dense reference is usually better off with the redundant $16 \times 16$ form, since it matches the index layout of the recursion literally.
@@ -323,11 +329,17 @@ The indices $k_1$ and $k_4$ are **spectators**: they appear on $X$ and on the re
 
 ### The geometric series
 
-Because $\Phi^{(\ell)} = M^{\ell-1}\Phi^{(1)}$, the two channel sums defined [above](#polarization-and-screened-interaction-in-the-ph-channel) become geometric series in $M$. Using $\Phi_m^{(\ell)} = (-1)^{\ell+1}\Phi_d^{(\ell)}$, which holds exactly for a local interaction because $F_{0,m} = -F_{0,d}$,
+Because $\Phi_c^{(\ell)} = M_c^{\ell-1}\Phi^{(1)}$ with $M_m = -M$, the magnetic ladder is the alternating counterpart of the density one,
 
 \begin{align}
-    \widetilde{W}_d &= \sum_{\ell \ge 1} \Phi^{(\ell)} = \sum_{j \ge 0} M^{j}\, \Phi^{(1)} = \big(\mathbb{1} - M\big)^{-1} \Phi^{(1)} \, , \\
-    \widetilde{W}_m &= \sum_{\ell \ge 1} (-1)^{\ell+1} \Phi^{(\ell)} = \sum_{j \ge 0} (-M)^{j}\, \Phi^{(1)} = \big(\mathbb{1} + M\big)^{-1} \Phi^{(1)} \, ,
+    \Phi_m^{(\ell)} = (-M)^{\ell-1}\, \Phi^{(1)} = (-1)^{\ell+1}\, \Phi_d^{(\ell)} \, ,
+\end{align}
+
+which is where the relative sign between the two channels enters. The two channel sums defined [above](#polarization-and-screened-interaction-in-the-ph-channel) therefore become geometric series in the single map $M$,
+
+\begin{align}
+    \widetilde{W}_d &= \sum_{\ell \ge 1} \Phi_d^{(\ell)} = \sum_{j \ge 0} M^{j}\, \Phi^{(1)} = \big(\mathbb{1} - M\big)^{-1} \Phi^{(1)} \, , \\
+    \widetilde{W}_m &= \sum_{\ell \ge 1} \Phi_m^{(\ell)} = \sum_{j \ge 0} (-M)^{j}\, \Phi^{(1)} = \big(\mathbb{1} + M\big)^{-1} \Phi^{(1)} \, ,
 \end{align}
 
 and the $GW$ vertex is the weighted combination
@@ -338,8 +350,8 @@ and the $GW$ vertex is the weighted combination
 
 This is the announced replacement of the scalar division by a matrix inversion. It is a *pointwise* statement: at each $(\omega, \mathbf{q})$ one inverts a single finite matrix, and no integration couples different transfer variables. The cost is therefore independent of how many ladder orders would have been needed to reach the same accuracy by direct summation.
 
-:::{note} Reduction to the scalar case
-Setting all additional indices to a single value, $M \rightarrow F_{0,d} P^{ph} = -U P^{ph}$ and $\Phi^{(1)} \rightarrow F_{0,d}^2 P^{ph} = U^2 P^{ph}$, so that
+:::{dropdown} Consistency check: reduction to the scalar case
+Setting all additional indices to a single value, $M = M_d \rightarrow F_{0,d} P^{ph} = -U P^{ph}$ and $\Phi^{(1)} \rightarrow F_{0,d}^2 P^{ph} = U^2 P^{ph}$, so that
 
 \begin{align}
     \widetilde{W}_d \rightarrow \frac{U^2 P^{ph}}{1 + U P^{ph}} \, , \qquad\qquad \widetilde{W}_m \rightarrow \frac{U^2 P^{ph}}{1 - U P^{ph}} \, ,
@@ -352,7 +364,7 @@ which are exactly the scalar expressions $\widetilde{W}^{ph}_{d/m} = F_{0,d/m}^2
 
 The objects above are the *dynamic* parts, marked by the tilde exactly as in the scalar case: the static contributions $F_{0,d} = -U$ and $F_{0,m} = +U$ are deliberately not included. They combine into the Hartree term, which is conventionally absorbed into the propagator, and leaving them out keeps the resummed objects decaying at large transfer frequency. Restoring them, if wanted, is the substitution $W_{d/m} = \widetilde{W}_{d/m} + F_{0,d/m}$.
 
-### Convergence and the Stoner criterion
+### Convergence and the matrix Stoner criterion
 
 The geometric series converges if and only if the spectral radius of the rung satisfies
 
@@ -360,7 +372,7 @@ The geometric series converges if and only if the spectral radius of the rung sa
     \rho\big(M(\omega, \mathbf{q})\big) = \max_i \big| \lambda_i\big(M(\omega,\mathbf{q})\big)\big| < 1
 \end{align}
 
-at every $(\omega, \mathbf{q})$. The closed forms, by contrast, are defined wherever $\mathbb{1} \mp M$ is invertible, which is a strictly weaker condition — the same relationship as between the scalar geometric series in $U P^{ph}$ and the closed-form $W_{d/m}$ noted in the section on $G_0 W_0$ and self-consistent $GW$ at the end of this page. This is precisely the matrix generalization of the Stoner criterion that the scope admonition at the top deferred: the instability condition is a statement about the *leading eigenvalue* of $M$, not about a scalar exceeding one.
+at every $(\omega, \mathbf{q})$. The closed forms, by contrast, are defined wherever $\mathbb{1} \mp M$ is invertible, which is a strictly weaker condition — the same relationship as between the scalar geometric series in $U P^{ph}$ and the closed-form $W_{d/m}$ noted in the section on [$G_0 W_0$ and self-consistent $GW$](#gw-variants) at the end of this page. This is precisely the matrix generalization of the Stoner criterion that the scope admonition at the top deferred: the instability condition is a statement about the *leading eigenvalue* of $M$, not about a scalar exceeding one.
 
 :::{important} Which eigenvalue, and with which sign
 The magnetic channel carries $(\mathbb{1} + M)^{-1}$, so **the magnetic instability appears as an eigenvalue of $M$ approaching $-1$**, not $+1$. This is the matrix form of the statement made in the [Stoner criterion](#stoner-criterion) section, that the instability lives in the magnetic and not the density channel, and it follows from the same relative sign $F_{0,m} = -F_{0,d}$: in the scalar limit $\lambda(M) = -U P^{ph}$, so $\lambda \rightarrow -1$ is exactly $U P^{ph} \rightarrow 1$.
@@ -369,9 +381,9 @@ Two practical consequences. A numerical diagnostic must report the *argument* of
 :::
 
 :::{note} The spectral radius is a discretization artifact until the grid resolves the bubble
-On a numerical grid, $\rho(M)$ is not a physical quantity until the bosonic grid is fine enough to resolve the structure of $\Pi$. Until then it is proportional to the grid spacing and can exceed one at couplings where the physical ladder converges comfortably, so that a perfectly convergent calculation appears to diverge for purely discretization reasons.
+On a numerical grid, $\rho(M)$ is not a physical quantity until the bosonic grid is fine enough to resolve the structure of $P^{ph}$. Until then it scales with the grid spacing and can exceed one at couplings where the physical ladder converges comfortably, so that a perfectly convergent calculation appears to diverge for purely discretization reasons.
 
-Measured in `ReFrequenTT` for the Anderson impurity model at $U = 2$, $T = 0.1$ (see `test/test_gw_weights.jl` there): with a frequency window of $\pm 1000$, $\rho$ at $\omega = 0$ comes out as $5.97 / 1.49 / 0.376$ for $R = 4/6/8$ quantics bits and is still moving; with a window of $\pm 20$ it converges to $0.933 / 0.691 / 0.694$ over the same range. Any statement about an instability temperature extracted from a grid in the first regime is meaningless.
+Measured in a quantics tensor train implementation for the Anderson impurity model at $U = 2$, $T = 0.1$: with a frequency window of $\pm 1000$, $\rho$ at $\omega = 0$ comes out as $5.97 / 1.49 / 0.376$ for $R = 4/6/8$ quantics bits — very nearly a factor of four per two additional bits, i.e. linear in the grid spacing — and is still moving, so it has to turn around and rise again once the grid resolves $P^{ph}$. With a window of $\pm 20$ it has converged, to $0.933 / 0.691 / 0.694$ over the same range. Any statement about an instability temperature extracted from a grid in the first regime is meaningless.
 :::
 
 ### Susceptibilities
@@ -383,7 +395,7 @@ The identification $\widetilde{W}_{d/m} = U^2 \chi_{d/m}$ made in the scalar cas
     \chi_m = \frac{1}{U^2}\big(\mathbb{1} + M\big)^{-1} \Phi^{(1)} \, .
 \end{align}
 
-These are the dynamic parts, consistent with $\widetilde{W}$, and they are RPA susceptibilities in the strict sense only if $\Pi$ is built from bare propagators — the same caveat as in the scalar case applies here verbatim.
+These are the dynamic parts, consistent with $\widetilde{W}$, and they are RPA susceptibilities in the strict sense only if $P^{ph}$ is built from bare propagators — the same caveat as in the scalar case applies here verbatim.
 
 (which-form-of-the-schwinger-dyson-equation)=
 ## Which form of the Schwinger-Dyson equation?
@@ -439,6 +451,7 @@ Finally, the bosonic argument matches as well: the $\overline{ph}$ loop yields $
 Quantify how much the $pp$ variant differs from the particle-hole one at $\mathcal{O}(U^3)$, and whether anything can be said about which is closer to the exact result. Relatedly, one could construct a crossing-symmetrized variant by combining the particle-hole and particle-particle forms, which is essentially what the FLEX approximation does.
 :::
 
+(gw-variants)=
 ## Variants: $G_0 W_0$ and self-consistent $GW$
 
 The equations above do not yet specify which propagator enters the bubble $\chi_0^{ph}$ and the self-energy loop. Two common choices are:

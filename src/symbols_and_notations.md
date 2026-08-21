@@ -33,6 +33,8 @@ The tables on this page provide an overview of the main symbols and notations us
 | screened interaction in channel $r$ | $W^r$ | $w_r$, $\eta_r$, $W_r$, $D^r$ |
 | Hedin vertices in channel $r$ | ($\gamma^r$, $\overline{\gamma}^r$) | ($\lambda_r$, $\bar{\lambda}_r$), ($\Lambda_r$, $\bar{\Lambda}_r$), ($h^r$, $\bar{h}^r$) |
 | polarization in channel $r$ | $P^r$ | $\Pi_r$, $\pi_r$, $P_r$ |
+| dynamic (decaying) part of the screened interaction | $\widetilde{W}^r$ | - |
+| one bubble insertion into the $ph$ ladder, as a linear map | $M$ | - |
 
 ## Frequency and momentum parametrizations
 
