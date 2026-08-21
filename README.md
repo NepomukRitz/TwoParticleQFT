@@ -4,7 +4,7 @@
 
 **An open, community-editable reference for two-particle quantities in quantum field theory**
 
-*Definitions, conventions, diagrammatics, and the technical derivations that papers usually leave out — with a focus on strongly correlated electron systems.*
+*Definitions, conventions, diagrammatics, and the technical derivations that papers usually leave out, with a focus on strongly correlated electron systems.*
 
 [**📖 Read it online**](https://nepomukritz.github.io/TwoParticleQFT/) &nbsp;·&nbsp;
 [Symbols &amp; notations](https://nepomukritz.github.io/TwoParticleQFT/symbols-and-notations) &nbsp;·&nbsp;
@@ -24,7 +24,7 @@
 
 ## About
 
-Two-particle quantities — vertices, four-point functions, susceptibilities — sit at the heart of the theory of strongly correlated electrons, from the Bethe–Salpeter and parquet equations to modern diagrammatic extensions of dynamical mean-field theory. Unfortunately, there is a vast body of literature on them, and **different communities use different (and often mutually incompatible) conventions and notations — sometimes even from paper to paper.** This is a perennial source of confusion, and [the main motivation](https://xkcd.com/927) for this project.
+Two-particle quantities (vertices, four-point functions, susceptibilities) sit at the heart of the theory of strongly correlated electrons, from the Bethe–Salpeter and parquet equations to modern diagrammatic extensions of dynamical mean-field theory. Unfortunately, there is a vast body of literature on them, and **different communities use different (and often mutually incompatible) conventions and notations, sometimes even from paper to paper.** This is a perennial source of confusion, and [the main motivation](https://xkcd.com/927) for this project.
 
 **TwoParticleQFT** is a documentation site that aims to:
 
@@ -52,7 +52,7 @@ The content is written in [MyST Markdown](https://mystmd.org/) and organized int
 | | [$GW$ approximation](https://nepomukritz.github.io/TwoParticleQFT/gw-approximation) | Spin projection of the loop products, polarization and screened interaction in the $ph$ channel, the $GW$ self-energy, the closed-form ladder resummation, and the $G_0W_0$ / self-consistent variants. |
 | | [Second-order perturbation theory](https://nepomukritz.github.io/TwoParticleQFT/second-order-perturbation-theory) | The second-order vertex and self-energy explicitly, including the Fourier-convolution route for the bubble. |
 | **Advanced topics** | [Keldysh formalism](https://nepomukritz.github.io/TwoParticleQFT/keldysh-formalism) | Two-particle QFT on the real-frequency Keldysh contour: index structure, the Keldysh rotation, and component Dyson equations. |
-| | [w2dynamics conventions](https://nepomukritz.github.io/TwoParticleQFT/w2dynamics) | The frequency conventions and definitions of the [w2dynamics](https://github.com/w2dynamics/w2dynamics) impurity solver — one- and two-particle Green's functions, channel parametrizations, and crossing symmetries — and how they relate to the Vienna/Munich conventions. |
+| | [w2dynamics conventions](https://nepomukritz.github.io/TwoParticleQFT/w2dynamics) | The frequency conventions and definitions of the [w2dynamics](https://github.com/w2dynamics/w2dynamics) impurity solver: one- and two-particle Green's functions, channel parametrizations, and crossing symmetries, and how they relate to the Vienna/Munich conventions. |
 
 ### Highlights
 
@@ -63,19 +63,19 @@ The content is written in [MyST Markdown](https://mystmd.org/) and organized int
 - 🖼️ Diagrams and figures for propagators, vertices, bubbles, and the parquet/SDE relations.
 
 > [!NOTE]
-> The site is under active construction — several pages carry visible "to do" notes marking derivations still to be filled in or expanded. See the [wishlist](https://nepomukritz.github.io/TwoParticleQFT/#wishlist) for the current priorities.
+> The site is under active construction, and several pages carry visible "to do" notes marking derivations still to be filled in or expanded. See the [wishlist](https://nepomukritz.github.io/TwoParticleQFT/#wishlist) for the current priorities.
 
 ## Building the site locally
 
 The site is a [Jupyter Book 2 / MyST](https://next.jupyterbook.org/) project. You only need the `jupyter-book` CLI; a recent Node.js is bundled/bootstrapped for you either way.
 
-**Option A — Python (pip):**
+**Option A: Python (pip)**
 
 ```bash
 pip install jupyter-book        # provides the v2 (MyST) CLI, ≥ 2.1.0
 ```
 
-**Option B — Node (npm), matching the CI:**
+**Option B: Node (npm), matching the CI**
 
 ```bash
 npm install -g jupyter-book
@@ -138,4 +138,4 @@ Released under the [MIT License](LICENSE). © 2025 Nepomuk Ritz.
 
 If this reference is useful for your work, a link back to the site is appreciated:
 
-> N. Ritz, *TwoParticleQFT — Open review of definitions, conventions and equations for two-particle quantum field theory.* <https://nepomukritz.github.io/TwoParticleQFT/>
+> N. Ritz, *TwoParticleQFT: Open review of definitions, conventions and equations for two-particle quantum field theory.* <https://nepomukritz.github.io/TwoParticleQFT/>

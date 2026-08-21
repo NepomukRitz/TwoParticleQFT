@@ -2,7 +2,7 @@
 
 This file applies to the entire `TwoParticleQFT` repository. Read it before making any
 non-trivial change. It tells human and AI contributors **how to write pages that are
-consistent with the ones already here.** When in doubt, imitate the existing pages — they are
+consistent with the ones already here.** When in doubt, imitate the existing pages: they are
 the reference, and other projects (e.g. `ReFrequenTT`) already treat this repo as their
 convention ground-truth, so drift here propagates.
 
@@ -15,43 +15,43 @@ Pages. Pages live in `src/*.md`; the table of contents is `myst.yml`; the landin
 
 The site's whole reason to exist is that different communities use mutually incompatible
 conventions. So the primary job of every page is to **fix one convention clearly and
-translate to the others** — not to re-derive physics in yet another private notation.
+translate to the others**, not to re-derive physics in yet another private notation.
 
 ## Conventions are the point (not optional)
 
-- **The existing pages are the source of truth for conventions and notation** — not a paper,
+- **The existing pages are the source of truth for conventions and notation**, not a paper,
   not memory. Before introducing any symbol or equation, check how it is already defined here
   and match it. The load-bearing pages are:
-  - [`src/symbols_and_notations.md`](src/symbols_and_notations.md) — the symbol registry, each
+  - [`src/symbols_and_notations.md`](src/symbols_and_notations.md): the symbol registry, each
     entry cross-listed against its common literature synonyms. **Any new symbol must be added
     here**, with its synonyms.
-  - [`src/starting_point.md`](src/starting_point.md) — action, bare propagator, Hugenholtz
+  - [`src/starting_point.md`](src/starting_point.md): action, bare propagator, Hugenholtz
     interaction, the Vienna/Munich index conventions.
-  - [`src/basic_definitions.md`](src/basic_definitions.md) — propagator, self-energy,
+  - [`src/basic_definitions.md`](src/basic_definitions.md): propagator, self-energy,
     four-point function and vertex; the index-ordering conventions.
   - [`src/two-particle-channels.md`](src/two-particle-channels.md),
     [`src/frequency_parametrizations.md`](src/frequency_parametrizations.md),
-    [`src/spin_parametrizations.md`](src/spin_parametrizations.md) — channels, frequency
+    [`src/spin_parametrizations.md`](src/spin_parametrizations.md): channels, frequency
     parametrizations, SU(2) spin structure.
   - [`src/gw_approximation.md`](src/gw_approximation.md) and
-    [`src/second_order_perturbation_theory.md`](src/second_order_perturbation_theory.md) —
+    [`src/second_order_perturbation_theory.md`](src/second_order_perturbation_theory.md):
     fully parametrized worked results that downstream projects rely on directly; keep them
     consistent with the pages above.
 - **Do not silently switch conventions.** Keep the channel-native frequency parametrization and
   the Keldysh conventions of [`src/keldysh_formalism.md`](src/keldysh_formalism.md) (the
   retarded/advanced/Keldysh component structure after the Keldysh rotation, the causality
   zeros, and the fact that the self-energy's Keldysh indices are interchanged relative to the
-  propagator's). Rewriting existing pages into a different parametrization is not a cleanup —
+  propagator's). Rewriting existing pages into a different parametrization is not a cleanup;
   it is a breaking change. If a page genuinely needs a different convention, say so explicitly,
   in a box, and relate it back to the house convention.
 - **Documenting an alternative convention is welcome; silently adopting it is not.** Adding a
-  page or section that presents another community's or another code's convention — and maps it
-  onto the house one — is exactly what this site is for. The open to-do on symmetric frequency
+  page or section that presents another community's or another code's convention, and maps it
+  onto the house one, is exactly what this site is for. The open to-do on symmetric frequency
   parametrizations in [`src/frequency_parametrizations.md`](src/frequency_parametrizations.md)
   is a standing invitation, not something to avoid; what must not happen is re-parametrizing
   the existing pages on the way.
 - **Point out differences to other conventions** wherever a reader coming from the literature
-  would trip — most importantly the **"Vienna" vs "Munich"** conventions and the differing
+  would trip, most importantly the **"Vienna" vs "Munich"** conventions and the differing
   **channel labelings**. This cross-referencing is a feature, not an aside.
 
 ### House conventions to preserve
@@ -77,19 +77,23 @@ translate to the others** — not to re-derive physics in yet another private no
 The style that the existing pages follow, and that new pages must match:
 
 1. **Fully parametrize every equation.** All frequency, momentum, spin, and multi-index
-   arguments explicit. A reader must never have to guess a convention — "there can be no
+   arguments explicit. A reader must never have to guess a convention: "there can be no
    question marks regarding any conventions regarding arguments, indices, and so on."
 2. **Derive results properly, but keep the main text readable.** State the result in the body,
    and put the step-by-step derivation in a collapsible `:::{dropdown} Explicit calculation`
-   block (see below). Build on what other pages already derive rather than repeating it —
+   block (see below). Build on what other pages already derive rather than repeating it;
    link to them.
 3. **Disambiguate notation aggressively.** When a symbol could be confused with one used on
    another page (e.g. a tilde for a "decaying part" vs the SBE `Δʳ` vs a hybridization `Δ(ν)`),
    add a `:::{warning}` or `:::{note}` that says so and links to the other page.
 4. **Write for a new graduate student**, not only for the expert who already knows the answer.
    Prefer explicit prose and explicit steps over terse allusions.
+5. **Do not use em-dashes.** Use a comma, a colon, a semicolon, parentheses, or two sentences.
+   Em-dash-heavy prose reads as machine-written, which undermines a reference whose value
+   depends on being trusted. En-dashes in compound names (Bethe–Salpeter, Schwinger–Dyson) are
+   correct and stay.
 5. **Be honest about status.** Mark anything incomplete, stated-without-derivation, or
-   unverified with a `:::{danger}` "to do" admonition — the site-wide marker for open items
+   unverified with a `:::{danger}` "to do" admonition, the site-wide marker for open items
    (existing pages write the title as both "To do" and "To Do"; either is fine). Do not present
    a conjecture or a quoted-but-unchecked result as settled.
 
@@ -100,15 +104,15 @@ Match the concrete patterns already in `src/`:
 - **One `# H1` per page** (the page title; math is allowed, e.g. `# The $GW$ approximation`).
   Sections are `##` / `###`; cross-references target their slugified anchors.
 - **Display math uses `\begin{align} … \end{align}`** (the site has hundreds of these);
-  inline math uses `$…$`. Equations are generally unnumbered — cross-reference **sections**,
+  inline math uses `$…$`. Equations are generally unnumbered: cross-reference **sections**,
   not equation numbers.
-- **Admonition palette** (the ones in use — stick to them):
-  - `:::{note}`, `:::{important}`, `:::{warning}`, `:::{hint}` — remarks and caveats.
-  - `:::{danger} To do` — open items / unfinished derivations. This is the marker maintainers
+- **Admonition palette** (the ones in use, stick to them):
+  - `:::{note}`, `:::{important}`, `:::{warning}`, `:::{hint}`: remarks and caveats.
+  - `:::{danger} To do`: open items / unfinished derivations. This is the marker maintainers
     scan for; use it rather than leaving silent gaps.
-  - `:::{dropdown} Explicit calculation` — collapsible long derivations (also "Explicit
+  - `:::{dropdown} Explicit calculation`: collapsible long derivations (also "Explicit
     derivation", "Consistency check with …", "Note on signs and prefactors", etc.).
-  - `:::{image} diagrams/…` — figures.
+  - `:::{image} diagrams/…`: figures.
   - **Nesting:** use one extra colon for the outer block, e.g. a `::::{dropdown}` or
     `::::{note}` that contains a `:::{image}` or another `:::` admonition.
 - **Cross-links** use relative Markdown paths: `[text](other_page.md)` or
@@ -122,7 +126,7 @@ Match the concrete patterns already in `src/`:
   ```
   then `[Stoner criterion](#stoner-criterion)`. Labels also work on admonitions, which is the
   way to link to a specific box. Note that **a heading containing math gets no usable implicit
-  id** (`# The $GW$ approximation` does *not* yield `#the-gw-approximation`) — such a target
+  id** (`# The $GW$ approximation` does *not* yield `#the-gw-approximation`): such a target
   must have an explicit label. Where a label replaces an id that other pages already link to,
   keep the label string identical to the old anchor so those links keep working.
 - **The build must be warning-free.** `jupyter-book build --html` should report no `⚠️` lines.
@@ -156,7 +160,7 @@ jupyter-book build --html       # static build into _build/html
 
 Every push to `main` triggers `.github/workflows/deploy.yml`, which builds and publishes to
 GitHub Pages. There is no content CI on pull requests, so **preview locally before opening a
-PR** — a broken admonition or a bad cross-link will otherwise only surface after merge.
+PR**: a broken admonition or a bad cross-link will otherwise only surface after merge.
 
 ## Contributing workflow
 
@@ -170,5 +174,5 @@ PR** — a broken admonition or a bad cross-link will otherwise only surface aft
 - For a substantive **new section or page**, think about scope and structure first (the
   `superpowers:brainstorming` skill is a good fit) rather than writing straight into the file.
 - Fix a real error wherever you find it, but if a page states a convention that contradicts the
-  ground-truth pages, surface it rather than silently "correcting" one side — the inconsistency
+  ground-truth pages, surface it rather than silently "correcting" one side, since the inconsistency
   itself may be the thing to document.
