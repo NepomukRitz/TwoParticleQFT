@@ -9,6 +9,7 @@ The purpose of this page is to spell out what this means concretely, in the conv
 
 We work in the Matsubara formalism throughout, and we specialize to a system with SU(2) spin symmetry and a *local and instantaneous* bare interaction, i.e. the Hubbard interaction of the [Hubbard model example](starting_point.md#example-hubbard-model). This is the case in which the SBE machinery simplifies most drastically, and it is the case relevant for most applications.
 
+(gw-scope)=
 :::{important} Scope of the simplifications below
 Several steps on this page rely on the objects involved being *scalars* in every degree of freedom other than spin and the bosonic transfer variable. Concretely, we assume a single band with no orbital index, and we work in the Matsubara formalism, so that there are no Keldysh indices either. Under these assumptions the bosonic Dyson equation for the screened interaction decouples into two *scalar* equations that can be solved by ordinary division, and the density and magnetic ladders reduce to geometric series in a single scalar.
 
@@ -96,6 +97,7 @@ The two projections look inequivalent, but for a *crossing-symmetric* $X$ they a
 The *individual two-particle channels are not crossing symmetric* (see the note in the section on [two-particle channels](two-particle-channels.md#second-order-perturbation-theory)). Consequently, as soon as $X$ is a single-channel resummation — which is exactly what enters $GW$ — the two loop products are **no longer** related by a factor $\zeta$, and it matters which of them one uses. Which form of the SDE to start from therefore requires care; this is taken up [below](#which-form-of-the-schwinger-dyson-equation).
 :::
 
+(polarization-and-screened-interaction-in-the-ph-channel)=
 ## Polarization and screened interaction in the $ph$ channel
 
 We now specialize to the $ph$ channel, which is the channel in which the density and magnetic fluctuations live, as is evident from its interpretation in terms of the density-density correlator discussed in the section on [two-particle channels](two-particle-channels.md#note-on-possible-confusion-regarding-ph-leftrightarrow-overline-ph).
@@ -256,6 +258,7 @@ This limit fixes only the *sum* of the two channel weights, $\tfrac{1}{4} + \tfr
 More generally, the term with $\ell$ bubbles carries the weight $\tfrac{3}{4} + \tfrac{1}{4}(-1)^{\ell+1}$, i.e. $1$ for odd $\ell$ and $\tfrac{1}{2}$ for even $\ell$.
 :::
 
+(stoner-criterion)=
 ### Stoner criterion
 
 The magnetic screened interaction $W_m = U / (1 - U P^{ph})$ diverges when $U P^{ph}(\omega) = 1$, while the density one, $W_d = -U/(1 + U P^{ph})$, stays finite for $P^{ph} > 0$. At $\omega = 0$ and for fermions,
@@ -264,6 +267,7 @@ The magnetic screened interaction $W_m = U / (1 - U P^{ph})$ diverges when $U P^
 \end{align}
 which, if evaluated with the bare propagator, equals $\partial n / \partial \mu$ and is positive. The divergence condition then becomes $U \, \partial n / \partial\mu = 1$, which is the Stoner criterion for a magnetic instability. That the instability appears in the magnetic and not in the density channel is a direct consequence of the relative sign $F_{0,m} = -F_{0,d}$, and is a useful sanity check on the signs above.
 
+(comparison-with-the-literature)=
 ### Comparison with the literature
 
 The result agrees with the $GW$ equations for the Hubbard atom given in Sec. 4.2 of [Kiese et al., SciPost Phys. Codebases 24 (2024)](https://doi.org/10.21468/SciPostPhysCodeb.24), who write
@@ -281,9 +285,10 @@ With $\tfrac{1}{4}F_{0,d} + \tfrac{3}{4}F_{0,m} = U/2$ accounting for their expl
 The relative sign between $W$ and $\eta$ is not a discrepancy, but reflects the different sign convention for the bare interaction: in our antisymmetrized Hugenholtz convention $F_{0,d} = -U$, whereas the density component of the bare interaction is defined as $+U$ there.
 :::
 
+(closed-form-ladder-resummation-with-additional-indices)=
 ## Closed-form ladder resummation with additional indices
 
-Everything above was derived for objects that are *scalars* in every degree of freedom other than spin and the bosonic transfer variable, as announced in the [scope admonition](#the-gw-approximation) at the top of this page. Under that assumption the bosonic Dyson equation decoupled into two scalar equations and could be solved by ordinary division. This section removes the restriction. It keeps a finite set of additional indices on the two-particle objects — Keldysh indices in the application we have in mind, but the algebra only uses that they are finite in number, so orbital indices are covered by the same argument — and shows that the density and magnetic ladders still sum in closed form, with the scalar division replaced by a matrix inversion at every $(\omega, \mathbf{q})$.
+Everything above was derived for objects that are *scalars* in every degree of freedom other than spin and the bosonic transfer variable, as announced in the [scope admonition](#gw-scope) at the top of this page. Under that assumption the bosonic Dyson equation decoupled into two scalar equations and could be solved by ordinary division. This section removes the restriction. It keeps a finite set of additional indices on the two-particle objects — Keldysh indices in the application we have in mind, but the algebra only uses that they are finite in number, so orbital indices are covered by the same argument — and shows that the density and magnetic ladders still sum in closed form, with the scalar division replaced by a matrix inversion at every $(\omega, \mathbf{q})$.
 
 Two properties of the local Hubbard interaction survive the addition of these indices, and they are what makes the closed form possible:
 
@@ -380,6 +385,7 @@ The identification $\widetilde{W}_{d/m} = U^2 \chi_{d/m}$ made in the scalar cas
 
 These are the dynamic parts, consistent with $\widetilde{W}$, and they are RPA susceptibilities in the strict sense only if $\Pi$ is built from bare propagators — the same caveat as in the scalar case applies here verbatim.
 
+(which-form-of-the-schwinger-dyson-equation)=
 ## Which form of the Schwinger-Dyson equation?
 
 The [SDE](parquet_theory.md#schwinger-dyson-equation) can be written in three equivalent ways, and the SBE identities turn each of them into a $GW$-like expression once the Hedin vertices are set to unity,

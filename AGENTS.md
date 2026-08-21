@@ -113,6 +113,20 @@ Match the concrete patterns already in `src/`:
     `::::{note}` that contains a `:::{image}` or another `:::` admonition.
 - **Cross-links** use relative Markdown paths: `[text](other_page.md)` or
   `[text](other_page.md#section-anchor)`. Link liberally between pages.
+- **Same-page links need an explicit target.** MyST warns when you link to a heading's implicit
+  HTML id, because that id changes whenever the title is reworded. Put a label above the target
+  and link to it:
+  ```markdown
+  (stoner-criterion)=
+  ### Stoner criterion
+  ```
+  then `[Stoner criterion](#stoner-criterion)`. Labels also work on admonitions, which is the
+  way to link to a specific box. Note that **a heading containing math gets no usable implicit
+  id** (`# The $GW$ approximation` does *not* yield `#the-gw-approximation`) — such a target
+  must have an explicit label. Where a label replaces an id that other pages already link to,
+  keep the label string identical to the old anchor so those links keep working.
+- **The build must be warning-free.** `jupyter-book build --html` should report no `⚠️` lines.
+  Broken references and implicit-heading links are cheap to fix and expensive to leave.
 - **Diagrams** live under `src/diagrams/`, grouped in a subfolder per topic
   (e.g. `src/diagrams/w2dynamics/`). Prefer vector (`.svg`) where practical; `.png` is fine.
 - **Per-page frontmatter is optional.** Most pages start directly with the H1; a page may carry

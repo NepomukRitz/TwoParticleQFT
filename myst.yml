@@ -7,6 +7,11 @@ project:
   keywords: [Two-particle vertex, Bethe--Salpeter equations, Parquet formalism]
   authors: [Nepomuk Ritz]
   github: https://github.com/NepomukRitz/TwoParticleQFT
+  # Repository-level docs for contributors, not pages of the site.
+  exclude:
+    - README.md
+    - AGENTS.md
+    - CLAUDE.md
   toc:
     - file: src/intro.md
     - file: src/symbols_and_notations.md
