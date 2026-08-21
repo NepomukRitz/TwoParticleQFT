@@ -49,6 +49,8 @@ The content is written in [MyST Markdown](https://mystmd.org/) and organized int
 | | [Spin parametrizations](https://nepomukritz.github.io/TwoParticleQFT/spin-parametrizations) | SU(2) spin structure; the magnetic/density and singlet/triplet bases. |
 | **Diagrammatic frameworks** | [Parquet theory](https://nepomukritz.github.io/TwoParticleQFT/parquet-theory) | Parquet decomposition, Bethe–Salpeter and Schwinger–Dyson equations, and the parquet approximation. |
 | | [Single boson exchange](https://nepomukritz.github.io/TwoParticleQFT/single-boson-exchange) | The SBE decomposition, Hedin vertices, the screened interaction, and the SBE approximation (with GW as a limit). |
+| | [$GW$ approximation](https://nepomukritz.github.io/TwoParticleQFT/gw-approximation) | Spin projection of the loop products, polarization and screened interaction in the $ph$ channel, the $GW$ self-energy, the closed-form ladder resummation, and the $G_0W_0$ / self-consistent variants. |
+| | [Second-order perturbation theory](https://nepomukritz.github.io/TwoParticleQFT/second-order-perturbation-theory) | The second-order vertex and self-energy explicitly, including the Fourier-convolution route for the bubble. |
 | **Advanced topics** | [Keldysh formalism](https://nepomukritz.github.io/TwoParticleQFT/keldysh-formalism) | Two-particle QFT on the real-frequency Keldysh contour: index structure, the Keldysh rotation, and component Dyson equations. |
 | | [w2dynamics conventions](https://nepomukritz.github.io/TwoParticleQFT/w2dynamics) | The frequency conventions and definitions of the [w2dynamics](https://github.com/w2dynamics/w2dynamics) impurity solver — one- and two-particle Green's functions, channel parametrizations, and crossing symmetries — and how they relate to the Vienna/Munich conventions. |
 
@@ -106,6 +108,8 @@ TwoParticleQFT/
 │   ├── spin_parametrizations.md
 │   ├── parquet_theory.md
 │   ├── single_boson_exchange.md
+│   ├── gw_approximation.md
+│   ├── second_order_perturbation_theory.md
 │   ├── keldysh_formalism.md
 │   ├── w2dynamics.md
 │   ├── diagrams/            # Feynman diagrams (SVG/PNG)
