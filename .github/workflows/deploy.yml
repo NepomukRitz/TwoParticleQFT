@@ -27,12 +27,12 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - uses: actions/setup-node@v4
+        uses: actions/configure-pages@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 18.x
       - name: Install Jupyter Book (via myst)
@@ -40,9 +40,9 @@ jobs:
       - name: Build HTML Assets
         run: jupyter-book build --html
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: './_build/html'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
