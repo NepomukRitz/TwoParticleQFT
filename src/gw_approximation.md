@@ -469,7 +469,7 @@ Finally, the bosonic argument matches as well: the $\overline{ph}$ loop yields $
 :::
 
 :::{danger} To do
-Quantify how much the $pp$ variant differs from the particle-hole one at $\mathcal{O}(U^3)$, and whether anything can be said about which is closer to the exact result. Relatedly, one could construct a crossing-symmetrized variant by combining the particle-hole and particle-particle forms, which is essentially what the FLEX approximation does.
+Quantify how much the $pp$ variant differs from the particle-hole one at $\mathcal{O}(U^3)$, and whether anything can be said about which is closer to the exact result. The crossing-symmetric combination of the particle-hole and particle-particle forms, with the second-order term counted once, is the [FLEX approximation](flex_approximation.md), where the third-order terms of both forms are given.
 :::
 
 (gw-variants)=
@@ -489,6 +489,5 @@ Independently of the choice above, both the density and the magnetic ladder are 
 :::{danger} To do
 - Add diagrammatic representations for the polarization, the screened interaction and the $GW$ self-energy.
 - Discuss what changes for a non-local or retarded bare interaction, where $W^r$ acquires a momentum or frequency dependence beyond the bosonic transfer variable, and where $F_{0,m} = -F_{0,d}$ no longer holds.
-- Relate the expression derived here to the FLEX approximation, which additionally includes the particle-particle ladder and subtracts the double-counted second-order term.
 - Add references to the original $GW$ literature (Hedin) and to its applications to the Hubbard model.
 :::

@@ -36,6 +36,16 @@ The tables on this page provide an overview of the main symbols and notations us
 | dynamic (decaying) part of the screened interaction | $\widetilde{W}^r$ | - |
 | one bubble insertion into the $ph$ ladder, as a linear map | $M$ | - |
 
+## Fluctuation exchange (FLEX) approximation
+
+| Object | Symbol used here | Other commonly used symbols |
+|:-------|------------------|----------------------|
+| second-order contribution to the vertex in channel $r$ | $\Phi^r_{(2)}$ | $\Phi^{(1)}$ (for $ph$, on the $GW$ page) |
+| crossing of the two odd / the two even legs | $\mathcal{C}_{13}$, $\mathcal{C}_{24}$ | - |
+| cross term of channel $r$ in the self-energy | $\Sigma^r_\times$ | - |
+| $GW$-type self-energy of channel $r$ | $\Sigma^r_{GW}$ | - |
+| density / magnetic susceptibility | $\chi_d$, $\chi_m$ | $\chi_c$, $\chi_\mathrm{ch}$ (charge) / $\chi_s$, $\chi_\mathrm{sp}$ (spin) |
+
 ## Frequency and momentum parametrizations
 
 | Object | Symbol used here | Other commonly used symbols |

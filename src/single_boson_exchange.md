@@ -133,3 +133,5 @@ which is the characteristic $GW$ form.
 :::{warning}
 These three expressions are *not* equivalent, even though the three forms of the SDE they descend from are: the replacement $\gamma^r \simeq \mathbf{1}^r$ is made in a specific channel and discards different diagrams for different $r$. Which class of fluctuations is resummed therefore depends on the channel chosen, and only the two particle-hole forms yield what is conventionally called the $GW$ self-energy of the Hubbard model; the $pp$ form yields a $T$-matrix approximation instead. This is worked out, including the spin structure and the resulting $\frac{1}{4}$ and $\frac{3}{4}$ weights, in the section on the [$GW$ approximation](gw_approximation.md).
 :::
+
+Keeping the unit Hedin vertices in all three channels, but inserting the resulting vertex into the SDE directly rather than into its SBE form, yields the [fluctuation exchange (FLEX) approximation](flex_approximation.md) instead, which contains the screened interactions of all three channels.
