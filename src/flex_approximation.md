@@ -1,6 +1,6 @@
 # The fluctuation exchange (FLEX) approximation
 
-The *fluctuation exchange* (FLEX) approximation of Bickers, Scalapino and White resums density, magnetic and pairing fluctuations on an equal footing ([N. E. Bickers, D. J. Scalapino and S. R. White, Phys. Rev. Lett. 62, 961 (1989)](https://doi.org/10.1103/PhysRevLett.62.961); [N. E. Bickers and D. J. Scalapino, Ann. Phys. 193, 206 (1989)](https://doi.org/10.1016/0003-4916(89)90359-X)). In the language of the [single boson exchange](single_boson_exchange.md) (SBE) decomposition, it is defined by three choices:
+The *fluctuation exchange* (FLEX) approximation of Bickers, Scalapino and White resums density, magnetic and pairing fluctuations on an equal footing ([N. E. Bickers, D. J. Scalapino and S. R. White, Phys. Rev. Lett. 62, 961 (1989)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.62.961); [N. E. Bickers and D. J. Scalapino, Ann. Phys. 193, 206 (1989)](https://www.sciencedirect.com/science/article/pii/000349168990359X)). In the language of the [single boson exchange](single_boson_exchange.md) (SBE) decomposition, it is defined by three choices:
 
 1. The fully $U$-irreducible vertex is neglected, $\Lambda^{U} \simeq 0$, as in the [SBE approximation](single_boson_exchange.md#sbe-approximation).
 2. The Hedin vertices of **all three** channels are replaced by their lowest-order contribution, $\gamma^r \simeq \mathbf{1}^r$ and $\overline{\gamma}^r \simeq \mathbf{1}^r$ for every $r \in \{\overline{ph}, pp, ph\}$.
